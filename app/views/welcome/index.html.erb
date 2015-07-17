@@ -183,11 +183,19 @@
   "YE": 30.02,
   "ZM": 15.69,
   "ZW": 5.57
-};</script>
+};
+</script>
+
 <script>
 $(function(){
   $('#world-map-gdp').vectorMap({
     map: 'world_mill_en',
+    focusOn: {
+      x: 0,
+      y: 0,
+      scale: 0,
+      animate: false
+    },
     series: {
       regions: [{
         values: gdpData,
@@ -199,4 +207,13 @@ $(function(){
       el.html(el.html()+' (GDP - '+gdpData[code]+')');
     }
   });
-});</script>
+
+  $('path').click(function(){
+    var dataCode = $(this).attr('data-code');
+    $('#world-map-gdp').vectorMap('set', 'focus', {
+      region: dataCode,
+      animate: true
+    });
+  });
+});
+</script>
