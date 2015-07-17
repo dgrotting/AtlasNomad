@@ -1,19 +1,39 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
-// listed below.
-//
-// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
-// or any plugin's vendor/assets/javascripts directory can be referenced here using a relative path.
-//
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// compiled file.
-//
-// Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
-// about supported directives.
-//
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require jquery-jvectormap
+//= require jquery-mousewheel
 //= require jvectormap
-//= require jvectormap/maps/world_mill_en
+//= require jvectormap/abstract-canvas-element
+//= require jvectormap/abstract-element
+//= require jvectormap/abstract-shape-element
+//= require jvectormap/svg-element
+//= require jvectormap/svg-group-element
+//= require jvectormap/svg-canvas-element
+//= require jvectormap/svg-shape-element
+//= require jvectormap/svg-path-element
+//= require jvectormap/svg-circle-element
+//= require jvectormap/svg-image-element
+//= require jvectormap/svg-text-element
+//= require jvectormap/vml-element
+//= require jvectormap/vml-group-element
+//= require jvectormap/vml-canvas-element
+//= require jvectormap/vml-shape-element
+//= require jvectormap/vml-path-element
+//= require jvectormap/vml-circle-element
+//= require jvectormap/vml-image-element
+//= require jvectormap/map-object
+//= require jvectormap/region
+//= require jvectormap/marker
+//= require jvectormap/vector-canvas
+//= require jvectormap/simple-scale
+//= require jvectormap/ordinal-scale
+//= require jvectormap/numeric-scale
+//= require jvectormap/color-scale
+//= require jvectormap/legend
+//= require jvectormap/data-series
+//= require jvectormap/proj
+//= require jvectormap/map
+//= require jquery-jvectormap-world-mill-en
 //= require_tree .
 
