@@ -13,4 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require jvectormap
+//= require jvectormap/maps/world_mill_en
 //= require_tree .
+
