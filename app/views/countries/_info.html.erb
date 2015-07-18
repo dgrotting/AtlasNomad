@@ -1,3 +1,17 @@
+<div class="country-partial">
 
-<h2><%= country.name %></h2>
+  <img class="flag" src="../assets/flags/<%= country.code.downcase %>-lgflag.jpeg">
 
+  <h2><%= country.name %></h2>
+
+  <h5>Official Name: <%= country.official_name %></h5>
+
+  <h4>Visa Required? <%= country.tourist_visa %></h4>
+
+  <h4>Passport Validity: <%= country.passport_validity %></h4>
+
+  <h4>Passport Pages Required:<%= country.passport_pages %></h4>
+
+  <h4>Vaccinations: <%= country.vaccinations %></h4>
+
+</div>
