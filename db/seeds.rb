@@ -410,15 +410,16 @@ warning_array.each do |warning|
 	i += 1
 end
 
-p warning_array
-
-warning_array.each do |a|
+warning_array.each do |warning|
+	search = warning[2].gsub(" Travel Warning", "") if warning[0] == "Warning"
+	country = Country.where(name: search).first
+	country == nil ? country = 0 : country = country.id
 	Warning.create(
-		country_id: 1,
-		warning_type: a[0],
-		date: a[1],
-		location: a[2],
-		warning_link: "http://travel.state.gov#{a[3]}"
+		country_id: country,
+		warning_type: warning[0],
+		date: warning[1],
+		location: warning[2],
+		warning_link: "http://travel.state.gov#{warning[3]}"
 		)
 	p Warning.last.id
 end
