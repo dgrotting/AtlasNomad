@@ -196,6 +196,9 @@ $(function(){
       scale: 0,
       animate: false
     },
+    backgroundColor: '#87CEFA',
+    zoomButtons: false,
+    regionStyle:{hover: {fill: "black"}},
     series: {
       regions: [{
         values: AtlasMap.gdpData,
