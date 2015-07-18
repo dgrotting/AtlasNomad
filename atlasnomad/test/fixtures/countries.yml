@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  official_name: MyString
+  code: MyString
+  passport_validity: MyString
+  passport_pages: MyString
+  tourist_visa: MyString
+  vaccinations: MyString
+  entry_currency: MyString
+  exit_currency: MyString
+
+two:
+  name: MyString
+  official_name: MyString
+  code: MyString
+  passport_validity: MyString
+  passport_pages: MyString
+  tourist_visa: MyString
+  vaccinations: MyString
+  entry_currency: MyString
+  exit_currency: MyString
