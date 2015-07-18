@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20150718183831) do
 
   create_table "warnings", force: :cascade do |t|
     t.integer  "country_id"
-    t.string   "type"
+    t.string   "warning_type"
     t.string   "date"
     t.string   "location"
     t.string   "warning_link"

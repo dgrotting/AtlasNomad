@@ -383,3 +383,42 @@ url_array.each do |url|
 	)
 	i += 1
 end
+
+######################################
+## WARNINGS ##
+######################################
+
+warning_page = mechanize.get("http://travel.state.gov/content/passports/english/alertswarnings.html")
+
+table = warning_page.at('table > tbody')
+
+trs = table.css('tr')
+links = trs.css('a')
+
+array = []
+
+trs.each do |tr|
+	tr.css('td').each do |line|
+		array << line.text.strip
+	end
+end
+
+warning_array = array.each_slice(3).to_a
+i = 0
+warning_array.each do |warning|
+	warning << links[i].attributes["href"].value
+	i += 1
+end
+
+p warning_array
+
+warning_array.each do |a|
+	Warning.create(
+		country_id: 1,
+		warning_type: a[0],
+		date: a[1],
+		location: a[2],
+		warning_link: "http://travel.state.gov#{a[3]}"
+		)
+	p Warning.last.id
+end
