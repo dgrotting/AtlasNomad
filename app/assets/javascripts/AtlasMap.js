@@ -187,7 +187,7 @@ AtlasMap.gdpData = {
 };
 
 $(function(){
-
+  var zoomedIn = false;
   $('.atlas-map').vectorMap({
     map: 'world_mill_en',
     focusOn: {
@@ -204,15 +204,26 @@ $(function(){
       }]
     },
     onRegionTipShow: function(e, el, code){
-      el.html(el.html()+' (GDP - '+AtlasMap.gdpData[code]+')');
+      el.html(el.html()+'you rock');
     }
   });
 
   $('path').click(function(){
-    var dataCode = $(this).attr('data-code');
-    $(this).closest('.atlas-map').vectorMap('set', 'focus', {
-      region: dataCode,
+    if (!zoomedIn){
+      var dataCode = $(this).attr('data-code');
+      $(this).closest('.atlas-map').vectorMap('set', 'focus', {
+        region: dataCode,
+        animate: true
+      })
+      zoomedIn = true;
+      }
+    else {
+      $(this).closest('.atlas-map').vectorMap('set', 'focus', {
+      scale: 0, x: 0, y: 0,
       animate: true
-    });
+      })
+      zoomedIn = false;
+
+    }
   });
 });
