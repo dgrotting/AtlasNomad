@@ -4,3 +4,13 @@
   width: 100%;
   position:absolute;
 }
+
+.country-info{
+  height:100%;
+  width:30%;
+  position:absolute;
+  right: 0;
+  background-color: grey;
+  z-index: 2;
+  box-shadow: -2px 0px 100px black;
+}

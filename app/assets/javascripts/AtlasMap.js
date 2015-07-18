@@ -215,6 +215,7 @@ $(function(){
         region: dataCode,
         animate: true
       })
+      $('.country-info').animate({"right":"0px"}, "slow");
       zoomedIn = true;
       }
     else {
@@ -222,6 +223,7 @@ $(function(){
       scale: 0, x: 0, y: 0,
       animate: true
       })
+      $('.country-info').animate({"right":"-2000px"}, "slow");
       zoomedIn = false;
 
     }
