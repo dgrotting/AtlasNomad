@@ -170,7 +170,7 @@ AtlasMap.gdpData = {
   "TT": 21.2,
   "TN": 43.86,
   "TR": 729.05,
-  "TM": 0,
+  "TM": 17,
   "UG": 17.12,
   "UA": 136.56,
   "AE": 239.65,
@@ -199,7 +199,7 @@ $(function(){
     series: {
       regions: [{
         values: AtlasMap.gdpData,
-        scale: ['#C8EEFF', '#0071A4'],
+        scale: ['#6cc577', '#348d3e'],
         normalizeFunction: 'polynomial'
       }]
     },
