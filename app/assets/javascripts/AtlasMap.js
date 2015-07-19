@@ -60,15 +60,14 @@ function zoomTo(dataCode){
     method: "GET",
     data: {code: dataCode}
   }).done(function(response){
-    $('.country-info').append(response);
-  });
+  $('.country-info').append(response);
   $('.atlas-map').vectorMap('set', 'focus', {
       region: dataCode,
       animate: true
     })
   $('.country-info').animate({"right":"0px"}, "slow");
-  // console.log("finishing zoom");
   zoomedIn = true;
+  });
 }
 
 function zoomOut(){
