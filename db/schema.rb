@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150718183831) do
+ActiveRecord::Schema.define(version: 20150719224129) do
 
   create_table "cities", force: :cascade do |t|
     t.integer  "country_id"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20150718183831) do
     t.string   "name"
     t.string   "official_name"
     t.string   "code"
+    t.string   "flag"
     t.string   "passport_validity"
     t.string   "passport_pages"
     t.string   "tourist_visa"
@@ -34,6 +35,15 @@ ActiveRecord::Schema.define(version: 20150718183831) do
     t.string   "exit_currency"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+  end
+
+  create_table "destinations", force: :cascade do |t|
+    t.integer  "country_id"
+    t.string   "name"
+    t.string   "desc"
+    t.string   "pic"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "warnings", force: :cascade do |t|
