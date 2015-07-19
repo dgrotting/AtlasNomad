@@ -294,8 +294,7 @@ jvm.Map.prototype = {
   },
 
   bindContainerEvents: function(){
-    var mouseDown = false,
-        oldPageX,
+    var oldPageX,
         oldPageY,
         map = this;
 
