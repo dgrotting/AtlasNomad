@@ -35,6 +35,7 @@
 //= require jvectormap/data-series
 //= require jvectormap/proj
 //= require jvectormap/map
+//= require country_hashes
 //= require jquery-jvectormap-world-mill-en
 //= require_tree .
 
