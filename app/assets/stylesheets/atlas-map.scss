@@ -1,11 +1,11 @@
 
-.atlas-map{
+.atlas-map {
   height: 100%;
   width: 100%;
   position:absolute;
 }
 
-.country-info{
+.country-info {
   font-family: 'Open Sans', sans-serif;
   font-weight: 700;
   height:100%;
@@ -17,6 +17,7 @@
   box-shadow: -2px 0px 100px black;
 }
 
+
 .country-partial {
   padding: 1em;
 }
@@ -24,3 +25,37 @@
 .flag {
   width: 50%;
 }
+
+
+
+
+
+
+
+
+.search-bar {
+  width:500px;
+  margin:0 auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.search {
+  padding:0px 15px 0px 30px;
+  margin:3px;
+  background: url('./test.svg') no-repeat 8px 6px;
+}
+
+.rounded {
+  border-radius:15px;
+  -moz-border-radius:15px;
+  -webkit-border-radius:15px;
+
+}
+
+input[type=text]{
+  color:grey;
+}
+
