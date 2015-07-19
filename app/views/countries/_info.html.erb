@@ -1,0 +1,33 @@
+<div class="country-partial">
+
+  <div>
+
+    <img class="flag" src="<%= country.flag %>">
+
+    <div class="country-name">
+
+      <h2><%= country.name %></h2>
+
+      <h4><%= country.official_name %></h4>
+
+    </div>
+
+  </div>
+
+  <h4>Visa Required? <br>
+    <%= country.tourist_visa %>
+  </h4>
+
+  <h4>Passport Validity: <br>
+    <%= country.passport_validity %>
+  </h4>
+
+  <h4>Passport Pages Required: <br>
+    <%= country.passport_pages %>
+  </h4>
+
+  <h4>Vaccinations: <br>
+    <%= country.vaccinations %>
+  </h4>
+
+</div>
