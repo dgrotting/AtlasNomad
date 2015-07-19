@@ -370,10 +370,13 @@ i = 0
 url_array.each do |url|
 	page = mechanize.get(url)
 
+	flag = "http://travel.state.gov" + page.at('.flag').attributes['src'].value
+
 	Country.create(
 		name: page.at('h1').text.strip, 
 		official_name: page.at('.official_name').text.strip,
 		code: country_codes[i],
+		flag: flag,
 		passport_validity: page.at('.quick_fact1 > p').text.strip,
 		passport_pages: page.at('.quick_fact2 > p').text.strip,
 		tourist_visa: page.at('.quick_fact3 > p').text.strip,
