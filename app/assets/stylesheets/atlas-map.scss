@@ -12,7 +12,7 @@
   width:30%;
   position:absolute;
   right: -2000px;
-  background-color: #fbffe0;
+  background-color: white;
   z-index: 2;
   box-shadow: -2px 0px 100px black;
   margin: 0px;
@@ -58,4 +58,8 @@
 
 .github-logo:hover {
   opacity: .5;
+}
+
+.home-background {
+  width: 100%;
 }
