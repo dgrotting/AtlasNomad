@@ -55,8 +55,20 @@ function zoomTo(dataCode){
   zoomedIn = true;
 }
 
+function zoomOut(){
+      // console.log('zoomed');
+    $('.atlas-map').vectorMap('set', 'focus', {
+      scale: 0, x: 0, y: 0,
+      animate: true
+    })
+    $('.country-info').animate({"right":"-2000px"}, "slow");
+    zoomedIn = false;
+    currentCounty = null;
+}
+
 function addCountryClickListener() {
-  $('path').click(function(){
+  $('path').click(function(click){
+    click.stopPropagation();
     $('.country-info').empty();
     var clickedCountry = $(this).attr('data-code');
     if (clickedCountry !== currentCountry || !currentCountry || !zoomedIn)
@@ -68,18 +80,13 @@ function addCountryClickListener() {
         // console.log(zoomedIn);
       }
     else {
-      // console.log('zoomed');
-      $('.atlas-map').vectorMap('set', 'focus', {
-        scale: 0, x: 0, y: 0,
-        animate: true
-      })
-      $('.country-info').animate({"right":"-2000px"}, "slow");
-      zoomedIn = false;
-      currentCounty = null;
+      zoomOut();
     }
   });
 }
 
 function addOceanClickListener(){
-
+$('.atlas-map').click(function(){
+  zoomOut();
+})
 }
