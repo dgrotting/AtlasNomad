@@ -15,12 +15,18 @@
   background-color: #fbffe0;
   z-index: 2;
   box-shadow: -2px 0px 100px black;
+  margin: 0px;
 }
 
 .country-partial {
   padding: 1em;
 }
 
+.country-name {
+  display: inline-block;
+}
+
 .flag {
-  width: 50%;
+  display: inline-block;
+  width: 125px;
 }
