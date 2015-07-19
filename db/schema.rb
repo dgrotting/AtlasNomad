@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20150718183831) do
     t.string   "name"
     t.string   "official_name"
     t.string   "code"
+    t.string   "flag"
     t.string   "passport_validity"
     t.string   "passport_pages"
     t.string   "tourist_visa"
