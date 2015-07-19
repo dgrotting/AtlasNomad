@@ -30,3 +30,16 @@
   display: inline-block;
   width: 125px;
 }
+
+.navbar {
+  position: absolute;
+  width: 100%;
+  height: 50px;
+  z-index: 2;
+  background-color: #8ea2a7;
+}
+
+.logo {
+  vertical-align: middle;
+  width: 200px;
+}
