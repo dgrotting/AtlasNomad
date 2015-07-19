@@ -56,8 +56,8 @@ url_array = [
 "http://travel.state.gov/content/passports/english/country/haiti.html",
 "http://travel.state.gov/content/passports/english/country/hungary.html",
 "http://travel.state.gov/content/passports/english/country/honduras.html",
-# "http://travel.state.gov/content/passports/english/country/puerto-rico.html",
-# "http://travel.state.gov/content/passports/english/country/palestine.html",
+"http://travel.state.gov/content/passports/english/country/puerto-rico.html",
+"http://travel.state.gov/content/passports/english/country/palestine.html",
 "http://travel.state.gov/content/passports/english/country/Portugal.html",
 "http://travel.state.gov/content/passports/english/country/paraguay.html",
 "http://travel.state.gov/content/passports/english/country/panama.html",
@@ -68,7 +68,7 @@ url_array = [
 "http://travel.state.gov/content/passports/english/country/poland.html",
 "http://travel.state.gov/content/passports/english/country/cyprus.html",
 "http://travel.state.gov/content/passports/english/country/zambia.html",
-# "http://travel.state.gov/content/passports/english/country/w.-sahara.html",
+"http://travel.state.gov/content/passports/english/country/w.-sahara.html",
 "http://travel.state.gov/content/passports/english/country/estonia.html",
 "http://travel.state.gov/content/passports/english/country/egypt.html",
 "http://travel.state.gov/content/passports/english/country/south-africa.html",
@@ -148,7 +148,7 @@ url_array = [
 "http://travel.state.gov/content/passports/english/country/yemen.html",
 "http://travel.state.gov/content/passports/english/country/austria.html",
 "http://travel.state.gov/content/passports/english/country/algeria.html",
-# "http://travel.state.gov/content/passports/english/country/united-states.html",
+"http://travel.state.gov/content/passports/english/country/united-states.html",
 "http://travel.state.gov/content/passports/english/country/latvia.html",
 "http://travel.state.gov/content/passports/english/country/uruguay.html",
 "http://travel.state.gov/content/passports/english/country/lebanon.html",
@@ -178,7 +178,7 @@ url_array = [
 "http://travel.state.gov/content/passports/english/country/vietnam.html",
 "http://travel.state.gov/content/passports/english/country/argentina.html",
 "http://travel.state.gov/content/passports/english/country/australia.html",
-# "http://travel.state.gov/content/passports/english/country/israel.html",
+"http://travel.state.gov/content/passports/english/country/israel.html",
 "http://travel.state.gov/content/passports/english/country/india.html",
 "http://travel.state.gov/content/passports/english/country/tanzania.html",
 "http://travel.state.gov/content/passports/english/country/azerbaijan.html",
@@ -234,8 +234,8 @@ country_codes = [
 "HT",
 "HU",
 "HN",
-# "PR",
-# "PS",
+"PR",
+"PS",
 "PT",
 "PY",
 "PA",
@@ -246,7 +246,7 @@ country_codes = [
 "PL",
 "-99",
 "ZM",
-# "EH",
+"EH",
 "EE",
 "EG",
 "ZA",
@@ -326,7 +326,7 @@ country_codes = [
 "YE",
 "AT",
 "DZ",
-# "US",
+"US",
 "LV",
 "UY",
 "LB",
@@ -356,7 +356,7 @@ country_codes = [
 "VN",
 "AR",
 "AU",
-# "IL",
+"IL",
 "IN",
 "TZ",
 "AZ",
@@ -386,6 +386,71 @@ url_array.each do |url|
 	)
 	i += 1
 end
+
+Country.create(
+	name: "Puerto Rico"
+	official_name: "Puerto Rico",
+	code: "PR",
+	flag: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Flag_of_Puerto_Rico.svg/2000px-Flag_of_Puerto_Rico.svg.png",
+	passport_validity: "Same as U.S.",
+	passport_pages: "Same as U.S.",
+	tourist_visa: "Same as U.S.",
+	vaccinations: "Same as U.S.",
+	entry_currency: "Same as U.S.",
+	exit_currency: "Same as U.S."
+)
+
+Country.create(
+	name: "Palestine"
+	official_name: "Palestine",
+	code: "PS",
+	flag: "https://upload.wikimedia.org/wikipedia/commons/a/a5/Palestine_flag.jpg",
+	passport_validity: "Same as Isral (Not a joke)",
+	passport_pages: "Same as Isral (Not a joke)",
+	tourist_visa: "Same as Isral (Not a joke)",
+	vaccinations: "Same as Isral (Not a joke)",
+	entry_currency: "Same as Isral (Not a joke)",
+	exit_currency: "Same as Isral (Not a joke)"
+)
+
+Country.create(
+	name: "West Sahara"
+	official_name: "West Sahara",
+	code: "EH",
+	flag: "http://www.mapsofworld.com/flags/images/world-flags/western-sahara-flag.jpg",
+	passport_validity: "Not recommeneded for travel",
+	passport_pages: "Not recommeneded for travel",
+	tourist_visa: "Not recommeneded for travel",
+	vaccinations: "Not recommeneded for travel",
+	entry_currency: "Not recommeneded for travel",
+	exit_currency: "Not recommeneded for travel"
+)
+
+Country.create(
+	name: "United States"
+	official_name: "The United States of America",
+	code: "US",
+	flag: "http://khongthe.com/wallpapers/abstract/america-the-beautiful-230904.jpg",
+	passport_validity: "Whatever you want because freedom",
+	passport_pages: "Whatever you want because freedom",
+	tourist_visa: "Whatever you want because freedom",
+	vaccinations: "Whatever you want because freedom",
+	entry_currency: "Whatever you want because freedom",
+	exit_currency: "Whatever you want because freedom"
+)
+
+Country.create(
+	name: "Israel"
+	official_name: "Israel",
+	code: "IL",
+	flag: "https://upload.wikimedia.org/wikipedia/commons/d/d4/Flag_of_Israel.svg",
+	passport_validity: "Six months",
+	passport_pages: "One page required for entry stamp",
+	tourist_visa: "Yes, but you can obtain at the port of entry",
+	vaccinations: "Polio vaccination up to 1 year before travel is recommended.",
+	entry_currency: "None",
+	exit_currency: "None" 
+)
 
 ######################################
 ## WARNINGS ##
@@ -426,3 +491,4 @@ warning_array.each do |warning|
 		)
 	p Warning.last.id
 end
+
