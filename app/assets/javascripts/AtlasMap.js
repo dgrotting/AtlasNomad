@@ -4,7 +4,8 @@ var clickedCountry = null;
 
 $('document').ready(function(){
   makeMap();
-  addClickListeners();
+  addCountryClickListener();
+  addOceanClickListener();
 })
 
 function makeMap(){
@@ -36,28 +37,6 @@ function makeMap(){
   });
 }
 
-function addClickListeners(){
-  $('path').click(function(){
-    $('.country-info').empty();
-    clickedCountry = $(this).attr('data-code');
-    if (clickedCountry !== currentCountry || !currentCountry)
-      {console.log(clickedCountry);
-        console.log(currentCountry);
-        currentCountry = clickedCountry;
-        zoomTo(clickedCountry);
-        console.log(zoomedIn);}
-    else {
-      console.log('zoomed');
-      $('.atlas-map').vectorMap('set', 'focus', {
-      scale: 0, x: 0, y: 0,
-      animate: true
-      })
-      $('.country-info').animate({"right":"-2000px"}, "slow");
-      zoomedIn = false;
-    }
-  });
-}
-
 function zoomTo(dataCode){
   console.log("here");
   $.ajax({
@@ -74,4 +53,32 @@ function zoomTo(dataCode){
   $('.country-info').animate({"right":"0px"}, "slow");
   console.log("finishing");
   zoomedIn = true;
+}
+
+function addCountryClickListener() {
+  $('path').click(function(){
+    $('.country-info').empty();
+    clickedCountry = $(this).attr('data-code');
+    if (clickedCountry !== currentCountry || !currentCountry)
+      {
+      console.log(clickedCountry);
+      //   console.log(currentCountry);
+        currentCountry = clickedCountry;
+        zoomTo(clickedCountry);
+        // console.log(zoomedIn);
+      }
+    else {
+      // console.log('zoomed');
+      $('.atlas-map').vectorMap('set', 'focus', {
+        scale: 0, x: 0, y: 0,
+        animate: true
+      })
+      $('.country-info').animate({"right":"-2000px"}, "slow");
+      zoomedIn = false;
+    }
+  });
+}
+
+function addOceanClickListener(){
+
 }
