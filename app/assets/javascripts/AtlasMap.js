@@ -263,7 +263,9 @@ availableTags = [
     else {
       $('.country-info').empty();
       $(this).closest('.atlas-map').vectorMap('set', 'focus', {
-      scale: 0, x: 0, y: 0,
+      scale: 0, x: 0, y: 0
+      })}
+    })
 
 function zoomTo(dataCode){
   console.log("here");
