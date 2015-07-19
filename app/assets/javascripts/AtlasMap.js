@@ -33,11 +33,237 @@ function makeMap(){
         normalizeFunction: 'polynomial'
       }]
     },
-    // onRegionTipShow: function(e, el, code){
-    //   el.html(el.html()+'you rock');
-    // }
+
+    onRegionTipShow: function(e, el, code){
+      el.html(el.html());
+    }
+
   });
 }
+
+
+
+test = {"Bangladesh": "BD", "Belgium": "BE", "Burkina Faso": "BF", "Bulgaria": "BG", "Bosnia and Herz.": "BA", "Brunei": "BN", "Bolivia": "BO", "Japan": "JP", "Burundi": "BI", "Benin": "BJ", "Bhutan": "BT", "Jamaica": "JM", "Botswana": "BW", "Brazil": "BR", "Bahamas": "BS", "Belarus": "BY", "Belize": "BZ", "Russia": "RU", "Rwanda": "RW", "Serbia": "RS", "Lithuania": "LT", "Luxembourg": "LU", "Liberia": "LR", "Romania": "RO", "Guinea-Bissau": "GW", "Guatemala": "GT", "Greece": "GR", "Eq. Guinea": "GQ", "Guyana": "GY", "Georgia": "GE", "United Kingdom": "GB", "Gabon": "GA", "Guinea": "GN", "Gambia": "GM", "Greenland": "GL", "Kuwait": "KW", "Ghana": "GH", "Oman": "OM", "Somaliland": "_1", "Kosovo": "_0", "Jordan": "JO", "Croatia": "HR", "Haiti": "HT", "Hungary": "HU", "Honduras": "HN", "Puerto Rico": "PR", "Palestine": "PS", "Portugal": "PT", "Paraguay": "PY", "Panama": "PA", "Papua New Guinea": "PG", "Peru": "PE", "Pakistan": "PK", "Philippines": "PH", "Poland": "PL", "N. Cyprus": "-9", "Zambia": "ZM", "W. Sahara": "EH", "Estonia": "EE", "Egypt": "EG", "South Africa": "ZA", "Ecuador": "EC", "Albania": "AL", "Angola": "AO", "Kazakhstan": "KZ", "Ethiopia": "ET", "Zimbabwe": "ZW", "Spain": "ES", "Eritrea": "ER", "Montenegro": "ME", "Moldova": "MD", "Madagascar": "MG", "Morocco": "MA", "Uzbekistan": "UZ", "Myanmar": "MM", "Mali": "ML", "Mongolia": "MN", "Macedonia": "MK", "Malawi": "MW", "Mauritania": "MR", "Uganda": "UG", "Malaysia": "MY", "Mexico": "MX", "Vanuatu": "VU", "France": "FR", "Finland": "FI", "Fiji": "FJ", "Falkland Is.": "FK", "Nicaragua": "NI", "Netherlands": "NL", "Norway": "NO", "Namibia": "NA", "New Caledonia": "NC", "Niger": "NE", "Nigeria": "NG", "New Zealand": "NZ", "Nepal": "NP", "Côte dIvoire": "CI", "Switzerland": "CH", "Colombia": "CO", "China": "CN", "Cameroon": "CM", "Chile": "CL", "Canada": "CA", "Congo": "CG", "Central African Rep.": "CF", "Dem. Rep. Congo": "CD", "Czech Rep.": "CZ", "Cyprus": "CY", "Costa Rica": "CR", "Cuba": "CU", "Swaziland": "SZ", "Syria": "SY", "Kyrgyzstan": "KG", "Kenya": "KE", "S. Sudan": "SS", "Suriname": "SR", "Cambodia": "KH", "El Salvador": "SV", "Slovakia": "SK", "Korea": "KR", "Slovenia": "SI", "Dem. Rep. Korea": "KP", "Somalia": "SO", "Senegal": "SN", "Sierra Leone": "SL", "Solomon Is.": "SB", "Saudi Arabia": "SA", "Sweden": "SE", "Sudan": "SD", "Dominican Rep.": "DO", "Djibouti": "DJ", "Denmark": "DK", "Germany": "DE", "Yemen": "YE", "Austria": "AT", "Algeria": "DZ", "United States": "US", "Latvia": "LV", "Uruguay": "UY", "Lebanon": "LB", "Lao PDR": "LA", "Taiwan": "TW", "Trinidad and Tobago": "TT", "Turkey": "TR", "Sri Lanka": "LK", "Tunisia": "TN", "Timor-Leste": "TL", "Turkmenistan": "TM", "Tajikistan": "TJ", "Lesotho": "LS", "Thailand": "TH", "Fr. S. Antarctic Lands": "TF", "Togo": "TG", "Chad": "TD", "Libya": "LY", "United Arab Emirates": "AE", "Venezuela": "VE", "Afghanistan": "AF", "Iraq": "IQ", "Iceland": "IS", "Iran": "IR", "Armenia": "AM", "Italy": "IT", "Vietnam": "VN", "Argentina": "AR", "Australia": "AU", "Israel": "IL", "India": "IN", "Tanzania": "TZ", "Azerbaijan": "AZ", "Ireland": "IE", "Indonesia": "ID", "Ukraine": "UA", "Qatar": "QA", "Mozambique": "MZ"};
+
+
+availableTags = [
+{"data": "BD", "value": "Bangladesh"},
+{"data": "BE", "value": "Belgium"},
+{"data": "BF", "value": "Burkina Faso"},
+{"data": "BG", "value": "Bulgaria"},
+{"data": "BA", "value": "Bosnia and Herz."},
+{"data": "BN", "value": "Brunei"},
+{"data": "BO", "value": "Bolivia"},
+{"data": "JP", "value": "Japan"},
+{"data": "BI", "value": "Burundi"},
+{"data": "BJ", "value": "Benin"},
+{"data": "BT", "value": "Bhutan"},
+{"data": "JM", "value": "Jamaica"},
+{"data": "BW", "value": "Botswana"},
+{"data": "BR", "value": "Brazil"},
+{"data": "BS", "value": "Bahamas"},
+{"data": "BY", "value": "Belarus"},
+{"data": "BZ", "value": "Belize"},
+{"data": "RU", "value": "Russia"},
+{"data": "RW", "value": "Rwanda"},
+{"data": "RS", "value": "Serbia"},
+{"data": "LT", "value": "Lithuania"},
+{"data": "LU", "value": "Luxembourg"},
+{"data": "LR", "value": "Liberia"},
+{"data": "RO", "value": "Romania"},
+{"data": "GW", "value": "Guinea-Bissau"},
+{"data": "GT", "value": "Guatemala"},
+{"data": "GR", "value": "Greece"},
+{"data": "GQ", "value": "Eq. Guinea"},
+{"data": "GY", "value": "Guyana"},
+{"data": "GE", "value": "Georgia"},
+{"data": "GB", "value": "United Kingdom"},
+{"data": "GA", "value": "Gabon"},
+{"data": "GN", "value": "Guinea"},
+{"data": "GM", "value": "Gambia"},
+{"data": "GL", "value": "Greenland"},
+{"data": "KW", "value": "Kuwait"},
+{"data": "GH", "value": "Ghana"},
+{"data": "OM", "value": "Oman"},
+{"data": "_1", "value": "Somaliland"},
+{"data": "_0", "value": "Kosovo"},
+{"data": "JO", "value": "Jordan"},
+{"data": "HR", "value": "Croatia"},
+{"data": "HT", "value": "Haiti"},
+{"data": "HU", "value": "Hungary"},
+{"data": "HN", "value": "Honduras"},
+{"data": "PR", "value": "Puerto Rico"},
+{"data": "PS", "value": "Palestine"},
+{"data": "PT", "value": "Portugal"},
+{"data": "PY", "value": "Paraguay"},
+{"data": "PA", "value": "Panama"},
+{"data": "PG", "value": "Papua New Guinea"},
+{"data": "PE", "value": "Peru"},
+{"data": "PK", "value": "Pakistan"},
+{"data": "PH", "value": "Philippines"},
+{"data": "PL", "value": "Poland"},
+{"data": "-99", "value": "N. Cyprus"},
+{"data": "ZM", "value": "Zambia"},
+{"data": "EH", "value": "W. Sahara"},
+{"data": "EE", "value": "Estonia"},
+{"data": "EG", "value": "Egypt"},
+{"data": "ZA", "value": "South Africa"},
+{"data": "EC", "value": "Ecuador"},
+{"data": "AL", "value": "Albania"},
+{"data": "AO", "value": "Angola"},
+{"data": "KZ", "value": "Kazakhstan"},
+{"data": "ET", "value": "Ethiopia"},
+{"data": "ZW", "value": "Zimbabwe"},
+{"data": "ES", "value": "Spain"},
+{"data": "ER", "value": "Eritrea"},
+{"data": "ME", "value": "Montenegro"},
+{"data": "MD", "value": "Moldova"},
+{"data": "MG", "value": "Madagascar"},
+{"data": "MA", "value": "Morocco"},
+{"data": "UZ", "value": "Uzbekistan"},
+{"data": "MM", "value": "Myanmar"},
+{"data": "ML", "value": "Mali"},
+{"data": "MN", "value": "Mongolia"},
+{"data": "MK", "value": "Macedonia"},
+{"data": "MW", "value": "Malawi"},
+{"data": "MR", "value": "Mauritania"},
+{"data": "UG", "value": "Uganda"},
+{"data": "MY", "value": "Malaysia"},
+{"data": "MX", "value": "Mexico"},
+{"data": "VU", "value": "Vanuatu"},
+{"data": "FR", "value": "France"},
+{"data": "FI", "value": "Finland"},
+{"data": "FJ", "value": "Fiji"},
+{"data": "FK", "value": "Falkland Is."},
+{"data": "NI", "value": "Nicaragua"},
+{"data": "NL", "value": "Netherlands"},
+{"data": "NO", "value": "Norway"},
+{"data": "NA", "value": "Namibia"},
+{"data": "NC", "value": "New Caledonia"},
+{"data": "NE", "value": "Niger"},
+{"data": "NG", "value": "Nigeria"},
+{"data": "NZ", "value": "New Zealand"},
+{"data": "NP", "value": "Nepal"},
+{"data": "CI", "value": "Côte d Ivoire"},
+{"data": "CH", "value": "Switzerland"},
+{"data": "CO", "value": "Colombia"},
+{"data": "CN", "value": "China"},
+{"data": "CM", "value": "Cameroon"},
+{"data": "CL", "value": "Chile"},
+{"data": "CA", "value": "Canada"},
+{"data": "CG", "value": "Congo"},
+{"data": "CF", "value": "Central African Rep."},
+{"data": "CD", "value": "Dem. Rep. Congo"},
+{"data": "CZ", "value": "Czech Rep."},
+{"data": "CY", "value": "Cyprus"},
+{"data": "CR", "value": "Costa Rica"},
+{"data": "CU", "value": "Cuba"},
+{"data": "SZ", "value": "Swaziland"},
+{"data": "SY", "value": "Syria"},
+{"data": "KG", "value": "Kyrgyzstan"},
+{"data": "KE", "value": "Kenya"},
+{"data": "SS", "value": "S. Sudan"},
+{"data": "SR", "value": "Suriname"},
+{"data": "KH", "value": "Cambodia"},
+{"data": "SV", "value": "El Salvador"},
+{"data": "SK", "value": "Slovakia"},
+{"data": "KR", "value": "Korea"},
+{"data": "SI", "value": "Slovenia"},
+{"data": "KP", "value": "Dem. Rep. Korea"},
+{"data": "SO", "value": "Somalia"},
+{"data": "SN", "value": "Senegal"},
+{"data": "SL", "value": "Sierra Leone"},
+{"data": "SB", "value": "Solomon Is."},
+{"data": "SA", "value": "Saudi Arabia"},
+{"data": "SE", "value": "Sweden"},
+{"data": "SD", "value": "Sudan"},
+{"data": "DO", "value": "Dominican Rep."},
+{"data": "DJ", "value": "Djibouti"},
+{"data": "DK", "value": "Denmark"},
+{"data": "DE", "value": "Germany"},
+{"data": "YE", "value": "Yemen"},
+{"data": "AT", "value": "Austria"},
+{"data": "DZ", "value": "Algeria"},
+{"data": "US", "value": "United States"},
+{"data": "LV", "value": "Latvia"},
+{"data": "UY", "value": "Uruguay"},
+{"data": "LB", "value": "Lebanon"},
+{"data": "LA", "value": "Lao PDR"},
+{"data": "TW", "value": "Taiwan"},
+{"data": "TT", "value": "Trinidad and Tobago"},
+{"data": "TR", "value": "Turkey"},
+{"data": "LK", "value": "Sri Lanka"},
+{"data": "TN", "value": "Tunisia"},
+{"data": "TL", "value": "Timor-Leste"},
+{"data": "TM", "value": "Turkmenistan"},
+{"data": "TJ", "value": "Tajikistan"},
+{"data": "LS", "value": "Lesotho"},
+{"data": "TH", "value": "Thailand"},
+{"data": "TF", "value": "Fr. S. Antarctic Lands"},
+{"data": "TG", "value": "Togo"},
+{"data": "TD", "value": "Chad"},
+{"data": "LY", "value": "Libya"},
+{"data": "AE", "value": "United Arab Emirates"},
+{"data": "VE", "value": "Venezuela"},
+{"data": "AF", "value": "Afghanistan"},
+{"data": "IQ", "value": "Iraq"},
+{"data": "IS", "value": "Iceland"},
+{"data": "IR", "value": "Iran"},
+{"data": "AM", "value": "Armenia"},
+{"data": "IT", "value": "Italy"},
+{"data": "VN", "value": "Vietnam"},
+{"data": "AR", "value": "Argentina"},
+{"data": "AU", "value": "Australia"},
+{"data": "IL", "value": "Israel"},
+{"data": "IN", "value": "India"},
+{"data": "TZ", "value": "Tanzania"},
+{"data": "AZ", "value": "Azerbaijan"},
+{"data": "IE", "value": "Ireland"},
+{"data": "ID", "value": "Indonesia"},
+{"data": "UA", "value": "Ukraine"},
+{"data": "QA", "value": "Qatar"},
+{"data": "MZ", "value": "Mozambique"}
+
+];
+
+
+
+    $( '#autocomplete' ).autocomplete({
+      source: availableTags
+    });
+
+
+    $('#auto').submit(function(event){
+      event.preventDefault();
+      $('.atlas-map').vectorMap('set', 'focus', {region: test[$('#autocomplete').val()] , animate: true});
+      });
+
+
+
+
+
+
+  $('path').click(function(){
+    var dataCode = $(this).attr('data-code');
+    if (!zoomedIn){
+      $.ajax({
+      url: "/countries",
+      method: "GET",
+      data: {code: dataCode}
+    }).done(function(response){
+        $('.country-info').append(response);
+    });
+    $(this).closest('.atlas-map').vectorMap('set', 'focus', {
+        region: dataCode,
+        animate: true
+      })
+      $('.country-info').animate({"right":"0px"}, "slow");
+      zoomedIn = true;
+      }
+    else {
+      $('.country-info').empty();
+      $(this).closest('.atlas-map').vectorMap('set', 'focus', {
+      scale: 0, x: 0, y: 0,
 
 function zoomTo(dataCode){
   console.log("here");
