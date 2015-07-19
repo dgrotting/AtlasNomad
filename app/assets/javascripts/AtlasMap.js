@@ -1,6 +1,8 @@
-var zoomedIn = false;
-var currentCountry = null;
-var clickedCountry = null;
+var zoomedIn = false,
+    currentCountry = null,
+    clickedCountry = null,
+    drag = false,
+    mouseDown = false;
 
 $('document').ready(function(){
   makeMap();
@@ -51,7 +53,7 @@ function zoomTo(dataCode){
       animate: true
     })
   $('.country-info').animate({"right":"0px"}, "slow");
-  console.log("finishing");
+  // console.log("finishing zoom");
   zoomedIn = true;
 }
 
@@ -67,26 +69,33 @@ function zoomOut(){
 }
 
 function addCountryClickListener() {
-  $('path').click(function(click){
+  $('path').mousedown(function(){
+    drag = false;
+    setTimeout(function(){drag = true}, 100);
+  }).mouseup(function(click){
     click.stopPropagation();
-    $('.country-info').empty();
-    var clickedCountry = $(this).attr('data-code');
-    if (clickedCountry !== currentCountry || !currentCountry || !zoomedIn)
-      {
-      console.log(clickedCountry);
-      //   console.log(currentCountry);
-        currentCountry = clickedCountry;
-        zoomTo(clickedCountry);
-        // console.log(zoomedIn);
+    mouseDown = false;
+    if (drag === false){
+      $('.country-info').empty();
+      var clickedCountry = $(this).attr('data-code');
+      if (clickedCountry !== currentCountry || !currentCountry || !zoomedIn)
+        {
+        // console.log(clickedCountry);
+        //   console.log(currentCountry);
+          currentCountry = clickedCountry;
+          zoomTo(clickedCountry);
+          // console.log(zoomedIn);
+        }
+      else {
+        zoomOut();
       }
-    else {
-      zoomOut();
     }
   });
 }
 
 function addOceanClickListener(){
-$('.atlas-map').click(function(){
-  zoomOut();
-})
+  $('.atlas-map').on('mouseup', function(){
+    zoomOut();
+    // console.log("clicked on ocean");
+  })
 }
