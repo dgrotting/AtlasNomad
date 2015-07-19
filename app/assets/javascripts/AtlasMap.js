@@ -58,8 +58,8 @@ function zoomTo(dataCode){
 function addCountryClickListener() {
   $('path').click(function(){
     $('.country-info').empty();
-    clickedCountry = $(this).attr('data-code');
-    if (clickedCountry !== currentCountry || !currentCountry)
+    var clickedCountry = $(this).attr('data-code');
+    if (clickedCountry !== currentCountry || !currentCountry || !zoomedIn)
       {
       console.log(clickedCountry);
       //   console.log(currentCountry);
@@ -75,6 +75,7 @@ function addCountryClickListener() {
       })
       $('.country-info').animate({"right":"-2000px"}, "slow");
       zoomedIn = false;
+      currentCounty = null;
     }
   });
 }
