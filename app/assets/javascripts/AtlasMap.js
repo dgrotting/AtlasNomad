@@ -58,20 +58,20 @@ function zoomTo(dataCode){
 }
 
 function zoomOut(){
-      // console.log('zoomed');
-    $('.atlas-map').vectorMap('set', 'focus', {
-      scale: 0, x: 0, y: 0,
-      animate: true
-    })
-    $('.country-info').animate({"right":"-2000px"}, "slow");
-    zoomedIn = false;
-    currentCounty = null;
+    // console.log('zoomed');
+  $('.atlas-map').vectorMap('set', 'focus', {
+    scale: 0, x: 0, y: 0,
+    animate: true
+  })
+  $('.country-info').animate({"right":"-2000px"}, "slow");
+  zoomedIn = false;
+  currentCounty = null;
 }
 
 function addCountryClickListener() {
   $('path').mousedown(function(){
     drag = false;
-    setTimeout(function(){drag = true}, 100);
+    setTimeout(function(){drag = true}, 250);
   }).mouseup(function(click){
     click.stopPropagation();
     mouseDown = false;
