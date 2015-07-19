@@ -6,6 +6,7 @@ var zoomedIn = false,
 
 $('document').ready(function(){
   makeMap();
+  addAutocompleteListener();
   addCountryClickListener();
   addOceanClickListener();
 })
@@ -42,46 +43,15 @@ function makeMap(){
 }
 
 
-
-
-    $( '#autocomplete' ).autocomplete({
-      source: availableTags
-    });
-
-
-    $('#auto').submit(function(event){
-      event.preventDefault();
-      $('.atlas-map').vectorMap('set', 'focus', {region: test[$('#autocomplete').val()] , animate: true});
-      });
-
-
-
-
-
-
-  $('path').click(function(){
-    var dataCode = $(this).attr('data-code');
-    if (!zoomedIn){
-      $.ajax({
-      url: "/countries",
-      method: "GET",
-      data: {code: dataCode}
-    }).done(function(response){
-        $('.country-info').append(response);
-    });
-    $(this).closest('.atlas-map').vectorMap('set', 'focus', {
-        region: dataCode,
-        animate: true
-      })
-      $('.country-info').animate({"right":"0px"}, "slow");
-      zoomedIn = true;
-      }
-    else {
-      $('.country-info').empty();
-      $(this).closest('.atlas-map').vectorMap('set', 'focus', {
-      scale: 0, x: 0, y: 0
-      })}
-    })
+function addAutocompleteListener(){
+  $( '#autocomplete' ).autocomplete({
+    source: availableTags
+  });
+  $('#auto').submit(function(event){
+    event.preventDefault();
+    zoomTo(test[$('#autocomplete').val()]);
+  });
+}
 
 function zoomTo(dataCode){
   console.log("here");
