@@ -130,7 +130,7 @@ button:focus {
 .search {
   padding:0px 15px 0px 30px;
   margin:3px;
-  background: url('./test.svg') no-repeat 8px 6px;
+  background: url('/assets/search_icon.png') no-repeat 8px 6px;
 }
 
 .rounded {
@@ -144,3 +144,6 @@ input[type=text]{
   color:grey;
 }
 
+.country-image {
+  width: 300px;
+}
