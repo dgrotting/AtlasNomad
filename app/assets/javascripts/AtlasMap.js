@@ -2,6 +2,7 @@ var zoomedIn = false,
     currentCountry = null,
     clickedCountry = null,
     drag = false,
+    divsShown = false,
     mouseDown = false;
 
 $('document').ready(function(){
@@ -69,6 +70,11 @@ function addAutocompleteListener(){
   });
 }
 
+function zoomInTo(dataCode){
+  zoomTo(dataCode);
+  toggleSideDivs();
+}
+
 function zoomTo(dataCode){
   $('.country-info').empty();
   $('.country-destinations').empty();
@@ -88,15 +94,24 @@ function zoomTo(dataCode){
     method: "GET",
     data: {code: dataCode}
   }).done(function(response){
-    console.log(response);
     $('.country-destinations').append(response);
-  console.log("made it out")
-  $('.country-info').animate({"right":"0px"}, "slow");
-  console.log("in between animations");
-  $('.country-destinations').animate({"left":"0px"},"slow");
-  console.log("should be done")
   zoomedIn = true;
   })
+}
+
+function toggleSideDivs(){
+  if (divsShown === false){
+    $('.country-destinations').animate({"right":"0px"}, "slow");
+    $('.country-info').animate({"left":"0px"}, "slow");
+    divsShown = true;
+    console.log("true")
+  }
+  else {
+    $('.country-destinations').animate({"right":"-2000px"}, "slow");
+    $('.country-info').animate({"left":"-2000px"}, "slow");
+    divsShown = false;
+    console.log("false")
+  }
 }
 
 function zoomOut(){
@@ -105,8 +120,7 @@ function zoomOut(){
     scale: 0, x: 0, y: 0,
     animate: true
   })
-  $('.country-info').animate({"right":"-2000px"}, "slow");
-  $('.country-destinations').animate({"left":"-2000px"}, "slow");
+  toggleSideDivs();
   zoomedIn = false;
   currentCounty = null;
 }
@@ -118,17 +132,24 @@ function addCountryClickListener() {
   }).mouseup(function(click){
     click.stopPropagation();
     mouseDown = false;
-    if (drag === false){
+
+    if (drag === false)
+    {
       var clickedCountry = $(this).attr('data-code');
-      if (clickedCountry !== currentCountry || !currentCountry || !zoomedIn)
+      if (!zoomedIn)
+      {
+        zoomInTo(clickedCountry);
+        currentCountry = clickedCountry;
+      }
+
+      else if (clickedCountry !== currentCountry || !currentCountry)
         {
-        // console.log(clickedCountry);
-        //   console.log(currentCountry);
           currentCountry = clickedCountry;
           zoomTo(clickedCountry);
-          // console.log(zoomedIn);
         }
-      else {
+
+      else
+      {
         zoomOut();
       }
     }
@@ -138,6 +159,5 @@ function addCountryClickListener() {
 function addOceanClickListener(){
   $('.atlas-map').on('mouseup', function(){
     zoomOut();
-    // console.log("clicked on ocean");
   })
 }
