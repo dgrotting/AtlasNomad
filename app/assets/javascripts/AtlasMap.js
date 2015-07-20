@@ -2,6 +2,7 @@ var zoomedIn = false,
     currentCountry = null,
     clickedCountry = null,
     drag = false,
+    divsShown = false,
     mouseDown = false;
 
 $('document').ready(function(){
@@ -69,6 +70,11 @@ function addAutocompleteListener(){
   });
 }
 
+function zoomInTo(dataCode){
+  zoomTo(dataCode);
+  toggleDivs();
+}
+
 function zoomTo(dataCode){
   $('.country-info').empty();
   $('.country-destinations').empty();
@@ -88,15 +94,22 @@ function zoomTo(dataCode){
     method: "GET",
     data: {code: dataCode}
   }).done(function(response){
-    console.log(response);
     $('.country-destinations').append(response);
-  console.log("made it out")
-  $('.country-info').animate({"right":"0px"}, "slow");
-  console.log("in between animations");
-  $('.country-destinations').animate({"left":"0px"},"slow");
-  console.log("should be done")
   zoomedIn = true;
   })
+}
+
+function toggleDivs(){
+  if (divsShown === false){
+    $('.country-info').animate({"right":"0px"}, "slow");
+    $('.country-destinations').animate({"left":"0px"}, "slow");
+    divsShown = true;
+  }
+  else {
+    $('.country-info').animate({"right":"-2000px"}, "slow");
+    $('.country-destinations').animate({"left":"-2000px"}, "slow");
+    divsShown = false;
+  }
 }
 
 function zoomOut(){
@@ -105,8 +118,7 @@ function zoomOut(){
     scale: 0, x: 0, y: 0,
     animate: true
   })
-  $('.country-info').animate({"right":"-2000px"}, "slow");
-  $('.country-destinations').animate({"left":"-2000px"}, "slow");
+  toggleDivs();
   zoomedIn = false;
   currentCounty = null;
 }
@@ -120,7 +132,10 @@ function addCountryClickListener() {
     mouseDown = false;
     if (drag === false){
       var clickedCountry = $(this).attr('data-code');
-      if (clickedCountry !== currentCountry || !currentCountry || !zoomedIn)
+      if (!zoomedIn){
+        zoomInTo(clickedCountry);
+      }
+      else if (clickedCountry !== currentCountry || !currentCountry)
         {
         // console.log(clickedCountry);
         //   console.log(currentCountry);
