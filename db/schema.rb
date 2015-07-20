@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150718183831) do
+ActiveRecord::Schema.define(version: 20150719224129) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "cities", force: :cascade do |t|
     t.integer  "country_id"
@@ -35,6 +38,15 @@ ActiveRecord::Schema.define(version: 20150718183831) do
     t.string   "exit_currency"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+  end
+
+  create_table "destinations", force: :cascade do |t|
+    t.integer  "country_id"
+    t.string   "name"
+    t.string   "desc"
+    t.string   "pic"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "warnings", force: :cascade do |t|
