@@ -1,7 +1,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
-//= require turbolinks
 //= require jquery-jvectormap
 //= require jquery-mousewheel
 //= require jvectormap

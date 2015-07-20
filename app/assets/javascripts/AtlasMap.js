@@ -167,7 +167,7 @@ function addCountryClickListener() {
 
   path.mouseup(function(click){
     click.stopPropagation();
-    var mouseDown = false;
+    mouseDown = false;
 
     if (drag === false) {
       var clickedCountry = $(this).attr('data-code');
