@@ -188,15 +188,6 @@ jvm.Map = function(params) {
 };
 
 jvm.Map.prototype = {
-  fullScaleListener: function(){
-        if ($('g').attr('transform').search("translate\\(0") === -1)
-          {$('.navbar').show()}
-        else
-          {$('.navbar').hide()}
-  }
-}
-
-jvm.Map.prototype = {
   transX: 0,
   transY: 0,
   scale: 1,
@@ -298,11 +289,21 @@ jvm.Map.prototype = {
     }
 
     this.repositionLabels();
-    console.log("has")
     if ($('g').attr('transform').search("translate\\(0") === -1)
-      {$('.navbar').hide()}
+      {
+        $('.navbar').fadeOut();
+        $('.github-logo').fadeOut();
+        $('.search-bar').fadeOut();
+        $('.language').fadeOut();
+      }
     else
-      {$('.navbar').show()}
+      {
+        $('.navbar').fadeIn();
+        $('.github-logo').fadeIn();
+        $('.search-bar').fadeIn();
+        $('.language').fadeIn();
+
+      }
     this.container.trigger('viewportChange', [this.scale/this.baseScale, this.transX, this.transY]);
   },
 

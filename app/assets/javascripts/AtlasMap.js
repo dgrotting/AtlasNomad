@@ -101,14 +101,14 @@ function zoomTo(dataCode){
 
 function toggleSideDivs(){
   if (divsShown === false){
-    $('.country-info').animate({"right":"0px"}, "slow");
-    $('.country-destinations').animate({"left":"0px"}, "slow");
+    $('.country-destinations').animate({"right":"0px"}, "slow");
+    $('.country-info').animate({"left":"0px"}, "slow");
     divsShown = true;
     console.log("true")
   }
   else {
-    $('.country-info').animate({"right":"-2000px"}, "slow");
-    $('.country-destinations').animate({"left":"-2000px"}, "slow");
+    $('.country-destinations').animate({"right":"-2000px"}, "slow");
+    $('.country-info').animate({"left":"-2000px"}, "slow");
     divsShown = false;
     console.log("false")
   }
