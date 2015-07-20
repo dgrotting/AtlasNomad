@@ -38,4 +38,5 @@
 //= require country_hashes
 //= require jquery-jvectormap-world-mill-en
 //= require_tree .
+//= require jquery.slick
 

@@ -11,6 +11,7 @@ $('document').ready(function(){
   addCountryClickListener();
   addOceanClickListener();
   changeLanguage();
+  initializeImageCarousel();
 })
 
 function makeMap(){
@@ -22,7 +23,7 @@ function makeMap(){
   AtlasMap.langues = { "BD": 1000, "BE": 1000, "BF": 1000, "BG": 1000, "BA": 1000, "BN": 1000, "BO": 1000, "JP": 1000, "BI": 1000, "BJ": 1000, "BT": 1000, "JM": 1000, "BW": 1000, "BR": 1000, "BS": 1000, "BY": 1000, "BZ": 1000, "RU": 1000, "RW": 1000, "RS": 1000, "LT": 1000, "LU": 1000, "LR": 1000, "RO": 1000, "GW": 1000, "GT": 1000, "GR": 1000, "GQ": 1000, "GY": 1000, "GE": 1000, "GB": 1000, "GA": 1000, "GN": 1000, "GM": 1000, "GL": 1000, "KW": 1000, "GH": 1000, "OM": 1000, "_0": 1000, "JO": 1000, "HR": 1000, "HT": 1000, "HU": 1000, "HN": 1000, "PR": 1000, "PS": 1000, "PT": 1000, "PY": 1000, "PA": 1000, "PG": 1000, "PE": 1000, "PK": 1000, "PH": 1000, "PL": 1000, "ZM": 1000, "EH": 1000, "EE": 1000, "EG": 1000, "ZA": 1000, "EC": 1000, "AL": 1000, "AO": 1000, "KZ": 1000, "ET": 1000, "ZW": 1000, "ES": 1000, "ER": 1000, "ME": 1000, "MD": 1000, "MG": 1000, "MA": 1000, "UZ": 1000, "MM": 1000, "ML": 1000, "MN": 1000, "MK": 1000, "MW": 1000, "MR": 1000, "UG": 1000, "MY": 1000, "MX": 1000, "VU": 1000, "FR": 1000, "FI": 1000, "FJ": 1000, "FK": 1000, "NI": 1000, "NL": 1000, "NO": 1000, "NA": 1000, "NC": 1000, "NE": 1000, "NG": 1000, "NZ": 1000, "NP": 1000, "CI": 1000, "CH": 1000, "CO": 1, "CN": 1, "CM": 1, "CL": 1, "CA": 1, "CG": 1, "CF": 1, "CD": 1, "CZ": 1, "CY": 1, "CR": 1, "CU": 1, "SZ": 1, "SY": 1, "KG": 1, "KE": 1, "SS": 1, "SR": 1, "KH": 1, "SV": 1, "SK": 1, "KR": 1, "SI": 1, "KP": 1, "SO": 1, "SN": 1, "SL": 1, "SB": 1, "SA": 1, "SE": 1, "SD": 1, "DO": 1, "DJ": 1, "DK": 1, "DE": 1, "YE": 1, "AT": 1, "DZ": 1, "US": 1, "LV": 1, "UY": 1, "LB": 1, "LA": 1, "TW": 1, "TT": 1, "TR": 1, "LK": 1, "TN": 1, "TL": 1, "TM": 1, "TJ": 1, "LS": 1, "TH": 1, "TF": 1, "TG": 1, "TD": 1, "LY": 1, "AE": 1, "VE": 1, "AF": 1, "IQ": 1, "IS": 1, "IR": 1, "AM": 1, "IT": 1, "VN": 1, "AR": 1, "AU": 1, "IL": 1, "IN": 1, "TZ": 1, "AZ": 1, "IE": 1, "ID": 1, "UA": 1, "QA": 1, "MZ": 1};
 
 
- map = new jvm.Map({
+  map = new jvm.Map({
     map: 'world_mill_en',
     container: $('.atlas-map'),
     focusOn: {
@@ -45,9 +46,8 @@ function makeMap(){
     onRegionTipShow: function(e, el, code){
       el.html(el.html());
     }
-
   });
-}
+};
 
 
 
@@ -78,25 +78,33 @@ function zoomInTo(dataCode){
 function zoomTo(dataCode){
   $('.country-info').empty();
   $('.country-destinations').empty();
-  $.ajax({
+
+  var request = $.ajax({
     url: "/countries",
     method: "GET",
     data: {code: dataCode}
-  }).done(function(response){
-  $('.country-info').append(response);
-  $('.atlas-map').vectorMap('set', 'focus', {
+  });
+
+  request.done(function(response){
+    $('.country-info').append(response);
+    $('.atlas-map').vectorMap('set', 'focus', {
       region: dataCode,
       animate: true
-    })
+    });
   });
-  $.ajax({
+
+  var request2 = $.ajax({
     url: "/destinations",
     method: "GET",
     data: {code: dataCode}
-  }).done(function(response){
+  });
+
+  request2.done(function(response){
     $('.country-destinations').append(response);
-  zoomedIn = true;
-  })
+    zoomedIn = true;
+    initializeImageCarousel();
+  });
+
 }
 
 function toggleSideDivs(){
@@ -126,38 +134,46 @@ function zoomOut(){
 }
 
 function addCountryClickListener() {
-  $('path').mousedown(function(){
+  var path = $('path');
+
+  path.mousedown(function(){
     drag = false;
     setTimeout(function(){drag = true}, 250);
-  }).mouseup(function(click){
-    click.stopPropagation();
-    mouseDown = false;
+  });
 
-    if (drag === false)
-    {
+  path.mouseup(function(click){
+    click.stopPropagation();
+    var mouseDown = false;
+
+    if (drag === false) {
       var clickedCountry = $(this).attr('data-code');
-      if (!zoomedIn)
-      {
+      if (!zoomedIn) {
         zoomInTo(clickedCountry);
         currentCountry = clickedCountry;
-      }
-
-      else if (clickedCountry !== currentCountry || !currentCountry)
-        {
-          currentCountry = clickedCountry;
-          zoomTo(clickedCountry);
-        }
-
-      else
-      {
+      } else if (clickedCountry !== currentCountry || !currentCountry) {
+        currentCountry = clickedCountry;
+        zoomTo(clickedCountry);
+      } else {
         zoomOut();
       }
     }
   });
+
 }
 
 function addOceanClickListener(){
   $('.atlas-map').on('mouseup', function(){
     zoomOut();
-  })
+  });
+}
+
+function initializeImageCarousel(){
+  $('.image-carousel').slick({
+    dots: true,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 1,
+    adaptiveHeight: true
+  });
+  console.log('imagecarouselworks');
 }
