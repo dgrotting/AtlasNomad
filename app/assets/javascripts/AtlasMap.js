@@ -70,6 +70,8 @@ function addAutocompleteListener(){
 }
 
 function zoomTo(dataCode){
+  $('.country-info').empty();
+  $('.country-destinations').empty();
   $.ajax({
     url: "/countries",
     method: "GET",
@@ -117,8 +119,6 @@ function addCountryClickListener() {
     click.stopPropagation();
     mouseDown = false;
     if (drag === false){
-      $('.country-info').empty();
-      $('.country-destinations').empty();
       var clickedCountry = $(this).attr('data-code');
       if (clickedCountry !== currentCountry || !currentCountry || !zoomedIn)
         {
