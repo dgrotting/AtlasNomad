@@ -72,7 +72,7 @@ function addAutocompleteListener(){
 
 function zoomInTo(dataCode){
   zoomTo(dataCode);
-  toggleDivs();
+  toggleSideDivs();
 }
 
 function zoomTo(dataCode){
@@ -99,7 +99,7 @@ function zoomTo(dataCode){
   })
 }
 
-function toggleDivs(){
+function toggleSideDivs(){
   if (divsShown === false){
     $('.country-info').animate({"right":"0px"}, "slow");
     $('.country-destinations').animate({"left":"0px"}, "slow");
@@ -120,7 +120,7 @@ function zoomOut(){
     scale: 0, x: 0, y: 0,
     animate: true
   })
-  toggleDivs();
+  toggleSideDivs();
   zoomedIn = false;
   currentCounty = null;
 }
@@ -131,9 +131,10 @@ function addCountryClickListener() {
     setTimeout(function(){drag = true}, 250);
   }).mouseup(function(click){
     click.stopPropagation();
-    console.log("clickin")
     mouseDown = false;
-    if (drag === false){
+
+    if (drag === false)
+    {
       var clickedCountry = $(this).attr('data-code');
       if (!zoomedIn)
       {
@@ -158,6 +159,5 @@ function addCountryClickListener() {
 function addOceanClickListener(){
   $('.atlas-map').on('mouseup', function(){
     zoomOut();
-    // console.log("clicked on ocean");
   })
 }
