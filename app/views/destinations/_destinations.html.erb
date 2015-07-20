@@ -1,8 +1,15 @@
 <div class="destinations-div">
-<% destinations.each do |destination| %>
-    <p><%= destination.name %></p>
-    <p><%= destination.desc %></p>
-    <p><%= destination.pic %></p>
-<% end %>
-
+  <h3>Top Destinations:</h3>
+  <ol>
+    <% destinations.each do |destination| %>
+        <li>
+          <h4><u>
+            <%= destination.name %>
+          </u></h4>
+        </li>
+        <p>
+          <%= destination.desc %>
+        </p>
+    <% end %>
+  </ol>
 </div>
