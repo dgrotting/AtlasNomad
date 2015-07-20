@@ -104,11 +104,13 @@ function toggleDivs(){
     $('.country-info').animate({"right":"0px"}, "slow");
     $('.country-destinations').animate({"left":"0px"}, "slow");
     divsShown = true;
+    console.log("true")
   }
   else {
     $('.country-info').animate({"right":"-2000px"}, "slow");
     $('.country-destinations').animate({"left":"-2000px"}, "slow");
     divsShown = false;
+    console.log("false")
   }
 }
 
@@ -129,21 +131,24 @@ function addCountryClickListener() {
     setTimeout(function(){drag = true}, 250);
   }).mouseup(function(click){
     click.stopPropagation();
+    console.log("clickin")
     mouseDown = false;
     if (drag === false){
       var clickedCountry = $(this).attr('data-code');
-      if (!zoomedIn){
+      if (!zoomedIn)
+      {
         zoomInTo(clickedCountry);
+        currentCountry = clickedCountry;
       }
+
       else if (clickedCountry !== currentCountry || !currentCountry)
         {
-        // console.log(clickedCountry);
-        //   console.log(currentCountry);
           currentCountry = clickedCountry;
           zoomTo(clickedCountry);
-          // console.log(zoomedIn);
         }
-      else {
+
+      else
+      {
         zoomOut();
       }
     }
