@@ -54,7 +54,6 @@ function addAutocompleteListener(){
 }
 
 function zoomTo(dataCode){
-  console.log("here");
   $.ajax({
     url: "/countries",
     method: "GET",
@@ -65,9 +64,21 @@ function zoomTo(dataCode){
       region: dataCode,
       animate: true
     })
-  $('.country-info').animate({"right":"0px"}, "slow");
-  zoomedIn = true;
   });
+  $.ajax({
+    url: "/destinations",
+    method: "GET",
+    data: {code: dataCode}
+  }).done(function(response){
+    console.log(response);
+    $('.country-destinations').append(response);
+  console.log("made it out")
+  $('.country-info').animate({"right":"0px"}, "slow");
+  console.log("in between animations");
+  $('.country-destinations').animate({"left":"0px"},"slow");
+  console.log("should be done")
+  zoomedIn = true;
+  })
 }
 
 function zoomOut(){
@@ -77,6 +88,7 @@ function zoomOut(){
     animate: true
   })
   $('.country-info').animate({"right":"-2000px"}, "slow");
+  $('.country-destinations').animate({"left":"-2000px"}, "slow");
   zoomedIn = false;
   currentCounty = null;
 }
@@ -90,6 +102,7 @@ function addCountryClickListener() {
     mouseDown = false;
     if (drag === false){
       $('.country-info').empty();
+      $('.country-destinations').empty();
       var clickedCountry = $(this).attr('data-code');
       if (clickedCountry !== currentCountry || !currentCountry || !zoomedIn)
         {
