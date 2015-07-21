@@ -122,34 +122,56 @@ button:focus {
   margin: 5px;
 }
 
+
+// .search {
+//   padding:0px 15px 0px 30px;
+//   margin:3px;
+//   background: url('/assets/search_icon.png') no-repeat 8px 6px;
+// }
+
+
+// .rounded {
+//   border-radius:15px;
+//   -moz-border-radius:15px;
+//   -webkit-border-radius:15px;
+
+// }
+
+// input[type=text]{
+//   color:grey;
+// }
+
 .search-bar {
   position: absolute;
   top: 15px;
   right: 15px;
   z-index: 1;
+  margin: auto;
 }
 
 .search {
-  padding:0px 15px 0px 30px;
-  margin:3px;
-  background: url('/assets/search_icon.png') no-repeat 8px 6px;
+  padding:8px 15px;
+  background:#dbdbdb;
+  border:0px solid #dbdbdb;
+  border-radius: 5px;
 }
+
+.search-button {
+  position:relative;
+  padding:6px 15px;
+  left:-8px;
+  border:2px solid #3794f0;
+  border-radius: 5px;
+  background-color:#fafafa;
+  color:#3794f0;
+}
+
 
 .ui-autocomplete {
   max-height: 200px;
+  border-radius: 5px;
   overflow-y: auto;
   overflow-x: hidden;
-}
-
-.rounded {
-  border-radius:15px;
-  -moz-border-radius:15px;
-  -webkit-border-radius:15px;
-
-}
-
-input[type=text]{
-  color:grey;
 }
 
 .country-image {
