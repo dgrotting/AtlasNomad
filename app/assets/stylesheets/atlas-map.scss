@@ -15,7 +15,7 @@ button:focus {
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
   height:100%;
-  width:25%;
+  width:30%;
   position:absolute;
   right: -2000px;
   background-color: white;
@@ -23,14 +23,14 @@ button:focus {
   box-shadow: -2px 0px 100px black;
   margin: 0px;
   overflow-y:auto;
-  opacity: 0.9;
+  opacity: 0.95;
 }
 
 .country-info {
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
   height:100%;
-  width:25%;
+  width:30%;
   position:absolute;
   left: -2000px;
   background-color: white;
@@ -38,7 +38,11 @@ button:focus {
   box-shadow: -2px 0px 100px black;
   margin: 0px;
   overflow-y:auto;
-  opacity: 0.9;
+  opacity: 0.95;
+}
+
+.info-div {
+  margin: 40px;
 }
 
 
@@ -139,7 +143,6 @@ input[type=text]{
 }
 
 .country-image {
-  // max-width: 300px;
   max-height: 300px;
   width: auto;
   display: block;
@@ -148,7 +151,6 @@ input[type=text]{
 }
 
 .image-carousel {
-  // width: 300px;
   display: block;
   margin-left: auto;
   margin-right: auto;
