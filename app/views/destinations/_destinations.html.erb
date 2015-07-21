@@ -14,18 +14,18 @@
   <% if destinations.length >= 1 %>
 
     <h3>Top Destinations:</h3>
-    <ol>
+    <ul>
       <% destinations.each do |destination| %>
           <li>
-            <h4><u>
+            <h4>
               <%= destination.name %>
-            </u></h4>
+            </h4>
           </li>
           <p>
             <%= destination.desc %>
           </p>
       <% end %>
-    </ol>
+    </ul>
 
   <% elsif warnings.length >= 1 %>
 

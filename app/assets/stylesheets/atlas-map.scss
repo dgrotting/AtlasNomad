@@ -13,7 +13,7 @@ button:focus {
 
 .country-destinations {
   font-family: 'Open Sans', sans-serif;
-  font-weight: 700;
+  font-weight: 400;
   height:100%;
   width:25%;
   position:absolute;
@@ -28,7 +28,7 @@ button:focus {
 
 .country-info {
   font-family: 'Open Sans', sans-serif;
-  font-weight: 700;
+  font-weight: 400;
   height:100%;
   width:25%;
   position:absolute;
@@ -156,4 +156,24 @@ input[type=text]{
 
 .img-desc {
   align: center;
+}
+
+
+li {
+  list-style-type: none;
+}
+
+h3 {
+  text-align: center;
+}
+
+p.img-desc {
+    position: absolute;
+    top: 15%;
+    color: #FFF;
+    word-wrap: break-word;
+    font-size: 1.5em;
+    width: 7%;
+    padding-left: 40px;
+    text-shadow: 2px 2px #333;
 }
