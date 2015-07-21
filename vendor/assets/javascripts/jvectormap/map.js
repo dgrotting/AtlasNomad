@@ -289,7 +289,8 @@ jvm.Map.prototype = {
     }
 
     this.repositionLabels();
-    if ($('g').attr('transform').search("translate\\(0") === -1)
+    // if ($('g').attr('transform').search("translate\\(0") === -1)
+    if (this.scale >= (this.baseScale+.5))
       {
         $('.navbar').fadeOut();
         $('.github-logo').fadeOut();
@@ -302,7 +303,6 @@ jvm.Map.prototype = {
         $('.github-logo').fadeIn();
         $('.search-bar').fadeIn();
         $('.language').fadeIn();
-
       }
     this.container.trigger('viewportChange', [this.scale/this.baseScale, this.transX, this.transY]);
   },
