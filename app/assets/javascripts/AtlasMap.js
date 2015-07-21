@@ -9,9 +9,11 @@ $('document').ready(function(){
   addAutocompleteListener();
   addCountryClickListener();
   addOceanClickListener();
+  generateColors();
   changeLanguage();
   visa();
   home();
+  color();
 })
 
 function makeMap(){
@@ -25,6 +27,7 @@ AtlasMap.langues = { "BD": 1000, "BE": 1, "BF": 1, "BG": 1, "BA": 1, "BN": 1, "B
 
 AtlasMap.visas = { "BD": 1, "BE": 1000, "BF": 1, "BG": 1000, "BA": 1000, "BN": 1000, "BO": 1, "JP": 1000, "BI": 1, "BJ": 1, "BT": 1, "JM": 1000, "BW": 1000, "BR": 1, "BS": 1000, "BY": 1, "BZ": 1000, "RU": 1, "RW": 1, "RS": 1000, "LT": 1000, "LU": 1000, "LR": 1, "RO": 1000, "GW": 1, "GT": 1, "GR": 1000, "GQ": 1, "GY": 1000, "GE": 1, "GB": 1000, "GA": 1, "GN": 1, "GM": 1, "GL": 1000, "KW": 1, "GH": 1, "OM": 1, "_1": 1000, "_0": 1, "JO": 1, "HR": 1000, "HT": 1000, "HU": 1000, "HN": 1000, "PR": 1000, "PS": 1, "PT": 1000, "PY": 1, "PA": 1000, "PG": 1000, "PE": 1000, "PK": 1000, "PH": 1000, "PL": 1000, "ZM": 1000, "EH": 1, "EE": 1000, "EG": 1, "ZA": 1000, "EC": 1000, "AL": 1000, "AO": 1, "KZ": 1000, "ET": 1, "ZW": 1000, "ES": 1000, "ER": 1000, "ME": 1000, "MD": 1000, "MG": 1, "MA": 1000, "UZ": 1000, "MM": 1, "ML": 1, "MN": 1000, "MK": 1000, "MW": 1000, "MR": 1, "UG": 1000, "MY": 1000, "MX": 1000, "VU": 1000, "FR": 1000, "FI": 1000, "FJ": 1000, "FK": 1000, "NI": 1000, "NL": 1000, "NO": 1000, "NA": 1000, "NC": 1, "NE": 1, "NG": 1, "NZ": 1000, "NP": 1, "CI": 1, "CH": 1000, "CO": 1000, "CN": 1, "CM": 1, "CL": 1000, "CA": 1000, "CG": 1, "CF": 1, "CD": 1, "CZ": 1000, "CY": 1000, "CR": 1000, "CU": 1, "SZ": 1000, "SY": 1, "KG": 1000, "KE": 1000, "SS": 1000, "SR": 1, "KH": 1, "SV": 1000, "SK": 1, "KR": 1000, "SI": 1000, "KP": 1, "SO": 1000, "SN": 1, "SL": 1, "SB": 1000, "SA": 1, "SE": 1000, "SD": 1, "DO": 1000, "DJ": 1000, "DK": 1000, "DE": 1000, "YE": 1000, "AT": 1000, "DZ": 1, "US": 1000, "LV": 1000, "UY": 1000, "LB": 1, "LA": 1000, "TW": 1000, "TT": 1000, "TR": 1000, "LK": 1, "TN": 1000, "TL": 1, "TM": 1, "TJ": 1, "LS": 1000, "TH": 1000, "TF": 1000, "TG": 1000, "TD": 1, "LY": 1, "AE": 1000, "VE": 1, "AF": 1, "IQ": 1, "IS": 1000, "IR": 1, "AM": 1000, "IT": 1000, "VN": 1, "AR": 1, "AU": 1000, "IL": 1000, "IN": 1, "TZ": 1, "AZ": 1, "IE": 1000, "ID": 1000, "UA": 1000, "QA": 1, "MZ": 1};
 
+palette = ['#66B366', '#4DA64D', '#008000', '#005A00', '#003300'];
 
  map = new jvm.Map({
     map: 'world_mill_en',
@@ -37,12 +40,11 @@ AtlasMap.visas = { "BD": 1, "BE": 1000, "BF": 1, "BG": 1000, "BA": 1000, "BN": 1
     },
     backgroundColor: '#87CEFA',
     zoomButtons: false,
-    regionStyle:{hover: {fill: "black"}},
+    regionStyle:{hover: {fill: "red"}},
     series: {
       regions: [{
-        values: AtlasMap.gdpData,
-        scale: ['#6cc577', '#348d3e'],
-        normalizeFunction: 'polynomial'
+        attribute: 'fill',
+        scale: 0,
       }]
     },
 
@@ -53,6 +55,17 @@ AtlasMap.visas = { "BD": 1, "BE": 1000, "BF": 1, "BG": 1000, "BA": 1000, "BN": 1
   });
 }
 
+
+
+function generateColors(){
+  var colors = {},
+      key;
+
+  for (key in map.regions) {
+    colors[key] = palette[Math.floor(Math.random()*palette.length)];
+  }
+  return colors;
+}
 
 
 function changeLanguage(){
@@ -81,6 +94,19 @@ function home(){
   map.series.regions[0].setScale(['#6cc577', '#348d3e']);
   });
 }
+
+function color(){
+  $('.color').click(function(e){
+  e.preventDefault();
+  map.series.regions[0].setValues(generateColors());
+  });
+}
+
+
+
+
+
+
 
 
 function addAutocompleteListener(){
