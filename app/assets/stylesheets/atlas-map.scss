@@ -57,6 +57,9 @@ button:focus {
 .flag {
   display: inline-block;
   width: 125px;
+  padding:1px;
+  border:1px solid #021a40;
+  background-color:#f8fff6;
 }
 
 .navbar {
@@ -102,6 +105,13 @@ button:focus {
 
 .language-filter {
   margin: 5px;
+}
+
+.alert-icon {
+  width: 100px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .visa-filter {
@@ -163,6 +173,7 @@ input[type=text]{
 .flag-and-name {
   border: 1px grey solid;
   border-radius: 3px;
+  padding: 20px;
 }
 
 

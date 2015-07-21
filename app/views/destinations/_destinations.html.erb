@@ -29,6 +29,8 @@
 
   <% elsif warnings.length >= 1 %>
 
+    <img src="/assets/alert.png" class="alert-icon">
+
     <h3>Travel Alerts:</h3>
 
     <ol>
@@ -42,7 +44,7 @@
               <%= warning.date %>
             </p>
             <p>
-              <a href="<%= warning.warning_link %>">More Information</a>
+              <a href="<%= warning.warning_link %>" target="_blank">More Information</a>
             </p>
         <% end %>
       </ol>
