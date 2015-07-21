@@ -544,6 +544,8 @@ countries.each_key do |code|
 	flag = "http://travel.state.gov" + page.at('.flag').attributes['src'].value
 	name = page.at('h1').text.strip
 	name = "Greenland" if code == "GL"
+	name = "Falkland Islands" if code == "FK"
+	name = "South Sudan" if code == "SS"
 	# p Country.where(code: "GB").first.name
 	# count = Country.where(code: "GB").first if count.name == "United Kingdom"
 	Country.create(
@@ -670,6 +672,188 @@ end
 		(count.update_attribute(:capital, count.capital.slice!(0..199)) if count.capital.length > 200) if count.name != "Antarctica"
 		count.save
 	end
+
+power = [
+["Afghanistan", "220V 50Hz", ['C', 'F']],
+["Albania", "230V 50Hz", ['C', 'F']],
+["Algeria", "230V 50Hz", ['C', 'F']],
+["Angola", "220V 50Hz", ['C']],
+["Argentina", "220V 50Hz", ['C', 'I']],
+["Armenia", "230V 50Hz", ['C', 'F']],
+["Australia", "230V 50Hz", ['I']],
+["Austria", "230V 50Hz", ['C', 'F']],
+["Azerbaijan", "220V 50Hz", ['C', 'F']],
+["The Bahamas", "120V 60Hz", ['A', 'B']],
+["Bangladesh", "220V 50Hz", ['A', 'C', 'D', 'G', 'K']],
+["Belarus", "220V 50Hz", ['C', 'F']],
+["Belgium", "230V 50Hz", ['C', 'E']],
+["Belize", "110V, 220V 60Hz", ['A', 'B', 'G']],
+["Benin", "220V 50Hz", ['C', 'E']],
+["Bhutan", "230V 50Hz", ['C', 'D', 'G']],
+["Bolivia", "230V 50Hz", ['A', 'C']],
+["Bosnia and Herzegovina", "230V 50Hz", ['C', 'F']],
+["Botswana", "230V 50Hz", ['D', 'G']],
+["Brazil", "127 V/220V 60Hz", ['C', 'N']],
+["Bulgaria", "230V 50Hz", ['C', 'F']],
+["Burkina Faso", "220V 50Hz", ['C', 'E']],
+["Burma", "230V 50Hz", ['A', 'C', 'D', 'G', 'I']],
+["Burundi", "220V 50Hz", ['C', 'E']],
+["Cambodia", "230V 50Hz", ['A', 'C', 'G']],
+["Cameroon", "220V 50Hz", ['C', 'E']],
+["Canada", "120V 60Hz", ['A', 'B']],
+["Central African Republic", "220V 50Hz", ['C', 'E']],
+["Chad", "220V 50Hz", ['C', 'D', 'E', 'F']],
+["Chile", "220V 50Hz", ['C', 'L']],
+["China", "220V 50Hz", ['A', 'C', 'I']],
+["Colombia", "110V 60Hz", ['A', 'B']],
+["Democratic Republic of the Congo", "220V 50Hz", ['C', 'D', 'E']],
+["Costa Rica", "120V 60Hz", ['A', 'B']],
+["Côte d'Ivoire", "220V 50Hz", ['C', 'E']],
+["Croatia", "230V 50Hz", ['C', 'F']],
+["Cuba", "110V, 220V 60Hz", ['A', 'B', 'C', 'L']],
+["Cyprus", "230V 50Hz", ['G']],
+["Czech Republic", "230V 50Hz", ['C', 'E']],
+["Denmark", "230V 50Hz", ['C', 'E', 'F', 'K']],
+["Djibouti", "220V 50Hz", ['C', 'E']],
+["Dominican Republic", "120V 60Hz", ['A', 'B']],
+["Timor-Leste", "220V 50Hz", ['C', 'E', 'F', 'I']],
+["Ecuador", "120V 60Hz", ['A', 'B']],
+["Egypt", "220V 50Hz", ['C', 'F']],
+["El Salvador", "120V 60Hz", ['A', 'B']],
+["Equatorial Guinea", "220V 50Hz", ['C', 'E']],
+["Eritrea", "230V 50Hz", ['C', 'L']],
+["Estonia", "230V 50Hz", ['C', 'F']],
+["Ethiopia", "220V 50Hz", ['C', 'F']],
+["Falkland Islands", "240V 50Hz", ["G"]],
+["Fiji", "240V 50Hz", ['I']],
+["Finland", "230V 50Hz", ['C', 'F']],
+["France", "230V 50Hz", ['C', 'E']],
+["Gabon", "220V 50Hz", ['C']],
+["Georgia", "220V 50Hz", ['C', 'F']],
+["Germany", "230V 50Hz", ['C', 'F']],
+["Ghana", "230V 50Hz", ['D', 'G']],
+["Greece", "230V 50Hz", ['C', 'F']],
+["Greenland", "230V 50Hz", ['C', 'E', 'F', 'K']],
+["Guatemala", "120V 60Hz", ['A', 'B']],
+["Guinea", "220V 50Hz", ['C', 'F', 'K']],
+["Guinea-Bissau", "220V 50Hz", ["C"]],
+["Guyana", "120V, 240V 60Hz", ['A', 'B', 'D', 'G']],
+["Haiti", "110V 60Hz", ['A', 'B']],
+["Honduras", "120V 60Hz", ['A', 'B']],
+["Hungary", "230V 50Hz", ['C', 'F']],
+["Iceland", "230V 50Hz", ['C', 'F']],
+["India", "230V 50Hz", ['C', 'D', 'M']],
+["Indonesia", "230V 50Hz", ['C', 'F']],
+["Iran", "230V 50Hz", ['C', 'F']],
+["Iraq", "230V 50Hz", ['C', 'D', 'G']],
+["Ireland", "230V 50Hz", ['G']],
+["Israel", "230V 50Hz", ['C', 'H']],
+["Italy", "230V 50Hz", ['C', 'F', 'L']],
+["Jamaica", "110V 50Hz", ['A', 'B']],
+["Japan", "100V 50Hz, 60Hz", ['A', 'B']],
+["Jordan", "230V 50Hz", ['C', 'D', 'F', 'G', 'J']],
+["Kazakhstan", "220V 50Hz", ['C', 'F']],
+["Kenya", "240V 50Hz", ['G']],
+["North Korea", "220V 50Hz", ['C']],
+["South Korea", "220V 60Hz", ['C', 'F']],
+["Kosovo", "230V 50Hz", ['C', 'F']],
+["Kuwait", "240V 50Hz", ["G"]],
+["Kyrgyzstan", "220V 50Hz", ['C', 'F']],
+["Laos", "230V 50Hz", ['A', 'B', 'C', 'E', 'F']],
+["Latvia", "230V 50Hz", ['C', 'F']],
+["Lebanon", "230V 50Hz", ['C', 'D', 'G']],
+["Lesotho", "220V 50Hz", ['M']],
+["Liberia", "120V 60Hz", ['A', 'B']],
+["Libya", "230V 50Hz", ['C', 'L']],
+["Lithuania", "230V 50Hz", ['C', 'F']],
+["Luxembourg", "230V 50Hz", ['C', 'F']],
+["Macedonia", "230V 50Hz", ['C', 'F']],
+["Madagascar", "220V 50Hz", ['C', 'E']],
+["Malawi", "230V 50Hz", ['G']],
+["Malaysia", "240V 50Hz", ['G']],
+["Mali", "220V 50Hz", ['C', 'E']],
+["Mauritania", "220V 50Hz", ['C']],
+["Mexico", "127 V 60Hz", ['A', 'B']],
+["Moldova", "230V 50Hz", ['C', 'F']],
+["Mongolia", "230V 50Hz", ['C', 'E']],
+["Montenegro", "230V 50Hz", ['C', 'F']],
+["Morocco", "220V 50Hz", ['C', 'E']],
+["Mozambique", "220V 50Hz", ['C', 'F', 'M']],
+["Namibia", "220V 50Hz", ['D', 'M']],
+["Nepal", "230V 50Hz", ['C', 'D', 'M']],
+["Netherlands", "230V 50Hz", ['C', 'F']],
+["New Caledonia", "220V 50Hz", ['C', 'F']],
+["New Zealand", "230V 50Hz", ['I']],
+["Nicaragua", "120V 60Hz", ['A', 'B']],
+["Niger", "220V 50Hz", ['C', 'D', 'E', 'F']],
+["Nigeria", "230V 50Hz", ['D', 'G']],
+["Norway", "230V 50Hz", ['C', 'F']],
+["Oman", "240V 50Hz", ['G']],
+["Pakistan", "230V 50Hz", ['C', 'D']],
+["Palestine", "230V 50Hz", ['C', 'H']],
+["Panama", "120V 60Hz", ['A', 'B']],
+["Papua New Guinea", "240V 50Hz", ['I']],
+["Paraguay", "220V 50Hz", ["C"]],
+["Peru", "220V 60Hz", ['A', 'C']],
+["Philippines", "220V 60Hz", ['A', 'B', 'C']],
+["Poland", "230V 50Hz", ['C', 'E']],
+["Portugal", "230V 50Hz", ['C', 'F']],
+["Puerto Rico", "120V 60Hz", ['A', 'B']],
+["Qatar", "240V 50Hz", ['G']],
+["Romania", "230V 50Hz", ['C', 'F']],
+["Russia", "220V 50Hz", ['C', 'F']],
+["Rwanda", "230V 50Hz", ['C', 'J']],
+["Saudi Arabia", "230V 60Hz", ['G']],
+["Senegal", "230V 50Hz", ['C', 'D', 'E', 'K']],
+["Serbia", "230V 50Hz", ['C', 'F']],
+["Sierra Leone", "230V 50Hz", ['D', 'G']],
+["Slovakia", "230V 50Hz", ['C', 'E']],
+["Slovenia", "230V 50Hz", ['C', 'F']],
+["Solomon Islands", "230V 50Hz", ['G', 'I']],
+["Somalia", "220V 50Hz", ['C']],
+["South Africa", "230V 50Hz", ['C', 'D', 'M', 'N']],
+["South Sudan", "230V 50Hz", ['C', 'D']],
+["Spain", "230V 50Hz", ['C', 'F']],
+["Sri Lanka", "230V 50Hz", ['D', 'G']],
+["Sudan", "230V 50Hz", ['C', 'D']],
+["Suriname", "127 V, 230V 60Hz", ['A', 'B', 'C', 'F']],
+["Swaziland", "230V 50Hz", ['M']],
+["Sweden", "230V 50Hz", ['C', 'F']],
+["Switzerland", "230V 50Hz", ['C', 'J']],
+["Syria", "220V 50Hz", ['C', 'E', 'L']],
+["Taiwan", "110V 60Hz", ['A', 'B']],
+["Tajikistan", "220V 50Hz", ['C', 'F']],
+["Tanzania", "230V 50Hz", ['D', 'G']],
+["Thailand", "230V 50Hz", ['A', 'B', 'C', 'O']],
+["Togo", "220V 50Hz", ['C']],
+["Trinidad and Tobago", "115V 60Hz", ['A', 'B']],
+["Tunisia", "230V 50Hz", ['C', 'E']],
+["Turkey", "230V 50Hz", ['C', 'F']],
+["Turkmenistan", "220V 50Hz", ['C', 'F']],
+["Uganda", "240V 50Hz", ['G']],
+["Ukraine", "230V 50Hz", ['C', 'F']],
+["United Arab Emirates", "230V 50Hz", ['G']],
+["United Kingdom (England, Wales, Scotland, Northern Ireland)", "230V 50Hz", ['G']],
+["United States", "120V 60Hz", ['A', 'B']],
+["Uruguay", "220V 50Hz", ['C', 'F', 'L']],
+["Uzbekistan", "220V 50Hz", ['C', 'F']],
+["Vanuatu", "230V 50Hz", ['I']],
+["Venezuela", "120V 60Hz", ['A', 'B']],
+["Vietnam", "220V 50Hz", ['A', 'C', 'D']],
+["Yemen", "230V 50Hz", ['A', 'D', 'G']],
+["Zambia", "230V 50Hz", ['C', 'D', 'G']],
+["Zimbabwe", "240V 50Hz", ['D', 'G']]
+]
+
+power.each do |line|
+	p line
+	count = Country.where(name: line[0]).first
+	count.update_attributes(
+		volts: line[1],
+		sockets: line[2].to_s
+		 )
+	count.save
+end
 
 
 ######################################
@@ -1106,14 +1290,13 @@ destinations.each do |country|
 		country_id: id,
 		desc: images.css('div.gallery__slide.is-current').css('img').first[:alt],
 		url: images.css('div.gallery__slide.is-current').css('img').first[:src].gsub("//images-resrc.staticlp.com/S=W1000M,H700M/O=85/", "")
-	Image.create(
 		)
 
 	collection = images.css('div.gallery__slide.is-hidden').css('img')
 	p collection.length
-	if collection.length > 10
+	if collection.length > 9
 		i = 0
-		10.times do
+		9.times do
 			url = collection[i][:"data-src"].gsub("//images-resrc.staticlp.com/S=W1000M,H700M/O=85/", "")
 			Image.create(
 				country_id: id,
