@@ -10,7 +10,7 @@ require 'mechanize'
 
 mechanize = Mechanize.new
 
-countries = 
+countries =
 {"BD"=>"bangladesh",
  "BE"=>"belgium",
  "BF"=>"burkina-faso",
@@ -38,7 +38,7 @@ countries =
  "GW"=>"guinea-bissau",
  "GT"=>"guatemala",
  "GR"=>"greece",
- "GQ"=>"equitorial-guinea",
+ "GQ"=>"equatorial-guinea",
  "GY"=>"guyana",
  "GE"=>"georgia",
  "GB"=>"united-kingdom",
@@ -187,15 +187,369 @@ countries =
  "UA"=>"ukraine",
  "QA"=>"qatar",
  "MZ"=>"mozambique"}
-countries.values.each do |country|
-	page = mechanize.get("http://travel.state.gov/content/passports/english/country/#{country}.html")
-	p country
-	flag = "http://travel.state.gov" + page.at('.flag').attributes['src'].value
 
+ files = [
+"db/factbook/countrypdf_ae.txt",
+"db/factbook/countrypdf_af.txt",
+"db/factbook/countrypdf_ag.txt",
+"db/factbook/countrypdf_aj.txt",
+"db/factbook/countrypdf_al.txt",
+"db/factbook/countrypdf_am.txt",
+"db/factbook/countrypdf_ao.txt",
+"db/factbook/countrypdf_ar.txt",
+"db/factbook/countrypdf_as.txt",
+"db/factbook/countrypdf_au.txt",
+"db/factbook/countrypdf_ay.txt",
+"db/factbook/countrypdf_bc.txt",
+"db/factbook/countrypdf_be.txt",
+"db/factbook/countrypdf_bf.txt",
+"db/factbook/countrypdf_bg.txt",
+"db/factbook/countrypdf_bh.txt",
+"db/factbook/countrypdf_bk.txt",
+"db/factbook/countrypdf_bl.txt",
+"db/factbook/countrypdf_bm.txt",
+"db/factbook/countrypdf_bn.txt",
+"db/factbook/countrypdf_bo.txt",
+"db/factbook/countrypdf_bp.txt",
+"db/factbook/countrypdf_br.txt",
+"db/factbook/countrypdf_bt.txt",
+"db/factbook/countrypdf_bu.txt",
+"db/factbook/countrypdf_bx.txt",
+"db/factbook/countrypdf_by.txt",
+"db/factbook/countrypdf_ca.txt",
+"db/factbook/countrypdf_cb.txt",
+"db/factbook/countrypdf_cd.txt",
+"db/factbook/countrypdf_ce.txt",
+"db/factbook/countrypdf_cg.txt",
+"db/factbook/countrypdf_ch.txt",
+"db/factbook/countrypdf_ci.txt",
+"db/factbook/countrypdf_cm.txt",
+"db/factbook/countrypdf_co.txt",
+"db/factbook/countrypdf_cs.txt",
+"db/factbook/countrypdf_ct.txt",
+"db/factbook/countrypdf_cu.txt",
+"db/factbook/countrypdf_cy.txt",
+"db/factbook/countrypdf_da.txt",
+"db/factbook/countrypdf_dj.txt",
+"db/factbook/countrypdf_dr.txt",
+"db/factbook/countrypdf_ec.txt",
+"db/factbook/countrypdf_eg.txt",
+"db/factbook/countrypdf_ei.txt",
+"db/factbook/countrypdf_ek.txt",
+"db/factbook/countrypdf_en.txt",
+"db/factbook/countrypdf_er.txt",
+"db/factbook/countrypdf_es.txt",
+"db/factbook/countrypdf_et.txt",
+"db/factbook/countrypdf_ez.txt",
+"db/factbook/countrypdf_fi.txt",
+"db/factbook/countrypdf_fj.txt",
+"db/factbook/countrypdf_fk.txt",
+"db/factbook/countrypdf_fr.txt",
+"db/factbook/countrypdf_ga.txt",
+"db/factbook/countrypdf_gb.txt",
+"db/factbook/countrypdf_gg.txt",
+"db/factbook/countrypdf_gh.txt",
+"db/factbook/countrypdf_gl.txt",
+"db/factbook/countrypdf_gm.txt",
+"db/factbook/countrypdf_gr.txt",
+"db/factbook/countrypdf_gt.txt",
+"db/factbook/countrypdf_gv.txt",
+"db/factbook/countrypdf_gy.txt",
+"db/factbook/countrypdf_ha.txt",
+"db/factbook/countrypdf_ho.txt",
+"db/factbook/countrypdf_hr.txt",
+"db/factbook/countrypdf_hu.txt",
+"db/factbook/countrypdf_ic.txt",
+"db/factbook/countrypdf_id.txt",
+"db/factbook/countrypdf_in.txt",
+"db/factbook/countrypdf_ir.txt",
+"db/factbook/countrypdf_is.txt",
+"db/factbook/countrypdf_it.txt",
+"db/factbook/countrypdf_iv.txt",
+"db/factbook/countrypdf_iz.txt",
+"db/factbook/countrypdf_ja.txt",
+"db/factbook/countrypdf_jm.txt",
+"db/factbook/countrypdf_jo.txt",
+"db/factbook/countrypdf_ke.txt",
+"db/factbook/countrypdf_kg.txt",
+"db/factbook/countrypdf_kn.txt",
+"db/factbook/countrypdf_ks.txt",
+"db/factbook/countrypdf_ku.txt",
+"db/factbook/countrypdf_kv.txt",
+"db/factbook/countrypdf_kz.txt",
+"db/factbook/countrypdf_la.txt",
+"db/factbook/countrypdf_le.txt",
+"db/factbook/countrypdf_lg.txt",
+"db/factbook/countrypdf_lh.txt",
+"db/factbook/countrypdf_li.txt",
+"db/factbook/countrypdf_lo.txt",
+"db/factbook/countrypdf_lt.txt",
+"db/factbook/countrypdf_lu.txt",
+"db/factbook/countrypdf_ly.txt",
+"db/factbook/countrypdf_ma.txt",
+"db/factbook/countrypdf_md.txt",
+"db/factbook/countrypdf_mg.txt",
+"db/factbook/countrypdf_mi.txt",
+"db/factbook/countrypdf_mj.txt",
+"db/factbook/countrypdf_mk.txt",
+"db/factbook/countrypdf_ml.txt",
+"db/factbook/countrypdf_mo.txt",
+"db/factbook/countrypdf_mr.txt",
+"db/factbook/countrypdf_mu.txt",
+"db/factbook/countrypdf_mx.txt",
+"db/factbook/countrypdf_my.txt",
+"db/factbook/countrypdf_mz.txt",
+"db/factbook/countrypdf_nc.txt",
+"db/factbook/countrypdf_ng.txt",
+"db/factbook/countrypdf_nh.txt",
+"db/factbook/countrypdf_ni.txt",
+"db/factbook/countrypdf_nl.txt",
+"db/factbook/countrypdf_no.txt",
+"db/factbook/countrypdf_np.txt",
+"db/factbook/countrypdf_ns.txt",
+"db/factbook/countrypdf_nu.txt",
+"db/factbook/countrypdf_nz.txt",
+"db/factbook/countrypdf_od.txt",
+"db/factbook/countrypdf_pa.txt",
+"db/factbook/countrypdf_pe.txt",
+"db/factbook/countrypdf_pk.txt",
+"db/factbook/countrypdf_pl.txt",
+"db/factbook/countrypdf_pm.txt",
+"db/factbook/countrypdf_po.txt",
+"db/factbook/countrypdf_pp.txt",
+"db/factbook/countrypdf_pu.txt",
+"db/factbook/countrypdf_qa.txt",
+"db/factbook/countrypdf_ri.txt",
+"db/factbook/countrypdf_ro.txt",
+"db/factbook/countrypdf_rp.txt",
+"db/factbook/countrypdf_rq.txt",
+"db/factbook/countrypdf_rs.txt",
+"db/factbook/countrypdf_rw.txt",
+"db/factbook/countrypdf_sa.txt",
+"db/factbook/countrypdf_sf.txt",
+"db/factbook/countrypdf_sg.txt",
+"db/factbook/countrypdf_si.txt",
+"db/factbook/countrypdf_sl.txt",
+"db/factbook/countrypdf_so.txt",
+"db/factbook/countrypdf_sp.txt",
+"db/factbook/countrypdf_su.txt",
+"db/factbook/countrypdf_sw.txt",
+"db/factbook/countrypdf_sy.txt",
+"db/factbook/countrypdf_sz.txt",
+"db/factbook/countrypdf_td.txt",
+"db/factbook/countrypdf_th.txt",
+"db/factbook/countrypdf_ti.txt",
+"db/factbook/countrypdf_to.txt",
+"db/factbook/countrypdf_ts.txt",
+"db/factbook/countrypdf_tt.txt",
+"db/factbook/countrypdf_tu.txt",
+"db/factbook/countrypdf_tw.txt",
+"db/factbook/countrypdf_tx.txt",
+"db/factbook/countrypdf_tz.txt",
+"db/factbook/countrypdf_ug.txt",
+"db/factbook/countrypdf_uk.txt",
+"db/factbook/countrypdf_up.txt",
+"db/factbook/countrypdf_us.txt",
+"db/factbook/countrypdf_uv.txt",
+"db/factbook/countrypdf_uy.txt",
+"db/factbook/countrypdf_uz.txt",
+"db/factbook/countrypdf_ve.txt",
+"db/factbook/countrypdf_vm.txt",
+"db/factbook/countrypdf_wa.txt",
+"db/factbook/countrypdf_wi.txt",
+"db/factbook/countrypdf_wz.txt",
+"db/factbook/countrypdf_ym.txt",
+"db/factbook/countrypdf_za.txt",
+"db/factbook/countrypdf_zi.txt"]
+
+worldbook = {
+"AE" => "United Arab Emirates",
+"AF" => "Afghanistan",
+"DZ" => "Algeria",
+"AZ" => "Azerbaijan",
+"AL" => "Albania",
+"AM" => "Armenia",
+"AO" => "Angola",
+"AR" => "Argentina",
+"AU" => "Australia",
+"AT" => "Austria",
+"TF" => "Antarctica",
+"BW" => "Botswana",
+"BE" => "Belgium",
+"BS" => "The Bahamas",
+"BD" => "Bangladesh",
+"BZ" => "Belize",
+"BA" => "Bosnia and Herzegovina",
+"BO" => "Bolivia",
+"MM" => "Burma",
+"BJ" => "Benin",
+"BY" => "Belarus",
+"BR" => "Brazil",
+"BT" => "Bhutan",
+"BG" => "Bulgaria",
+"BN" => "Brunei",
+"BI" => "Burundi",
+"CA" => "Canada",
+"KH" => "Cambodia",
+"TD" => "Chad",
+"LK" => "Sri Lanka",
+"CG" => "Congo, Democratic Republic of the",
+"CN" => "China",
+"CL" => "Chile",
+"CM" => "Cameroon",
+"CO" => "Colombia",
+"CR" => "Costa Rica",
+"CF" => "Central African Republic",
+"CU" => "Cuba",
+"-99" => "Cyprus",
+"DK" => "Denmark",
+"DJ" => "Djibouti",
+"DO" => "Dominican Republic",
+"EC" => "Ecuador",
+"EG" => "Egypt",
+"IE" => "Ireland",
+"GQ" => "Equatorial Guinea",
+"EE" => "Estonia",
+"ER" => "Eritrea",
+"SV" => "El Salvador",
+"ET" => "Ethiopia",
+"CZ" => "Czech Republic",
+"FI" => "Finland",
+"FJ" => "Fiji",
+"FK" => "Falkland Islands (Islas Malvinas)",
+"FR" => "France",
+"GM" => "The Gambia",
+"GA" => "Gabon",
+"GE" => "Georgia",
+"GH" => "Ghana",
+"GL" => "Greenland",
+"DE" => "Germany",
+"GR" => "Greece",
+"GT" => "Guatemala",
+"GN" => "Guinea",
+"GY" => "Guyana",
+"HT" => "Haiti",
+"HN" => "Honduras",
+"HR" => "Croatia",
+"HU" => "Hungary",
+"IS" => "Iceland",
+"ID" => "Indonesia",
+"IN" => "India",
+"IR" => "Iran",
+"IL" => "Israel",
+"IT" => "Italy",
+"CI" => "Cote d'Ivoire",
+"IQ" => "Iraq",
+"JP" => "Japan",
+"JM" => "Jamaica",
+"JO" => "Jordan",
+"KE" => "Kenya",
+"KG" => "Kyrgyzstan",
+"KP" => "Korea, North",
+"KR" => "Korea, South",
+"KW" => "Kuwait",
+"_0" => "Kosovo",
+"KZ" => "Kazakhstan",
+"LA" => "Laos",
+"LB" => "Lebanon",
+"LV" => "Latvia",
+"LT" => "Lithuania",
+"LR" => "Liberia",
+"SK" => "Slovakia",
+"LS" => "Lesotho",
+"LU" => "Luxembourg",
+"LY" => "Libya",
+"MG" => "Madagascar",
+"MD" => "Moldova",
+"MN" => "Mongolia",
+"MW" => "Malawi",
+"ME" => "Montenegro",
+"MK" => "Macedonia",
+"ML" => "Mali",
+"MA" => "Morocco",
+"MR" => "Mauritania",
+"OM" => "Oman",
+"MX" => "Mexico",
+"MY" => "Malaysia",
+"MZ" => "Mozambique",
+"NC" => "New Caledonia",
+"NE" => "Niger",
+"VU" => "Vanuatu",
+"NI" => "Nigeria",
+"NL" => "Netherlands",
+"NO" => "Norway",
+"NP" => "Nepal",
+"SR" => "Suriname",
+"NG" => "Nicaragua",
+"NZ" => "New Zealand",
+"SS" => "South Sudan",
+"PY" => "Paraguay",
+"PE" => "Peru",
+"PK" => "Pakistan",
+"PL" => "Poland",
+"PA" => "Panama",
+"PT" => "Portugal",
+"PG" => "Papua New Guinea",
+"GW" => "Guinea-Bissau",
+"QA" => "Qatar",
+"RS" => "Serbia",
+"RO" => "Romania",
+"PH" => "Philippines",
+"PR" => "Puerto Rico",
+"RU" => "Russia",
+"RW" => "Rwanda",
+"SA" => "Saudi Arabia",
+"ZA" => "South Africa",
+"SN" => "Senegal",
+"SI" => "Slovenia",
+"SL" => "Sierra Leone",
+"SB" => "Solomon Islands",
+"SO" => "Somalia",
+"ES" => "Spain",
+"SD" => "Sudan",
+"SE" => "Sweden",
+"SY" => "Syria",
+"CH" => "Switzerland",
+"TT" => "Trinidad and Tobago",
+"TH" => "Thailand",
+"TJ" => "Tajikistan",
+"TG" => "Togo",
+"TN" => "Tunisia",
+"TL" => "Timor-Leste",
+"TR" => "Turkey",
+"TW" => "Taiwan",
+"TM" => "Turkmenistan",
+"TZ" => "Tanzania",
+"UG" => "Uganda",
+"GB" => "United Kingdom",
+"UA" => "Ukraine",
+"US" => "United States",
+"BF" => "Burkina Faso",
+"UY" => "Uruguay",
+"UZ" => "Uzbekistan",
+"VE" => "Venezuela",
+"VN" => "Vietnam",
+"NA" => "Namibia",
+"EH" => "Western Sahara",
+"SZ" => "Swaziland",
+"YE" => "Yemen",
+"ZM" => "Zambia",
+"ZW" => "Zimbabwe",
+}
+
+
+countries.each_key do |code|
+	page = mechanize.get("http://travel.state.gov/content/passports/english/country/#{countries[code]}.html")
+	p countries[code]
+	flag = "http://travel.state.gov" + page.at('.flag').attributes['src'].value
+	name = page.at('h1').text.strip
+	name = "Greenland" if code == "GL"
+	# p Country.where(code: "GB").first.name
+	# count = Country.where(code: "GB").first if count.name == "United Kingdom"
 	Country.create(
-		name: page.at('h1').text.strip, 
+		name: name,
 		official_name: page.at('.official_name').text.strip,
-		code: countries.key(country),
+		code: code,
 		flag: flag,
 		passport_validity: page.at('.quick_fact1 > p').text.strip,
 		passport_pages: page.at('.quick_fact2 > p').text.strip,
@@ -206,70 +560,117 @@ countries.values.each do |country|
 	)
 end
 
-Country.create(
-	name: "Puerto Rico",
-	official_name: "Puerto Rico",
-	code: "PR",
-	flag: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Flag_of_Puerto_Rico.svg/2000px-Flag_of_Puerto_Rico.svg.png",
-	passport_validity: "Same as U.S.",
-	passport_pages: "Same as U.S.",
-	tourist_visa: "Same as U.S.",
-	vaccinations: "Same as U.S.",
-	entry_currency: "Same as U.S.",
-	exit_currency: "Same as U.S."
-)
+	Country.create(
+		name: "Puerto Rico",
+		official_name: "Puerto Rico",
+		code: "PR",
+		flag: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Flag_of_Puerto_Rico.svg/2000px-Flag_of_Puerto_Rico.svg.png",
+		passport_validity: "Same as U.S.",
+		passport_pages: "Same as U.S.",
+		tourist_visa: "Same as U.S.",
+		vaccinations: "Same as U.S.",
+		entry_currency: "Same as U.S.",
+		exit_currency: "Same as U.S."
+	)
 
-Country.create(
-	name: "Palestine",
-	official_name: "Palestine",
-	code: "PS",
-	flag: "https://upload.wikimedia.org/wikipedia/commons/a/a5/Palestine_flag.jpg",
-	passport_validity: "Same as Isral (Not a joke)",
-	passport_pages: "Same as Isral (Not a joke)",
-	tourist_visa: "Same as Isral (Not a joke)",
-	vaccinations: "Same as Isral (Not a joke)",
-	entry_currency: "Same as Isral (Not a joke)",
-	exit_currency: "Same as Isral (Not a joke)"
-)
+	Country.create(
+		name: "Palestine",
+		official_name: "Palestine",
+		code: "PS",
+		flag: "https://upload.wikimedia.org/wikipedia/commons/a/a5/Palestine_flag.jpg",
+		passport_validity: "Same as Isral (Not a joke)",
+		passport_pages: "Same as Isral (Not a joke)",
+		tourist_visa: "Same as Isral (Not a joke)",
+		vaccinations: "Same as Isral (Not a joke)",
+		entry_currency: "Same as Isral (Not a joke)",
+		exit_currency: "Same as Isral (Not a joke)"
+	)
 
-Country.create(
-	name: "West Sahara",
-	official_name: "West Sahara",
-	code: "EH",
-	flag: "http://www.mapsofworld.com/flags/images/world-flags/western-sahara-flag.jpg",
-	passport_validity: "Not recommeneded for travel",
-	passport_pages: "Not recommeneded for travel",
-	tourist_visa: "Not recommeneded for travel",
-	vaccinations: "Not recommeneded for travel",
-	entry_currency: "Not recommeneded for travel",
-	exit_currency: "Not recommeneded for travel"
-)
+	Country.create(
+		name: "West Sahara",
+		official_name: "West Sahara",
+		code: "EH",
+		flag: "http://www.mapsofworld.com/flags/images/world-flags/western-sahara-flag.jpg",
+		passport_validity: "Not recommeneded for travel",
+		passport_pages: "Not recommeneded for travel",
+		tourist_visa: "Not recommeneded for travel",
+		vaccinations: "Not recommeneded for travel",
+		entry_currency: "Not recommeneded for travel",
+		exit_currency: "Not recommeneded for travel"
+	)
 
-Country.create(
-	name: "United States",
-	official_name: "The United States of America",
-	code: "US",
-	flag: "http://khongthe.com/wallpapers/abstract/america-the-beautiful-230904.jpg",
-	passport_validity: "Whatever you want because freedom",
-	passport_pages: "Whatever you want because freedom",
-	tourist_visa: "Whatever you want because freedom",
-	vaccinations: "Whatever you want because freedom",
-	entry_currency: "Whatever you want because freedom",
-	exit_currency: "Whatever you want because freedom"
-)
+	Country.create(
+		name: "United States",
+		official_name: "The United States of America",
+		code: "US",
+		flag: "http://khongthe.com/wallpapers/abstract/america-the-beautiful-230904.jpg",
+		passport_validity: "Whatever you want because freedom",
+		passport_pages: "Whatever you want because freedom",
+		tourist_visa: "Whatever you want because freedom",
+		vaccinations: "Whatever you want because freedom",
+		entry_currency: "Whatever you want because freedom",
+		exit_currency: "Whatever you want because freedom"
+	)
 
-Country.create(
-	name: "Israel",
-	official_name: "Israel",
-	code: "IL",
-	flag: "https://upload.wikimedia.org/wikipedia/commons/d/d4/Flag_of_Israel.svg",
-	passport_validity: "Six months",
-	passport_pages: "One page required for entry stamp",
-	tourist_visa: "Yes, but you can obtain at the port of entry",
-	vaccinations: "Polio vaccination up to 1 year before travel is recommended.",
-	entry_currency: "None",
-	exit_currency: "None" 
-)
+	Country.create(
+		name: "Israel",
+		official_name: "Israel",
+		code: "IL",
+		flag: "https://upload.wikimedia.org/wikipedia/commons/d/d4/Flag_of_Israel.svg",
+		passport_validity: "Six months",
+		passport_pages: "One page required for entry stamp",
+		tourist_visa: "Yes, but you can obtain at the port of entry",
+		vaccinations: "Polio vaccination up to 1 year before travel is recommended.",
+		entry_currency: "None",
+		exit_currency: "None"
+	)
+
+	world = worldbook.invert
+
+	files.each do |file|
+		p file
+		text = File.read(file)
+		(/(?<=Introduction:: ).*(?=Background)/).match(text) == nil ?
+		name = (/(?<=Introduction :: ).*(?=Background)/).match(text)[0].chomp :
+		name = (/(?<=Introduction:: ).*(?=Background)/).match(text)[0].chomp
+		name = "Tunisia" if name == "T unisia"
+		name = "Taiwan" if name == "T aiwan"
+		name = "Togo" if name == "T ogo"
+		name = "Venezuela" if name == "V enezuela"
+		name = "Yemen" if name == "Y emen"
+		name = "The Bahamas" if name == "Bahamas, The"
+		name = "The Gambia" if name == "Gambia, The"
+		if name != "Antarctica"
+			(/(?<=Capital:).*(?=geographic)/).match(text) == nil ?
+			capital = (/(?<=Capital:).*(?=time)/).match(text)[0].chomp :
+			capital = (/(?<=Capital:).*(?=geographic)/).match(text)[0].chomp
+			capital.gsub('name: ', '')
+		else
+			capital = nil
+		end
+		(/(?<=Natural resources:\r).*(?=Land)/).match(text) == nil ?
+		nat = (/(?<=Natural resources:\r).*(?=People)/).match(text)[0].chomp :
+		nat = (/(?<=Natural resources:\r).*(?=Land)/).match(text)[0].chomp
+		name == "Antarctica" ? lang = "All" : lang = (/(?<=Languages:\r).*(?=Religions)/).match(text)[0].chomp
+		name == "Antarctica" ? rel = "All" : rel = (/(?<=Religions:\r).*(?=Population:)/).match(text)[0].chomp
+		count = Country.where(code: world[name]).first
+		count.update_attributes({
+			climate: (/(?<=Climate:\r).*(?=Terrain)/).match(text)[0].chomp,
+			terrain: (/(?<=Terrain:\r).*(?=Elevation)/).match(text)[0].chomp,
+			nat_res: nat,
+			languages: lang,
+			religions: rel,
+			capital: capital,
+		})
+		count.update_attribute(:climate, count.climate.slice!(0..199)) if count.climate.length > 200
+		count.update_attribute(:terrain, count.terrain.slice!(0..199)) if count.terrain.length > 200
+		count.update_attribute(:nat_res, count.nat_res.slice!(0..199)) if count.nat_res.length > 200
+		count.update_attribute(:languages, count.languages.slice!(0..199)) if count.languages.length > 200
+		count.update_attribute(:religions, count.religions.slice!(0..199)) if count.religions.length > 200
+		(count.update_attribute(:capital, count.capital.slice!(0..199)) if count.capital.length > 200) if count.name != "Antarctica"
+		count.save
+	end
+
 
 ######################################
 ## WARNINGS ##
@@ -298,6 +699,7 @@ warning_array.each do |warning|
 end
 
 warning_array.each do |warning|
+	p warning
 	search = warning[2].gsub(" Travel Warning", "") if warning[0] == "Warning"
 	country = Country.where(name: search).first
 	country == nil ? country = 0 : country = country.id
@@ -493,12 +895,15 @@ destinations = [
 "mozambique"]
 
 destinations.each do |country|
+	p country
 	country.length > 50 ? url = country : url = "http://www.lonelyplanet.com/#{country}/things-to-do/top-things-to-do-in-#{country}"
 	page = mechanize.get(url)
 	thing = page.at('.stack__content')
 	places = thing.css('.card__mask')
 	places.each do |place|
-	countries.key(country) == nil ? id = nil : id = Country.where(name: country.capitalize).first.id if Country.where(name: country.capitalize).first != nil
+		code = countries.key(country)
+		id = Country.where(code: code).first.id if Country.where(code: code).first != nil
+		# countries.key(country) == nil ? id = nil : id = Country.where(name: country.capitalize).first.id if Country.where(name: country.capitalize).first != nil
 		Destination.create(
 			country_id: id,
 			name: place.css('.card__content__title').children.text.lstrip.chomp,
@@ -507,3 +912,224 @@ destinations.each do |country|
 	end
 end
 
+######################################
+## IMAGES ##
+######################################
+
+destinations = [
+"bangladesh",
+"belgium",
+"burkina-faso",
+"bulgaria",
+"bosnia-and-hercegovina",
+"brunei-darussalam",
+"bolivia",
+"japan",
+# "burundi",
+"benin",
+"bhutan",
+"jamaica",
+"botswana",
+"brazil",
+"the-bahamas",
+"belarus",
+"belize",
+"russia",
+"rwanda",
+"serbia",
+"lithuania",
+"luxembourg",
+"liberia",
+"romania",
+# "guinea-bissau",
+"guatemala",
+"greece",
+# "equatorial-guinea",
+# "guyana",
+"georgia",
+"england",
+"gabon",
+# "guinea",
+"the-gambia",
+"denmark",
+"kuwait",
+"ghana",
+"oman",
+"somalia",
+# "kosovo",
+"jordan",
+"croatia",
+"haiti",
+"hungary",
+"honduras",
+"puerto-rico",
+# "palestine",
+"portugal",
+# "paraguay",
+"panama",
+"papua-new-guinea",
+"peru",
+"pakistan",
+"philippines",
+"poland",
+"cyprus",
+"zambia",
+# "w.-sahara",
+"estonia",
+"egypt",
+"south-africa",
+"ecuador",
+"albania",
+"angola",
+"kazakhstan",
+"ethiopia",
+"zimbabwe",
+"spain",
+"eritrea",
+"montenegro",
+"moldova",
+"madagascar",
+"morocco",
+"uzbekistan",
+"myanmar-burma",
+"mali",
+"mongolia",
+"macedonia",
+"malawi",
+# "mauritania",
+"uganda",
+"malaysia",
+"mexico",
+"vanuatu",
+"france",
+"finland",
+"fiji",
+# "england",
+"nicaragua",
+"the-netherlands",
+"norway",
+"namibia",
+# "new-caledonia",
+"niger",
+"nigeria",
+"new-zealand",
+"nepal",
+"cote-divoire",
+"switzerland",
+"colombia",
+"china",
+# "cameroon",
+"chile",
+"canada",
+# "http://www.lonelyplanet.com/congo/things-to-do/top-things-to-do-in-the-republic-of-congo",
+# "central-african-republic",
+# "http://www.lonelyplanet.com/congo/things-to-do/top-things-to-do-in-the-republic-of-congo",
+"czech-republic",
+"cyprus",
+"costa-rica",
+"cuba",
+"swaziland",
+"syria",
+"kyrgyzstan",
+"kenya",
+# "sudan",
+"the-guianas",
+"cambodia",
+"el-salvador",
+"slovakia",
+"south-korea",
+"slovenia",
+# "korea-north",
+"somalia",
+"senegal",
+"sierra-leone",
+"solomon-islands",
+"saudi-arabia",
+"sweden",
+# "sudan",
+"dominican-republic",
+"djibouti",
+"denmark",
+"germany",
+"yemen",
+"austria",
+"algeria",
+"usa",
+"latvia",
+"uruguay",
+"lebanon",
+"laos",
+"taiwan",
+# "http://www.lonelyplanet.com/trinidad-and-tobago/things-to-do/top-things-to-do-in-trinidad-tobago",
+"turkey",
+"sri-lanka",
+"tunisia",
+"east-timor",
+# "turkmenistan",
+# "tajikistan",
+"lesotho",
+"thailand",
+"antarctica",
+"togo",
+# "chad",
+"libya",
+"united-arab-emirates",
+"venezuela",
+"afghanistan",
+# "iraq",
+"iceland",
+"iran",
+# "armenia",
+"italy",
+"vietnam",
+"argentina",
+"australia",
+"http://www.lonelyplanet.com/israel-the-palestinian-territories/israel/images",
+"india",
+"tanzania",
+"azerbaijan",
+"ireland",
+"indonesia",
+"ukraine",
+"qatar",
+"mozambique"]
+
+destinations.each do |country|
+	p country
+	country.length > 50 ? url = country : url = "http://www.lonelyplanet.com/#{country}/images"
+	page = mechanize.get(url)
+	images = page.at('.slider__container')
+
+	url == "http://www.lonelyplanet.com/israel-the-palestinian-territories/israel/images" ? code = "IL" : code = countries.key(country)
+	id = Country.where(code: code).first.id if Country.where(code: code).first != nil
+	Image.create(
+		country_id: id,
+		desc: images.css('div.gallery__slide.is-current').css('img').first[:alt],
+		url: images.css('div.gallery__slide.is-current').css('img').first[:src].gsub("//images-resrc.staticlp.com/S=W1000M,H700M/O=85/", "")
+	Image.create(
+		)
+
+	collection = images.css('div.gallery__slide.is-hidden').css('img')
+	p collection.length
+	if collection.length > 10
+		i = 0
+		10.times do
+			url = collection[i][:"data-src"].gsub("//images-resrc.staticlp.com/S=W1000M,H700M/O=85/", "")
+			Image.create(
+				country_id: id,
+				desc: collection[i][:alt],
+				url: url
+			)
+			i += 1
+		end
+	else
+		collection.each do |place|
+			url = place[:"data-src"].gsub("//images-resrc.staticlp.com/S=W1000M,H700M/O=85/", "")
+			Image.create(
+				country_id: id,
+				desc: place[:alt],
+				url: url
+			)
+		end
+	end
+end

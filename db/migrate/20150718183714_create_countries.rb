@@ -11,6 +11,12 @@ class CreateCountries < ActiveRecord::Migration
       t.string   :vaccinations
       t.string   :entry_currency
       t.string   :exit_currency
+      t.string   :climate
+      t.string   :terrain
+      t.string   :nat_res
+      t.string   :languages
+      t.string   :religions
+      t.string   :capital
 
       t.timestamps null: false
     end
