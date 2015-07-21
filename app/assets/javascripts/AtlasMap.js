@@ -130,13 +130,25 @@ mouseDown = false;
    });
  }
 
+function capitalizeFirstLetter(string) {
+    var pieces = string.split(" ");
+    for ( var i = 0; i < pieces.length; i++ )
+    {
+        var j = pieces[i].charAt(0).toUpperCase();
+        pieces[i] = j + pieces[i].substr(1);
+    }
+    return pieces.join(" ");
+}
+
   var addAutocompleteListener = function(){
     $( '#autocomplete' ).autocomplete({
       source: availableTags
     });
     $('#auto').submit(function(e){
       e.preventDefault();
-      zoomInTo(test[$('#autocomplete').val()]);
+      var userInput = $('#autocomplete').val();
+      var caps = capitalizeFirstLetter(userInput);
+      zoomInTo(test[caps]);
     });
   }
 
@@ -246,7 +258,7 @@ mouseDown = false;
       dots: false,
       infinite: true,
       autoplay: true,
-      speed: 300,
+      speed: 2000,
       fade: true,
       slidesToShow: 1,
       autoplaySpeed: 2500,
