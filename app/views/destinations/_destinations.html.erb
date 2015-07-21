@@ -1,8 +1,56 @@
 <div class="destinations-div">
-<% destinations.each do |destination| %>
-    <p><%= destination.name %></p>
-    <p><%= destination.desc %></p>
-    <p><%= destination.pic %></p>
-<% end %>
+
+  <% if images %>
+    <div class="image-carousel">
+      <% images.each do |image| %>
+        <div>
+          <img class="country-image" src="<%= image.url %>">
+          <p class="img-desc"><%= image.desc %></p>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <% if destinations.length >= 1 %>
+
+    <h3>Top Destinations:</h3>
+    <ul>
+      <% destinations.each do |destination| %>
+          <li>
+            <h4>
+              <%= destination.name %>
+            </h4>
+          </li>
+          <p>
+            <%= destination.desc %>
+          </p>
+      <% end %>
+    </ul>
+
+  <% elsif warnings.length >= 1 %>
+
+    <h3>Travel Alerts:</h3>
+
+    <ol>
+        <% warnings.each do |warning| %>
+            <li>
+              <h4><u>
+                <%= warning.warning_type %>
+              </u></h4>
+            </li>
+            <p>Date:
+              <%= warning.date %>
+            </p>
+            <p>
+              <a href="<%= warning.warning_link %>">More Information</a>
+            </p>
+        <% end %>
+      </ol>
+
+    <% else %>
+
+      <h3>There seem to be no destinations here.</h3>
+
+    <% end %>
 
 </div>

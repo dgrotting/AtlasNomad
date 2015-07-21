@@ -11,11 +11,11 @@ button:focus {
   position:absolute;
 }
 
-.country-info {
+.country-destinations {
   font-family: 'Open Sans', sans-serif;
-  font-weight: 700;
+  font-weight: 400;
   height:100%;
-  width:25%;
+  width:30%;
   position:absolute;
   right: -2000px;
   background-color: white;
@@ -23,14 +23,14 @@ button:focus {
   box-shadow: -2px 0px 100px black;
   margin: 0px;
   overflow-y:auto;
-  opacity: 0.8;
+  opacity: 0.95;
 }
 
-.country-destinations {
+.country-info {
   font-family: 'Open Sans', sans-serif;
-  font-weight: 700;
+  font-weight: 400;
   height:100%;
-  width:25%;
+  width:30%;
   position:absolute;
   left: -2000px;
   background-color: white;
@@ -38,7 +38,11 @@ button:focus {
   box-shadow: -2px 0px 100px black;
   margin: 0px;
   overflow-y:auto;
-  opacity: 0.8;
+  opacity: 0.95;
+}
+
+.info-div {
+  margin: 40px;
 }
 
 
@@ -88,34 +92,43 @@ button:focus {
   width: 100%;
 }
 
-.language {
-  position: absolute;
-  width: 40px;
-  z-index: 1;
+.filter-buttons {
   margin: 20px;
+  position: absolute;
+  z-index: 1;
   bottom: 0;
   left: 0;
 }
 
+.language-filter {
+  margin: 5px;
+}
 
+.visa-filter {
+  margin: 5px;
+}
 
-
-
-
+.gdp-filter {
+  margin: 5px;
+}
 
 .search-bar {
-  width:500px;
-  margin:0 auto;
   position: absolute;
   top: 15px;
-  left: 1200px;
+  right: 15px;
   z-index: 1;
 }
 
 .search {
   padding:0px 15px 0px 30px;
   margin:3px;
-  background: url('./test.svg') no-repeat 8px 6px;
+  background: url('/assets/search_icon.png') no-repeat 8px 6px;
+}
+
+.ui-autocomplete {
+  max-height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .rounded {
@@ -129,3 +142,45 @@ input[type=text]{
   color:grey;
 }
 
+.country-image {
+  max-height: 300px;
+  width: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.image-carousel {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.img-desc {
+  align: center;
+}
+
+.flag-and-name {
+  border: 1px grey solid;
+  border-radius: 3px;
+}
+
+
+li {
+  list-style-type: none;
+}
+
+h3 {
+  text-align: center;
+}
+
+p.img-desc {
+    position: absolute;
+    top: 15%;
+    color: #FFF;
+    word-wrap: break-word;
+    font-size: 1.5em;
+    width: 80%;
+    padding-left: 40px;
+    text-shadow: 2px 2px #333;
+}
