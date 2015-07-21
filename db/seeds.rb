@@ -1105,7 +1105,8 @@ destinations.each do |country|
 	Image.create(
 		country_id: id,
 		desc: images.css('div.gallery__slide.is-current').css('img').first[:alt],
-		url: images.css('div.gallery__slide.is-current').css('img').first[:src]
+		url: images.css('div.gallery__slide.is-current').css('img').first[:src].gsub("//images-resrc.staticlp.com/S=W1000M,H700M/O=85/", "")
+	Image.create(
 		)
 
 	collection = images.css('div.gallery__slide.is-hidden').css('img')
@@ -1113,19 +1114,21 @@ destinations.each do |country|
 	if collection.length > 10
 		i = 0
 		10.times do
+			url = collection[i][:"data-src"].gsub("//images-resrc.staticlp.com/S=W1000M,H700M/O=85/", "")
 			Image.create(
 				country_id: id,
 				desc: collection[i][:alt],
-				url: collection[i][:"data-src"]
+				url: url
 			)
 			i += 1
 		end
 	else
 		collection.each do |place|
+			url = place[:"data-src"].gsub("//images-resrc.staticlp.com/S=W1000M,H700M/O=85/", "")
 			Image.create(
 				country_id: id,
 				desc: place[:alt],
-				url: place[:"data-src"]
+				url: url
 			)
 		end
 	end
