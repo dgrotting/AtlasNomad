@@ -10,7 +10,7 @@ require 'mechanize'
 
 mechanize = Mechanize.new
 
-countries = 
+countries =
 {"BD"=>"bangladesh",
  "BE"=>"belgium",
  "BF"=>"burkina-faso",
@@ -622,7 +622,7 @@ end
 		tourist_visa: "Yes, but you can obtain at the port of entry",
 		vaccinations: "Polio vaccination up to 1 year before travel is recommended.",
 		entry_currency: "None",
-		exit_currency: "None" 
+		exit_currency: "None"
 	)
 
 	world = worldbook.invert
@@ -630,8 +630,8 @@ end
 	files.each do |file|
 		p file
 		text = File.read(file)
-		(/(?<=Introduction:: ).*(?=Background)/).match(text) == nil ? 
-		name = (/(?<=Introduction :: ).*(?=Background)/).match(text)[0].chomp : 
+		(/(?<=Introduction:: ).*(?=Background)/).match(text) == nil ?
+		name = (/(?<=Introduction :: ).*(?=Background)/).match(text)[0].chomp :
 		name = (/(?<=Introduction:: ).*(?=Background)/).match(text)[0].chomp
 		name = "Tunisia" if name == "T unisia"
 		name = "Taiwan" if name == "T aiwan"

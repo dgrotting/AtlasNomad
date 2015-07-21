@@ -1,16 +1,153 @@
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
 
-.atlas-map{
+.atlas-map {
   height: 100%;
   width: 100%;
   position:absolute;
 }
 
-.country-info{
+.country-destinations {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
   height:100%;
-  width:30%;
+  width:25%;
   position:absolute;
   right: -2000px;
-  background-color: grey;
+  background-color: white;
   z-index: 2;
   box-shadow: -2px 0px 100px black;
+  margin: 0px;
+  overflow-y:auto;
+  opacity: 0.9;
+}
+
+.country-info {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  height:100%;
+  width:25%;
+  position:absolute;
+  left: -2000px;
+  background-color: white;
+  z-index: 2;
+  box-shadow: -2px 0px 100px black;
+  margin: 0px;
+  overflow-y:auto;
+  opacity: 0.9;
+}
+
+
+.country-partial {
+  padding: 1em;
+}
+
+.country-name {
+  display: inline-block;
+}
+
+.flag {
+  display: inline-block;
+  width: 125px;
+}
+
+.navbar {
+  box-shadow: -2px 0px 20px gray;
+  position: absolute;
+  width: 100%;
+  height: 60px;
+  z-index: 1;
+  background-color: white;
+}
+
+.logo {
+  padding: 10px;
+  display: inline-block;
+  vertical-align: middle;
+  width: 200px;
+}
+
+.github-logo {
+  position: absolute;
+  width: 40px;
+  z-index: 1;
+  margin: 20px;
+  bottom: 0;
+  right: 0;
+}
+
+.github-logo:hover {
+  opacity: .5;
+}
+
+.home-background {
+  width: 100%;
+}
+
+.filter-buttons {
+  margin: 20px;
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+}
+
+.language-filter {
+  margin: 5px;
+}
+
+.visa-filter {
+  margin: 5px;
+}
+
+.gdp-filter {
+  margin: 5px;
+}
+
+.search-bar {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 1;
+}
+
+.search {
+  padding:0px 15px 0px 30px;
+  margin:3px;
+  background: url('/assets/search_icon.png') no-repeat 8px 6px;
+}
+
+.ui-autocomplete {
+  max-height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.rounded {
+  border-radius:15px;
+  -moz-border-radius:15px;
+  -webkit-border-radius:15px;
+
+}
+
+input[type=text]{
+  color:grey;
+}
+
+.country-image {
+  width: 300px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.image-carousel {
+  width: 300px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
