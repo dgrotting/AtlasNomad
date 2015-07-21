@@ -133,6 +133,12 @@ button:focus {
   background: url('/assets/search_icon.png') no-repeat 8px 6px;
 }
 
+.ui-autocomplete {
+  max-height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 .rounded {
   border-radius:15px;
   -moz-border-radius:15px;
