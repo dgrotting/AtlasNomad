@@ -15,6 +15,23 @@ button:focus {
   margin: 5px;
 }
 
+.destinations-div {
+  overflow: hidden;
+}
+
+.destinations-div ul {
+  margin: 20px;
+  padding: 0;
+}
+
+.destinations-div h4 {
+  margin-bottom: 0px;
+}
+
+.destinations-div p {
+  margin: 0px;
+}
+
 .country-destinations {
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
@@ -196,6 +213,8 @@ button:focus {
 }
 
 .image-carousel {
+  // background-image: url("http://www.arabianbusiness.com/skins/ab.main/gfx/loading_spinner.gif");
+  min-height: 300px;
   display: block;
   margin-left: auto;
   margin-right: auto;
