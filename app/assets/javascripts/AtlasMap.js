@@ -214,8 +214,9 @@ mouseDown = false;
 
   var initializeImageCarousel = function(){
     $('.image-carousel').slick({
-      dots: true,
+      dots: false,
       infinite: true,
+      autoplay: true,
       speed: 300,
       slidesToShow: 1,
       adaptiveHeight: true
