@@ -1,0 +1,51 @@
+<div class="destinations-div">
+
+  <div class="image-carousel">
+    <div><img class="country-image" src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Taj_Mahal_in_March_2004.jpg"></div>
+    <div><img class="country-image" src="http://media.lonelyplanet.com/a/g/hi/t/a0232031691cc73fa7db1be1530040e1-panama-s-best-beaches-and-islands.jpg"></div>
+    <div><img class="country-image" src="https://upload.wikimedia.org/wikipedia/commons/1/10/20090529_Great_Wall_8185.jpg"></div>
+  </div>
+
+  <% if destinations.length >= 1 %>
+
+    <h3>Top Destinations:</h3>
+    <ol>
+      <% destinations.each do |destination| %>
+          <li>
+            <h4><u>
+              <%= destination.name %>
+            </u></h4>
+          </li>
+          <p>
+            <%= destination.desc %>
+          </p>
+      <% end %>
+    </ol>
+
+  <% elsif warnings.length >= 1 %>
+
+    <h3>Travel Alerts:</h3>
+
+    <ol>
+        <% warnings.each do |warning| %>
+            <li>
+              <h4><u>
+                <%= warning.warning_type %>
+              </u></h4>
+            </li>
+            <p>Date:
+              <%= warning.date %>
+            </p>
+            <p>
+              <a href="<%= warning.warning_link %>">More Information</a>
+            </p>
+        <% end %>
+      </ol>
+
+    <% else %>
+
+      <h3>There seems to be no destinations here.</h3>
+
+    <% end %>
+
+</div>

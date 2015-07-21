@@ -11,8 +11,12 @@
  * file per style scope.
  *
  *= require jquery-jvectormap
+ *= require jquery-ui
  *= require_tree .
  *= require_self
+ *= require slick
+ *= require slick-theme
+
  */
 
 

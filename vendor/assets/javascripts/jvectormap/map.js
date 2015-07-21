@@ -289,13 +289,26 @@ jvm.Map.prototype = {
     }
 
     this.repositionLabels();
+    if ($('g').attr('transform').search("translate\\(0") === -1)
+      {
+        $('.navbar').fadeOut();
+        $('.github-logo').fadeOut();
+        $('.search-bar').fadeOut();
+        $('.language').fadeOut();
+      }
+    else
+      {
+        $('.navbar').fadeIn();
+        $('.github-logo').fadeIn();
+        $('.search-bar').fadeIn();
+        $('.language').fadeIn();
 
+      }
     this.container.trigger('viewportChange', [this.scale/this.baseScale, this.transX, this.transY]);
   },
 
   bindContainerEvents: function(){
-    var mouseDown = false,
-        oldPageX,
+    var oldPageX,
         oldPageY,
         map = this;
 
