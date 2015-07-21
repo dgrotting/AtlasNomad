@@ -80,7 +80,7 @@ button:focus {
 
 .github-logo {
   position: absolute;
-  width: 40px;
+  width: 50px;
   z-index: 1;
   margin: 20px;
   bottom: 0;
@@ -95,12 +95,40 @@ button:focus {
   width: 100%;
 }
 
-.filter-buttons {
-  margin: 20px;
+.slide {
   position: absolute;
   z-index: 1;
-  bottom: 0;
+  bottom: 0px;
+  left: 10px;
+}
+
+.slide .inner {
+  opacity: .9;
+  position: relative;
   left: 0;
+  bottom: 0;
+  padding: 10px;
+  background-color:#e4e4e4;
+  border-radius: 0px 5px 0px 0px;
+  display: none;
+}
+
+.filter-slide-button {
+  opacity: .9;
+  padding: 10px;
+  border:2px solid #e4e4e4;
+  border-radius: 5px 5px 0px 0px;
+  background-color:#e4e4e4;
+  color:#1195ee;
+  font-size: 1em;
+}
+
+.inner button {
+  border:2px solid #1195ee;
+  border-radius: 5px;
+  background-color:#fafafa;
+  color:#1195ee;
+  font-size: .9em;
 }
 
 .language-filter {
@@ -122,25 +150,6 @@ button:focus {
   margin: 5px;
 }
 
-
-// .search {
-//   padding:0px 15px 0px 30px;
-//   margin:3px;
-//   background: url('/assets/search_icon.png') no-repeat 8px 6px;
-// }
-
-
-// .rounded {
-//   border-radius:15px;
-//   -moz-border-radius:15px;
-//   -webkit-border-radius:15px;
-
-// }
-
-// input[type=text]{
-//   color:grey;
-// }
-
 .search-bar {
   position: absolute;
   top: 15px;
@@ -160,10 +169,10 @@ button:focus {
   position:relative;
   padding:6px 15px;
   left:-8px;
-  border:2px solid #3794f0;
+  border:2px solid #1195ee;
   border-radius: 5px;
   background-color:#fafafa;
-  color:#3794f0;
+  color:#1195ee;
 }
 
 
