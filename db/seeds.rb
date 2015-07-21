@@ -1109,14 +1109,24 @@ destinations.each do |country|
 		)
 
 	collection = images.css('div.gallery__slide.is-hidden').css('img')
-
-	collection.each do |place|
-		p place
-
-		Image.create(
-			country_id: id,
-			desc: place[1][:alt],
-			url: place[0][:src]
-		)
+	p collection.length
+	if collection.length > 10
+		i = 0
+		10.times do
+			Image.create(
+				country_id: id,
+				desc: collection[i][:alt],
+				url: collection[i][:"data-src"]
+			)
+			i += 1
+		end
+	else
+		collection.each do |place|
+			Image.create(
+				country_id: id,
+				desc: place[:alt],
+				url: place[:"data-src"]
+			)
+		end
 	end
 end
