@@ -9,6 +9,7 @@ button:focus {
   height: 100%;
   width: 100%;
   position:absolute;
+  background-color: '#87CEFA'
 }
 
 .country-destinations {
@@ -109,6 +110,10 @@ button:focus {
 }
 
 .gdp-filter {
+  margin: 5px;
+}
+
+.color-filter {
   margin: 5px;
 }
 
