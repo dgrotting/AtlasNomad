@@ -11,7 +11,7 @@ button:focus {
   position:absolute;
 }
 
-.country-info {
+.country-destinations {
   font-family: 'Open Sans', sans-serif;
   font-weight: 700;
   height:100%;
@@ -23,10 +23,10 @@ button:focus {
   box-shadow: -2px 0px 100px black;
   margin: 0px;
   overflow-y:auto;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
-.country-destinations {
+.country-info {
   font-family: 'Open Sans', sans-serif;
   font-weight: 700;
   height:100%;
@@ -38,7 +38,7 @@ button:focus {
   box-shadow: -2px 0px 100px black;
   margin: 0px;
   overflow-y:auto;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 
@@ -97,8 +97,23 @@ button:focus {
   left: 0;
 }
 
+.visa {
+  position: absolute;
+  width: 40px;
+  z-index: 1;
+  margin: 20px;
+  bottom: 0;
+  left: 60px;
+}
 
-
+.home {
+  position: absolute;
+  width: 40px;
+  z-index: 1;
+  margin: 20px;
+  bottom: 0;
+  left: 120px;
+}
 
 
 
@@ -115,7 +130,7 @@ button:focus {
 .search {
   padding:0px 15px 0px 30px;
   margin:3px;
-  background: url('./test.svg') no-repeat 8px 6px;
+  background: url('/assets/search_icon.png') no-repeat 8px 6px;
 }
 
 .rounded {
@@ -129,3 +144,16 @@ input[type=text]{
   color:grey;
 }
 
+.country-image {
+  width: 300px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.image-carousel {
+  width: 300px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

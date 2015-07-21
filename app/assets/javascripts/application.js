@@ -1,7 +1,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
-//= require turbolinks
 //= require jquery-jvectormap
 //= require jquery-mousewheel
 //= require jvectormap
@@ -38,4 +37,5 @@
 //= require country_hashes
 //= require jquery-jvectormap-world-mill-en
 //= require_tree .
+//= require jquery.slick
 
