@@ -139,15 +139,21 @@ input[type=text]{
 }
 
 .country-image {
-  width: 300px;
+  // max-width: 300px;
+  max-height: 300px;
+  width: auto;
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
 .image-carousel {
-  width: 300px;
+  // width: 300px;
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.img-desc {
+  align: center;
 }

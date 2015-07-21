@@ -1106,14 +1106,12 @@ destinations.each do |country|
 		country_id: id,
 		desc: images.css('div.gallery__slide.is-current').css('img').first[:alt],
 		url: images.css('div.gallery__slide.is-current').css('img').first[:src].gsub("//images-resrc.staticlp.com/S=W1000M,H700M/O=85/", "")
-	Image.create(
-		)
-
+	)
 	collection = images.css('div.gallery__slide.is-hidden').css('img')
 	p collection.length
-	if collection.length > 10
+	if collection.length > 9
 		i = 0
-		10.times do
+		9.times do
 			url = collection[i][:"data-src"].gsub("//images-resrc.staticlp.com/S=W1000M,H700M/O=85/", "")
 			Image.create(
 				country_id: id,
