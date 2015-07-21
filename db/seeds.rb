@@ -201,7 +201,6 @@ countries =
 "db/factbook/countrypdf_au.txt",
 "db/factbook/countrypdf_ay.txt",
 "db/factbook/countrypdf_bc.txt",
-"db/factbook/countrypdf_bd.txt",
 "db/factbook/countrypdf_be.txt",
 "db/factbook/countrypdf_bf.txt",
 "db/factbook/countrypdf_bg.txt",
@@ -376,7 +375,6 @@ worldbook = {
 "AT" => "Austria",
 "TF" => "Antarctica",
 "BW" => "Botswana",
-"AA" => "Bermuda",
 "BE" => "Belgium",
 "BS" => "The Bahamas",
 "BD" => "Bangladesh",
@@ -404,7 +402,7 @@ worldbook = {
 "CF" => "Central African Republic",
 "CU" => "Cuba",
 "-99" => "Cyprus",
-"DA" => "Denmark",
+"DK" => "Denmark",
 "DJ" => "Djibouti",
 "DO" => "Dominican Republic",
 "EC" => "Ecuador",
@@ -415,7 +413,7 @@ worldbook = {
 "ER" => "Eritrea",
 "SV" => "El Salvador",
 "ET" => "Ethiopia",
-"EZ" => "Czech Republic",
+"CZ" => "Czech Republic",
 "FI" => "Finland",
 "FJ" => "Fiji",
 "FK" => "Falkland Islands (Islas Malvinas)",
@@ -447,10 +445,10 @@ worldbook = {
 "JO" => "Jordan",
 "KE" => "Kenya",
 "KG" => "Kyrgyzstan",
-"KP" => "North Korea",
-"KR" => "South Korea",
+"KP" => "Korea, North",
+"KR" => "Korea, South",
 "KW" => "Kuwait",
-"KV" => "Kosovo",
+"_0" => "Kosovo",
 "KZ" => "Kazakhstan",
 "LA" => "Laos",
 "LB" => "Lebanon",
@@ -491,7 +489,7 @@ worldbook = {
 "PL" => "Poland",
 "PA" => "Panama",
 "PT" => "Portugal",
-"PP" => "Papua New Guinea",
+"PG" => "Papua New Guinea",
 "GW" => "Guinea-Bissau",
 "QA" => "Qatar",
 "RS" => "Serbia",
@@ -539,65 +537,19 @@ worldbook = {
 "ZW" => "Zimbabwe",
 }
 
-world = worldbook.invert
 
-files.each do |file|
-	text = File.read(file)
-	(/(?<=Introduction:: ).*(?=Background)/).match(text) == nil ? 
-	name = (/(?<=Introduction :: ).*(?=Background)/).match(text)[0].chomp : 
-	name = (/(?<=Introduction:: ).*(?=Background)/).match(text)[0].chomp
-	name = "Tunisia" if name == "T unisia"
-	name = "Taiwan" if name == "T aiwan"
-	name = "Togo" if name == "T ogo"
-	name = "Venezuela" if name == "V enezuela"
-	name = "Yemen" if name == "Y emen"
-	name = "The Bahamas" if name == "Bahamas, The"
-	if name != "Antarctica"
-		(/(?<=Capital:).*(?=geographic)/).match(text) == nil ?
-		capital = (/(?<=Capital:).*(?=time)/).match(text)[0].chomp :
-		capital = (/(?<=Capital:).*(?=geographic)/).match(text)[0].chomp
-		capital.gsub('name: ', '')
-	else
-		capital = nil
-	end
-	(/(?<=Natural resources:\r).*(?=Land)/).match(text) == nil ?
-	nat = (/(?<=Natural resources:\r).*(?=People)/).match(text)[0].chomp :
-	nat = (/(?<=Natural resources:\r).*(?=Land)/).match(text)[0].chomp
-	name == "Antarctica" ? lang = "All" : lang = (/(?<=Languages:\r).*(?=Religions)/).match(text)[0].chomp
-	name == "Antarctica" ? rel = "All" : rel = (/(?<=Religions:\r).*(?=Population:)/).match(text)[0].chomp
-	Country.create({
-		name: name,
-		climate: (/(?<=Climate:\r).*(?=Terrain)/).match(text)[0].chomp,
-		terrain: (/(?<=Terrain:\r).*(?=Elevation)/).match(text)[0].chomp,
-		nat_res: nat,
-		languages: lang,
-		religions: rel,
-		capital: capital,
-	})
-	count = Country.last
-	count.update_attribute(:code, world[count.name])
-	count.update_attribute(:name, count.name.slice!(0..199)) if count.name.length > 200
-	count.update_attribute(:climate, count.climate.slice!(0..199)) if count.climate.length > 200
-	count.update_attribute(:terrain, count.terrain.slice!(0..199)) if count.terrain.length > 200
-	count.update_attribute(:nat_res, count.nat_res.slice!(0..199)) if count.nat_res.length > 200
-	count.update_attribute(:languages, count.languages.slice!(0..199)) if count.languages.length > 200
-	count.update_attribute(:religions, count.religions.slice!(0..199)) if count.religions.length > 200
-	(count.update_attribute(:capital, count.capital.slice!(0..199)) if count.capital.length > 200) if count.name != "Antarctica"
-	count.save
-end
-
-countries.values.each do |country|
-	page = mechanize.get("http://travel.state.gov/content/passports/english/country/#{country}.html")
-	p country
+countries.each_key do |code|
+	page = mechanize.get("http://travel.state.gov/content/passports/english/country/#{countries[code]}.html")
+	p countries[code]
 	flag = "http://travel.state.gov" + page.at('.flag').attributes['src'].value
 	name = page.at('h1').text.strip
-	count = Country.where(code: countries.key(country)).first
+	name = "Greenland" if code == "GL"
 	# p Country.where(code: "GB").first.name
 	# count = Country.where(code: "GB").first if count.name == "United Kingdom"
-	count.update_attributes({
+	Country.create(
 		name: name,
 		official_name: page.at('.official_name').text.strip,
-		code: countries.key(country),
+		code: code,
 		flag: flag,
 		passport_validity: page.at('.quick_fact1 > p').text.strip,
 		passport_pages: page.at('.quick_fact2 > p').text.strip,
@@ -605,73 +557,120 @@ countries.values.each do |country|
 		vaccinations: page.at('.quick_fact4 > p').text.strip,
 		entry_currency: page.at('.quick_fact5 > p').text.strip,
 		exit_currency: page.at('.quick_fact6 > p').text.strip
-	})
+	)
 end
 
-Country.where(name: "Puerto Rico").first.update_attributes({
-	name: "Puerto Rico",
-	official_name: "Puerto Rico",
-	code: "PR",
-	flag: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Flag_of_Puerto_Rico.svg/2000px-Flag_of_Puerto_Rico.svg.png",
-	passport_validity: "Same as U.S.",
-	passport_pages: "Same as U.S.",
-	tourist_visa: "Same as U.S.",
-	vaccinations: "Same as U.S.",
-	entry_currency: "Same as U.S.",
-	exit_currency: "Same as U.S."
-})
+	Country.create(
+		name: "Puerto Rico",
+		official_name: "Puerto Rico",
+		code: "PR",
+		flag: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Flag_of_Puerto_Rico.svg/2000px-Flag_of_Puerto_Rico.svg.png",
+		passport_validity: "Same as U.S.",
+		passport_pages: "Same as U.S.",
+		tourist_visa: "Same as U.S.",
+		vaccinations: "Same as U.S.",
+		entry_currency: "Same as U.S.",
+		exit_currency: "Same as U.S."
+	)
 
-Country.where(name: "Palestine").first.update_attributes({
-	name: "Palestine",
-	official_name: "Palestine",
-	code: "PS",
-	flag: "https://upload.wikimedia.org/wikipedia/commons/a/a5/Palestine_flag.jpg",
-	passport_validity: "Same as Isral (Not a joke)",
-	passport_pages: "Same as Isral (Not a joke)",
-	tourist_visa: "Same as Isral (Not a joke)",
-	vaccinations: "Same as Isral (Not a joke)",
-	entry_currency: "Same as Isral (Not a joke)",
-	exit_currency: "Same as Isral (Not a joke)"
-})
+	Country.create(
+		name: "Palestine",
+		official_name: "Palestine",
+		code: "PS",
+		flag: "https://upload.wikimedia.org/wikipedia/commons/a/a5/Palestine_flag.jpg",
+		passport_validity: "Same as Isral (Not a joke)",
+		passport_pages: "Same as Isral (Not a joke)",
+		tourist_visa: "Same as Isral (Not a joke)",
+		vaccinations: "Same as Isral (Not a joke)",
+		entry_currency: "Same as Isral (Not a joke)",
+		exit_currency: "Same as Isral (Not a joke)"
+	)
 
-Country.where(name: "Western Sahara").first.update_attributes({
-	name: "West Sahara",
-	official_name: "West Sahara",
-	code: "EH",
-	flag: "http://www.mapsofworld.com/flags/images/world-flags/western-sahara-flag.jpg",
-	passport_validity: "Not recommeneded for travel",
-	passport_pages: "Not recommeneded for travel",
-	tourist_visa: "Not recommeneded for travel",
-	vaccinations: "Not recommeneded for travel",
-	entry_currency: "Not recommeneded for travel",
-	exit_currency: "Not recommeneded for travel"
-})
+	Country.create(
+		name: "West Sahara",
+		official_name: "West Sahara",
+		code: "EH",
+		flag: "http://www.mapsofworld.com/flags/images/world-flags/western-sahara-flag.jpg",
+		passport_validity: "Not recommeneded for travel",
+		passport_pages: "Not recommeneded for travel",
+		tourist_visa: "Not recommeneded for travel",
+		vaccinations: "Not recommeneded for travel",
+		entry_currency: "Not recommeneded for travel",
+		exit_currency: "Not recommeneded for travel"
+	)
 
-Country.where(name: "United States").first.update_attributes({
-	name: "United States",
-	official_name: "The United States of America",
-	code: "US",
-	flag: "http://khongthe.com/wallpapers/abstract/america-the-beautiful-230904.jpg",
-	passport_validity: "Whatever you want because freedom",
-	passport_pages: "Whatever you want because freedom",
-	tourist_visa: "Whatever you want because freedom",
-	vaccinations: "Whatever you want because freedom",
-	entry_currency: "Whatever you want because freedom",
-	exit_currency: "Whatever you want because freedom"
-})
+	Country.create(
+		name: "United States",
+		official_name: "The United States of America",
+		code: "US",
+		flag: "http://khongthe.com/wallpapers/abstract/america-the-beautiful-230904.jpg",
+		passport_validity: "Whatever you want because freedom",
+		passport_pages: "Whatever you want because freedom",
+		tourist_visa: "Whatever you want because freedom",
+		vaccinations: "Whatever you want because freedom",
+		entry_currency: "Whatever you want because freedom",
+		exit_currency: "Whatever you want because freedom"
+	)
 
-Country.where(name: "Israel").first.update_attributes({
-	name: "Israel",
-	official_name: "Israel",
-	code: "IL",
-	flag: "https://upload.wikimedia.org/wikipedia/commons/d/d4/Flag_of_Israel.svg",
-	passport_validity: "Six months",
-	passport_pages: "One page required for entry stamp",
-	tourist_visa: "Yes, but you can obtain at the port of entry",
-	vaccinations: "Polio vaccination up to 1 year before travel is recommended.",
-	entry_currency: "None",
-	exit_currency: "None" 
-})
+	Country.create(
+		name: "Israel",
+		official_name: "Israel",
+		code: "IL",
+		flag: "https://upload.wikimedia.org/wikipedia/commons/d/d4/Flag_of_Israel.svg",
+		passport_validity: "Six months",
+		passport_pages: "One page required for entry stamp",
+		tourist_visa: "Yes, but you can obtain at the port of entry",
+		vaccinations: "Polio vaccination up to 1 year before travel is recommended.",
+		entry_currency: "None",
+		exit_currency: "None" 
+	)
+
+	world = worldbook.invert
+
+	files.each do |file|
+		p file
+		text = File.read(file)
+		(/(?<=Introduction:: ).*(?=Background)/).match(text) == nil ? 
+		name = (/(?<=Introduction :: ).*(?=Background)/).match(text)[0].chomp : 
+		name = (/(?<=Introduction:: ).*(?=Background)/).match(text)[0].chomp
+		name = "Tunisia" if name == "T unisia"
+		name = "Taiwan" if name == "T aiwan"
+		name = "Togo" if name == "T ogo"
+		name = "Venezuela" if name == "V enezuela"
+		name = "Yemen" if name == "Y emen"
+		name = "The Bahamas" if name == "Bahamas, The"
+		name = "The Gambia" if name == "Gambia, The"
+		if name != "Antarctica"
+			(/(?<=Capital:).*(?=geographic)/).match(text) == nil ?
+			capital = (/(?<=Capital:).*(?=time)/).match(text)[0].chomp :
+			capital = (/(?<=Capital:).*(?=geographic)/).match(text)[0].chomp
+			capital.gsub('name: ', '')
+		else
+			capital = nil
+		end
+		(/(?<=Natural resources:\r).*(?=Land)/).match(text) == nil ?
+		nat = (/(?<=Natural resources:\r).*(?=People)/).match(text)[0].chomp :
+		nat = (/(?<=Natural resources:\r).*(?=Land)/).match(text)[0].chomp
+		name == "Antarctica" ? lang = "All" : lang = (/(?<=Languages:\r).*(?=Religions)/).match(text)[0].chomp
+		name == "Antarctica" ? rel = "All" : rel = (/(?<=Religions:\r).*(?=Population:)/).match(text)[0].chomp
+		count = Country.where(code: world[name]).first
+		count.update_attributes({
+			climate: (/(?<=Climate:\r).*(?=Terrain)/).match(text)[0].chomp,
+			terrain: (/(?<=Terrain:\r).*(?=Elevation)/).match(text)[0].chomp,
+			nat_res: nat,
+			languages: lang,
+			religions: rel,
+			capital: capital,
+		})
+		count.update_attribute(:climate, count.climate.slice!(0..199)) if count.climate.length > 200
+		count.update_attribute(:terrain, count.terrain.slice!(0..199)) if count.terrain.length > 200
+		count.update_attribute(:nat_res, count.nat_res.slice!(0..199)) if count.nat_res.length > 200
+		count.update_attribute(:languages, count.languages.slice!(0..199)) if count.languages.length > 200
+		count.update_attribute(:religions, count.religions.slice!(0..199)) if count.religions.length > 200
+		(count.update_attribute(:capital, count.capital.slice!(0..199)) if count.capital.length > 200) if count.name != "Antarctica"
+		count.save
+	end
+
 
 ######################################
 ## WARNINGS ##
@@ -700,6 +699,7 @@ warning_array.each do |warning|
 end
 
 warning_array.each do |warning|
+	p warning
 	search = warning[2].gsub(" Travel Warning", "") if warning[0] == "Warning"
 	country = Country.where(name: search).first
 	country == nil ? country = 0 : country = country.id
@@ -895,6 +895,7 @@ destinations = [
 "mozambique"]
 
 destinations.each do |country|
+	p country
 	country.length > 50 ? url = country : url = "http://www.lonelyplanet.com/#{country}/things-to-do/top-things-to-do-in-#{country}"
 	page = mechanize.get(url)
 	thing = page.at('.stack__content')
@@ -964,7 +965,7 @@ destinations = [
 "puerto-rico",
 # "palestine",
 "portugal",
-"paraguay",
+# "paraguay",
 "panama",
 "papua-new-guinea",
 "peru",
@@ -1098,16 +1099,24 @@ destinations.each do |country|
 	country.length > 50 ? url = country : url = "http://www.lonelyplanet.com/#{country}/images"
 	page = mechanize.get(url)
 	images = page.at('.slider__container')
+
+	url == "http://www.lonelyplanet.com/israel-the-palestinian-territories/israel/images" ? code = "IL" : code = countries.key(country)
+	id = Country.where(code: code).first.id if Country.where(code: code).first != nil
+	Image.create(
+		country_id: id,
+		desc: images.css('div.gallery__slide.is-current').css('img').first[:alt],
+		url: images.css('div.gallery__slide.is-current').css('img').first[:src]
+		)
+
 	collection = images.css('div.gallery__slide.is-hidden').css('img')
-	collection << images.css('div.gallery__slide.is-current').css('img')
 
 	collection.each do |place|
-		code = countries.key(country)
-		id = Country.where(code: code).first.id if Country.where(code: code).first != nil
+		p place
+
 		Image.create(
 			country_id: id,
-			desc: place[1],
-			url: place[0]
+			desc: place[1][:alt],
+			url: place[0][:src]
 		)
 	end
 end
