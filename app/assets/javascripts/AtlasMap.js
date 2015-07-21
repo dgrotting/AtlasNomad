@@ -218,7 +218,9 @@ mouseDown = false;
       infinite: true,
       autoplay: true,
       speed: 300,
+      fade: true,
       slidesToShow: 1,
+      autoplaySpeed: 2500,
       adaptiveHeight: true
     });
   }
