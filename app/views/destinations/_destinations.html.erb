@@ -1,28 +1,35 @@
 <div class="destinations-div">
 
-  <div class="image-carousel">
-    <div><img class="country-image" src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Taj_Mahal_in_March_2004.jpg"></div>
-    <div><img class="country-image" src="http://media.lonelyplanet.com/a/g/hi/t/a0232031691cc73fa7db1be1530040e1-panama-s-best-beaches-and-islands.jpg"></div>
-    <div><img class="country-image" src="https://upload.wikimedia.org/wikipedia/commons/1/10/20090529_Great_Wall_8185.jpg"></div>
-  </div>
+  <% if images %>
+    <div class="image-carousel">
+      <% images.each do |image| %>
+        <div>
+          <img class="country-image" src="<%= image.url %>">
+          <p class="img-desc"><%= image.desc %></p>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 
   <% if destinations.length >= 1 %>
 
     <h3>Top Destinations:</h3>
-    <ol>
+    <ul>
       <% destinations.each do |destination| %>
           <li>
-            <h4><u>
+            <h4>
               <%= destination.name %>
-            </u></h4>
+            </h4>
           </li>
           <p>
             <%= destination.desc %>
           </p>
       <% end %>
-    </ol>
+    </ul>
 
   <% elsif warnings.length >= 1 %>
+
+    <img src="/assets/alert.png" class="alert-icon">
 
     <h3>Travel Alerts:</h3>
 
@@ -37,14 +44,14 @@
               <%= warning.date %>
             </p>
             <p>
-              <a href="<%= warning.warning_link %>">More Information</a>
+              <a href="<%= warning.warning_link %>" target="_blank">More Information</a>
             </p>
         <% end %>
       </ol>
 
     <% else %>
 
-      <h3>There seems to be no destinations here.</h3>
+      <h3>There seem to be no destinations here.</h3>
 
     <% end %>
 

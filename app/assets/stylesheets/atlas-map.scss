@@ -11,11 +11,15 @@ button:focus {
   position:absolute;
 }
 
+.color-filter {
+  margin: 5px;
+}
+
 .country-destinations {
   font-family: 'Open Sans', sans-serif;
-  font-weight: 700;
+  font-weight: 400;
   height:100%;
-  width:25%;
+  width:30%;
   position:absolute;
   right: -2000px;
   background-color: white;
@@ -23,14 +27,14 @@ button:focus {
   box-shadow: -2px 0px 100px black;
   margin: 0px;
   overflow-y:auto;
-  opacity: 0.9;
+  opacity: 0.95;
 }
 
 .country-info {
   font-family: 'Open Sans', sans-serif;
-  font-weight: 700;
+  font-weight: 400;
   height:100%;
-  width:25%;
+  width:30%;
   position:absolute;
   left: -2000px;
   background-color: white;
@@ -38,7 +42,11 @@ button:focus {
   box-shadow: -2px 0px 100px black;
   margin: 0px;
   overflow-y:auto;
-  opacity: 0.9;
+  opacity: 0.95;
+}
+
+.info-div {
+  margin: 40px;
 }
 
 
@@ -53,6 +61,9 @@ button:focus {
 .flag {
   display: inline-block;
   width: 125px;
+  padding:1px;
+  border:1px solid #021a40;
+  background-color:#f8fff6;
 }
 
 .navbar {
@@ -73,7 +84,7 @@ button:focus {
 
 .github-logo {
   position: absolute;
-  width: 40px;
+  width: 50px;
   z-index: 1;
   margin: 20px;
   bottom: 0;
@@ -88,16 +99,51 @@ button:focus {
   width: 100%;
 }
 
-.filter-buttons {
-  margin: 20px;
+.slide {
   position: absolute;
   z-index: 1;
-  bottom: 0;
+  bottom: 0px;
+  left: 10px;
+}
+
+.slide .inner {
+  opacity: .9;
+  position: relative;
   left: 0;
+  bottom: 0;
+  padding: 10px;
+  background-color:#e4e4e4;
+  border-radius: 0px 5px 0px 0px;
+  display: none;
+}
+
+.filter-slide-button {
+  opacity: .9;
+  padding: 10px;
+  border:2px solid #e4e4e4;
+  border-radius: 5px 5px 0px 0px;
+  background-color:#e4e4e4;
+  color:#1195ee;
+  font-size: 1em;
+}
+
+.inner button {
+  border:2px solid #1195ee;
+  border-radius: 5px;
+  background-color:#fafafa;
+  color:#1195ee;
+  font-size: .9em;
 }
 
 .language-filter {
   margin: 5px;
+}
+
+.alert-icon {
+  width: 100px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .visa-filter {
@@ -113,41 +159,74 @@ button:focus {
   top: 15px;
   right: 15px;
   z-index: 1;
+  margin: auto;
 }
 
 .search {
-  padding:0px 15px 0px 30px;
-  margin:3px;
-  background: url('/assets/search_icon.png') no-repeat 8px 6px;
+  padding:8px 15px;
+  background:#dbdbdb;
+  border:0px solid #dbdbdb;
+  border-radius: 5px;
 }
+
+.search-button {
+  position:relative;
+  padding:6px 15px;
+  left:-8px;
+  border:2px solid #1195ee;
+  border-radius: 5px;
+  background-color:#fafafa;
+  color:#1195ee;
+}
+
 
 .ui-autocomplete {
   max-height: 200px;
+  border-radius: 5px;
   overflow-y: auto;
   overflow-x: hidden;
 }
 
-.rounded {
-  border-radius:15px;
-  -moz-border-radius:15px;
-  -webkit-border-radius:15px;
-
-}
-
-input[type=text]{
-  color:grey;
-}
-
 .country-image {
-  width: 300px;
+  max-height: 300px;
+  width: auto;
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
 .image-carousel {
-  width: 300px;
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.img-desc {
+  align: center;
+}
+
+.flag-and-name {
+  border: 1px grey solid;
+  border-radius: 3px;
+  padding: 20px;
+}
+
+
+li {
+  list-style-type: none;
+}
+
+h3 {
+  text-align: center;
+}
+
+p.img-desc {
+    position: absolute;
+    top: 15%;
+    color: #FFF;
+    word-wrap: break-word;
+    font-size: 1.5em;
+    width: 80%;
+    padding-left: 40px;
+    text-shadow: 2px 2px #333;
 }
