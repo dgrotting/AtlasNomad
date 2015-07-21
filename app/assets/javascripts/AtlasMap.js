@@ -86,24 +86,22 @@ mouseDown = false;
     })
   };
 
-  console.log("chillin");
-
   var addLanguageButtonClickListener = function(){
-    $('.language').click(function(){
+    $('.language-filter').click(function(){
     AtlasMap.map.series.regions[0].setValues(AtlasMap.languages);
     AtlasMap.map.series.regions[0].setScale(['#e9ebff', '#1827f4']);
     });
   }
 
   var addVisaButtonClickListener = function(){
-    $('.visa').click(function(){
+    $('.visa-filter').click(function(){
     AtlasMap.map.series.regions[0].setValues(AtlasMap.visas);
     AtlasMap.map.series.regions[0].setScale(['#e9ebff', '#1827f4']);
     });
   }
 
   var addGDPButtonClickListener = function(){
-    $('.gdp').click(function(){
+    $('.gdp-filter').click(function(){
     AtlasMap.map.series.regions[0].setValues(AtlasMap.gdpData);
     AtlasMap.map.series.regions[0].setScale(['#6cc577', '#348d3e']);
     });
@@ -115,7 +113,7 @@ mouseDown = false;
     });
     $('#auto').submit(function(e){
       e.preventDefault();
-      zoomTo(test[$('#autocomplete').val()]);
+      zoomInTo(test[$('#autocomplete').val()]);
     });
   }
 
@@ -195,7 +193,6 @@ mouseDown = false;
           if (!AtlasMap.zoomedIn) {
             zoomInTo(AtlasMap.clickedCountry);
             AtlasMap.currentCountry = AtlasMap.clickedCountry;
-            console.log(AtlasMap.currentCountry);
           } else if (AtlasMap.clickedCountry !== AtlasMap.currentCountry || !AtlasMap.currentCountry) {
             AtlasMap.currentCountry = AtlasMap.clickedCountry;
             zoomTo(AtlasMap.clickedCountry);
