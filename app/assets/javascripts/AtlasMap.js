@@ -10,7 +10,7 @@ mouseDown = false;
     addLanguageButtonClickListener();
     addVisaButtonClickListener();
     addGDPButtonClickListener();
-    initializeImageCarousel();
+    filterSlider();
     console.log("docready");
   })
 
@@ -210,6 +210,12 @@ mouseDown = false;
         {
           zoomOut();
         }
+    });
+  }
+
+  var filterSlider = function(){
+    $('.filter-slide-button').click(function() {
+      $(this).next().slideToggle();
     });
   }
 
