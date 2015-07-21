@@ -23,7 +23,7 @@ button:focus {
   box-shadow: -2px 0px 100px black;
   margin: 0px;
   overflow-y:auto;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 .country-info {
@@ -38,7 +38,7 @@ button:focus {
   box-shadow: -2px 0px 100px black;
   margin: 0px;
   overflow-y:auto;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 
@@ -152,4 +152,14 @@ input[type=text]{
 
 .country-image {
   width: 300px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.image-carousel {
+  width: 300px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }

@@ -238,5 +238,4 @@ function initializeImageCarousel(){
     slidesToShow: 1,
     adaptiveHeight: true
   });
-  console.log('imagecarouselworks');
 }
