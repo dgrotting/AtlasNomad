@@ -88,42 +88,30 @@ button:focus {
   width: 100%;
 }
 
-.language {
-  position: absolute;
-  width: 40px;
-  z-index: 1;
+.filter-buttons {
   margin: 20px;
+  position: absolute;
+  z-index: 1;
   bottom: 0;
   left: 0;
 }
 
-.visa {
-  position: absolute;
-  width: 40px;
-  z-index: 1;
-  margin: 20px;
-  bottom: 0;
-  left: 60px;
+.language-filter {
+  margin: 5px;
 }
 
-.home {
-  position: absolute;
-  width: 40px;
-  z-index: 1;
-  margin: 20px;
-  bottom: 0;
-  left: 120px;
+.visa-filter {
+  margin: 5px;
 }
 
-
-
+.clear-filter {
+  margin: 5px;
+}
 
 .search-bar {
-  width:500px;
-  margin:0 auto;
   position: absolute;
   top: 15px;
-  left: 1200px;
+  right: 15px;
   z-index: 1;
 }
 

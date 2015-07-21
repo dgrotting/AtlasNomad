@@ -13,7 +13,7 @@ $('document').ready(function(){
   changeLanguage();
   initializeImageCarousel();
   visa();
-  home();
+  clear();
 })
 
 function makeMap(){
@@ -91,27 +91,24 @@ AtlasMap.visas = { "BD": 1, "BE": 1000, "BF": 1, "BG": 1000, "BA": 1000, "BN": 1
 
 
 function changeLanguage(){
-  $('.language').click(function(e){
+  $('.language-filter').click(function(e){
   e.preventDefault();
-  debugger
   map.series.regions[0].setValues(AtlasMap.langues);
   map.series.regions[0].setScale(['#e9ebff', '#1827f4']);
   });
 }
 
 function visa(){
-  $('.visa').click(function(e){
+  $('.visa-filter').click(function(e){
   e.preventDefault();
-  debugger
   map.series.regions[0].setValues(AtlasMap.visas);
   map.series.regions[0].setScale(['#e9ebff', '#1827f4']);
   });
 }
 
-function home(){
-  $('.home').click(function(e){
+function clear(){
+  $('.clear-filter').click(function(e){
   e.preventDefault();
-  debugger
   map.series.regions[0].setValues(AtlasMap.gdpData);
   map.series.regions[0].setScale(['#6cc577', '#348d3e']);
   });
@@ -124,7 +121,7 @@ function addAutocompleteListener(){
   });
   $('#auto').submit(function(event){
     event.preventDefault();
-    zoomTo(test[$('#autocomplete').val()]);
+    zoomInTo(test[$('#autocomplete').val()]);
   });
 }
 
