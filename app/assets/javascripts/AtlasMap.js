@@ -42,17 +42,6 @@ mouseDown = false;
           stroke: '#383f47'
         }
       },
-      labels: {
-        markers: {
-          render: function(index){
-            return markers[index].name;
-          },
-          offsets: function(index){
-            var offset = markers[index]['offsets'] || [0, 0];
-            return [offset[0] - 7, offset[1] + 3];
-          }
-        }
-      },
       focusOn: {
         x: 0,
         y: 0,
@@ -113,12 +102,12 @@ mouseDown = false;
     });
   }
 
- var sf = function(){
-  $("circle[data-index='26']").click(function(e){
-    e.preventDefault();
-    $('.jvectormap-container').css("background-image", "url('/assets/SF.svg.png')");
-  })
- }
+  var sf = function(){
+    $("circle[data-index='26']").click(function(e){
+      e.preventDefault();
+      $('.jvectormap-container').css("background-image", "url('/assets/SF.svg.png')");
+    })
+  }
 
 
   var capitalizeFirstLetter = function(string) {
