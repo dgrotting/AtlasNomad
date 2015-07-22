@@ -90,6 +90,7 @@ button:focus {
 
 .destinations-div {
   overflow: hidden;
+  text-align: center;
 }
 
 .destinations-div ul {
@@ -297,6 +298,15 @@ button:focus {
   border-radius: 5px;
   overflow-y: auto;
   overflow-x: hidden;
+}
+
+.small-logo {
+  position: relative;
+  width: 200px;
+}
+
+.no-destinations {
+  margin: 40px;
 }
 
 .country-image {

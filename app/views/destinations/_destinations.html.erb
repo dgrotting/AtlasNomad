@@ -1,6 +1,6 @@
 <div class="destinations-div">
 
-  <% if images %>
+  <% if images.length >= 1 %>
     <div class="image-conatiner">
       <div class="image-carousel">
         <% images.each do |image| %>
@@ -11,9 +11,8 @@
         <% end %>
       </div>
     </div>
-  <% end %>
 
-  <% if destinations.length >= 1 %>
+  <% elsif destinations.length >= 1 %>
 
     <h3>Top Destinations:</h3>
     <ul>
@@ -53,7 +52,13 @@
 
     <% else %>
 
-      <h3>There seem to be no destinations here.</h3>
+      <div class="no-destinations">
+
+        <img class="small-logo" src="/assets/atlasnomad_small_logo.png">
+
+        <h3>Atlas Nomad is working hard to find destinations for this country...check again soon!</h3>
+
+      </div>
 
     <% end %>
 
