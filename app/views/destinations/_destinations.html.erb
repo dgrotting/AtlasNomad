@@ -1,16 +1,16 @@
 <div class="destinations-div">
 
   <% if images %>
-  <div class="image-conatiner">
-    <div class="image-carousel">
-      <% images.each do |image| %>
-        <div>
-          <img class="country-image" src="<%= image.url %>">
-          <h2 class="img-desc"><%= image.desc %></h2>
-        </div>
-      <% end %>
+    <div class="image-conatiner">
+      <div class="image-carousel">
+        <% images.each do |image| %>
+          <div>
+            <img class="country-image" src="<%= image.url %>">
+            <h2 class="img-desc"><%= image.desc %></h2>
+          </div>
+        <% end %>
+      </div>
     </div>
-  </div>
   <% end %>
 
   <% if destinations.length >= 1 %>
