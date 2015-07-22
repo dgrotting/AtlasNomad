@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 20150720224139) do
     t.string   "languages"
     t.string   "religions"
     t.string   "capital"
+    t.string   "volts"
+    t.string   "sockets"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end

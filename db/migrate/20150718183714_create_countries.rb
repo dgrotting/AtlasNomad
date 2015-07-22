@@ -17,6 +17,8 @@ class CreateCountries < ActiveRecord::Migration
       t.string   :languages
       t.string   :religions
       t.string   :capital
+      t.string   :volts
+      t.string   :sockets
 
       t.timestamps null: false
     end
