@@ -1,6 +1,7 @@
 <div class="destinations-div">
 
   <% if images %>
+  <div class="image-conatiner">
     <div class="image-carousel">
       <% images.each do |image| %>
         <div>
@@ -9,6 +10,7 @@
         </div>
       <% end %>
     </div>
+  </div>
   <% end %>
 
   <% if destinations.length >= 1 %>
