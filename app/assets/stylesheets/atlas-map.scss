@@ -1,3 +1,9 @@
+* {
+ font-size: 100%;
+ font-family: Arial;
+ font-family: 'Montserrat', sans-serif;
+}
+
 input:focus,
 select:focus,
 textarea:focus,
@@ -46,7 +52,7 @@ button:focus {
 }
 
 .country-destinations {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   height:100%;
   width:30%;
@@ -61,7 +67,7 @@ button:focus {
 }
 
 .country-info {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   height:100%;
   width:30%;
@@ -81,7 +87,7 @@ button:focus {
 
 .travel-info {
   padding: 40px;
-  padding-top: 10px;
+  padding-top: 5px;
 }
 
 .country-partial {
@@ -90,7 +96,7 @@ button:focus {
 
 .flag {
   display: inline-block;
-  width: 125px;
+  width: 200px;
   padding:1px;
   border:1px solid #021a40;
   background-color:#f8fff6;
@@ -251,21 +257,21 @@ button:focus {
 
 .centered-flag-and-info {
   margin: auto;
-  padding-top: 20px;
+  padding-top: 15px;
 }
 
 .flag-and-name {
   text-align: center;
   min-height: 300px;
-  border-bottom: 1px solid black;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  background: -webkit-linear-gradient(90deg, #757F9A 10%, #D7DDE8 90%); /* Chrome 10+, Saf5.1+ */
-  background:    -moz-linear-gradient(90deg, #757F9A 10%, #D7DDE8 90%); /* FF3.6+ */
-  background:     -ms-linear-gradient(90deg, #757F9A 10%, #D7DDE8 90%); /* IE10 */
-  background:      -o-linear-gradient(90deg, #757F9A 10%, #D7DDE8 90%); /* Opera 11.10+ */
-  background:         linear-gradient(90deg, #757F9A 10%, #D7DDE8 90%); /* W3C */
+  background-color: #c9e3ff;
+}
+
+.flag-and-name h1{
+  margin: 0;
+  margin-bottom: 10px;
 }
 
 
@@ -277,12 +283,11 @@ h3 {
   text-align: center;
 }
 
-p.img-desc {
+h2.img-desc {
     position: absolute;
-    top: 15%;
+    top: 5%;
     color: #FFF;
     word-wrap: break-word;
-    font-size: 1.5em;
     width: 80%;
     padding-left: 40px;
     text-shadow: 2px 2px 5px #333;
