@@ -11,22 +11,27 @@
         <% end %>
       </div>
     </div>
+  <% end %>
 
-  <% elsif destinations.length >= 1 %>
+  <% if destinations.length >= 1 %>
 
-    <h3>Top Destinations:</h3>
-    <ul>
-      <% destinations.each do |destination| %>
-          <li>
-            <h4>
-              <%= destination.name %>
-            </h4>
-          </li>
-          <p>
-            <%= destination.desc %>
-          </p>
-      <% end %>
-    </ul>
+    <div class="destination-list">
+
+      <h3>Top Destinations:</h3>
+      <ul>
+        <% destinations.each do |destination| %>
+            <li>
+              <h4>
+                <%= destination.name %>
+              </h4>
+            </li>
+            <p>
+              <%= destination.desc %>
+            </p>
+        <% end %>
+      </ul>
+
+  </div>
 
   <% elsif warnings.length >= 1 %>
 
