@@ -1048,7 +1048,7 @@ destinations = [
 "turkey",
 "sri-lanka",
 "tunisia",
-"east-timor",
+# "east-timor", Commented out because it 404s
 "turkmenistan",
 "tajikistan",
 "lesotho",

@@ -127,7 +127,8 @@ mouseDown = false;
 
   var addAutocompleteListener = function(){
     $( '#autocomplete' ).autocomplete({
-      source: availableTags
+      source: availableTags,
+      autoFocus: true,
     });
     $('#auto').submit(function(e){
       e.preventDefault();
@@ -176,6 +177,7 @@ mouseDown = false;
   var toggleSideDivs = function(){
     if (AtlasMap.divsShown === false)
     {
+      $('.country-destinations').css("display","block");
       $('.country-destinations').animate({"right":"0px"}, "slow");
       $('.country-info').animate({"left":"0px"}, "slow");
       AtlasMap.divsShown = true;
@@ -183,6 +185,7 @@ mouseDown = false;
     else
     {
       $('.country-destinations').animate({"right":"-2000px"}, "slow");
+      setTimeout(function(){$('.country-destinations').css("display","none")}, 200);
       $('.country-info').animate({"left":"-2000px"}, "slow");
       AtlasMap.divsShown = false;
     }
@@ -238,12 +241,9 @@ mouseDown = false;
     });
   }
 
-  $(function() {
-
-  });
-
   var initializeModal = function(){
     $( "#dialog" ).dialog({
+        modal: true,
         hide: { effect: "fade", duration: 1000 },
         autoOpen: true,
         width: $(window).width()-400,
