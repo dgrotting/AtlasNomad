@@ -546,11 +546,12 @@ countries.each_key do |code|
 	name = "Greenland" if code == "GL"
 	name = "Falkland Islands" if code == "FK"
 	name = "South Sudan" if code == "SS"
+	name = "United Kingdom" if code == "GB"
 	# p Country.where(code: "GB").first.name
 	# count = Country.where(code: "GB").first if count.name == "United Kingdom"
 	Country.create(
 		name: name,
-		official_name: page.at('.official_name').text.strip,
+		official_name: page.at('.official_name').text.strip.gsub("Official Name: ", ""),
 		code: code,
 		flag: flag,
 		passport_validity: page.at('.quick_fact1 > p').text.strip,
@@ -833,7 +834,7 @@ power = [
 ["Uganda", "240V 50Hz", ['G']],
 ["Ukraine", "230V 50Hz", ['C', 'F']],
 ["United Arab Emirates", "230V 50Hz", ['G']],
-["United Kingdom (England, Wales, Scotland, Northern Ireland)", "230V 50Hz", ['G']],
+["United Kingdom", "230V 50Hz", ['G']],
 ["United States", "120V 60Hz", ['A', 'B']],
 ["Uruguay", "220V 50Hz", ['C', 'F', 'L']],
 ["Uzbekistan", "220V 50Hz", ['C', 'F']],
@@ -855,6 +856,70 @@ power.each do |line|
 	count.save
 end
 
+bmi = [
+["Argentina", "$3.25"],
+["Australia", "$4.32"],
+["Brazil", "$5.21"],
+["United Kingdom", "$4.37"],
+["Canada", "$4.64"],
+["Chile", "$3.35"],
+["China", "$2.77"],
+["Colombia", "$3.34"],
+["Costa Rica", "$4.01"],
+["Czech Republic", "$2.92"],
+["Denmark", "$5.38"],
+["Egypt", "$2.30"],
+# ["Euro area", "4.26"],
+# ["Hong Kong", "2.43"],
+["Hungary", "$3.17"],
+["India", "$1.89"],
+["Indonesia", "$2.24"],
+["Israel", "$4.45"],
+["Japan", "$3.14"],
+["Malaysia", "$2.11"],
+["Mexico", "$3.35"],
+["New Zealand", "$4.49"],
+["Norway", "$6.30"],
+["Pakistan", "$2.98"],
+["Peru", "$3.32"],
+["Philippines", "$3.67"],
+["Poland", "$2.48"],
+["Russia", "$1.36"],
+["Saudi Arabia", "$2.93"],
+["South Africa", "$2.22"],
+["South Korea", "$3.78"],
+["Sri Lanka", "$2.65"],
+["Sweden", "$4.97"],
+["Switzerland", "$7.54"],
+["Taiwan", "$2.51"],
+["Thailand", "$3.04"],
+["Turkey", "$3.96"],
+["United Arab Emirates", "$3.54"],
+["Ukraine", "$1.20"],
+["United States", "$4.79"],
+["Uruguay", "$4.63"],
+["Venezuela", "$2.53"],
+["Vietnam", "$2.81"],
+["Austria", "$3.93"],
+["Belgium", "$4.29"],
+["Estonia", "$3.36"],
+["Finland", "$4.75"],
+["France", "$4.52"],
+["Germany", "$4.25"],
+["Greece", "$3.53"],
+["Ireland", "$4.04"],
+["Italy", "$4.46"],
+["Netherlands", "$4.00"],
+["Portugal", "$3.48"],
+["Spain", "$4.23"]
+]
+
+bmi.each do |thing|
+	p thing
+	count = Country.where(name: thing[0]).first
+	count.update_attribute(:bmi, thing[1])
+	count.save
+end
 
 ######################################
 ## WARNINGS ##
@@ -895,6 +960,9 @@ warning_array.each do |warning|
 		warning_link: "http://travel.state.gov#{warning[3]}"
 		)
 end
+
+
+
 
 ######################################
 ## DESTINATIONS ##
@@ -1048,7 +1116,7 @@ destinations = [
 "turkey",
 "sri-lanka",
 "tunisia",
-"east-timor",
+# "east-timor", Commented out because it 404s
 "turkmenistan",
 "tajikistan",
 "lesotho",

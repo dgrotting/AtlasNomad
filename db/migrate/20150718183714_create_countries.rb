@@ -19,6 +19,7 @@ class CreateCountries < ActiveRecord::Migration
       t.string   :capital
       t.string   :volts
       t.string   :sockets
+      t.string   :bmi
 
       t.timestamps null: false
     end
