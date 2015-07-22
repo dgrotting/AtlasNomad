@@ -2,40 +2,81 @@
 
   <div class="flag-and-name">
 
-    <img class="flag" src="<%= country.flag %>">
+      <div class="centered-flag-and-info">
 
-    <div class="country-name">
+        <h1><%= country.name %></h1>
 
-      <h2><%= country.name %></h2>
+        <img class="flag" src="<%= country.flag %>">
 
-      <h4><%= country.official_name %></h4>
+        <h3><%= country.official_name %></h3>
+
+    </div>
 
     </div>
 
   </div>
 
-  <p>Visa Required? <br>
+  <div class="travel-info">
+
+  <h3>Travel Information:</h3>
+
+
+  <% if warnings.length >= 1 %>
+
+    <div class="travel-warnings">
+
+      <div class="travel-alert-icon">
+
+        <img src="/assets/atlasnomad_warning_logo.png" class="alert-icon">
+
+      </div>
+
+      <div "travel-alerts-text">
+
+      <ol>
+          <% warnings.each do |warning| %>
+              <li>
+                <p><u>Travel Alert:
+                  <%= warning.warning_type %>
+                </u></p>
+              </li>
+              <p>Date:
+                <%= warning.date %>
+              </p>
+              <p>
+                <a href="<%= warning.warning_link %>" target="_blank">More Information</a>
+              </p>
+          <% end %>
+      </ol>
+
+      </div>
+
+    </div>
+
+  <% end %>
+
+  <h4>Visa Required?</h4>
     <%= country.tourist_visa %>
-  </p>
 
-  <p>Passport Validity: <br>
-    <%= country.passport_validity %>
-  </p>
 
-  <p>Passport Pages Required: <br>
-    <%= country.passport_pages %>
-  </p>
+  <h4>Passport Validity:</h4>
+    <p><%= country.passport_validity %></p>
 
-  <p>Vaccinations: <br>
-    <%= country.vaccinations %>
-  </p>
 
-  <p>Languages <br>
-    <%= country.languages %>
-  </p>
+  <h4>Passport Pages Required:</h4>
+    <p><%= country.passport_pages %></p>
 
-  <p>Climate: <br>
-    <%= country.climate %>
-  </p>
+
+  <h4>Vaccinations:</h4>
+    <p><%= country.vaccinations %></p>
+
+  <h4>Climate:</h4>
+    <p><%= country.climate %></p>
+
+  <h4>Languages:</h4>
+    <p><%= country.languages %></p>
+
+  <h4>Religion:</h4>
+    <p><%= country.religions %></p>
 
 </div>

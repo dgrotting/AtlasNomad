@@ -1,3 +1,9 @@
+* {
+ font-size: 100%;
+ font-family: Arial;
+ font-family: 'Montserrat', sans-serif;
+}
+
 input:focus,
 select:focus,
 textarea:focus,
@@ -5,22 +11,92 @@ button:focus {
     outline: none;
 }
 
+.ui-dialog {
+    left: 0;
+    outline: 0 none;
+    padding: 0 !important;
+    position: absolute;
+    top: 0;
+    background-image: url("https://download.unsplash.com/30/green-mountain.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    text-align: center;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0px 0px 50px 300px rgba(0, 0, 0, 0.5);
+}
+
+.modal-logo {
+  width: 50%;
+  margin-top: 10%;
+  -webkit-filter: drop-shadow(3px 3px 10px #222);
+  filter:         drop-shadow(3px 3px 10px #222);
+}
+
+.ui-dialog-content p {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 2.5em;
+  position: relative;
+  color: white;
+  text-shadow: 3px 3px 10px #222;
+}
+
+// .shadow {
+//   box-shadow: 0px 0px 50px 300px rgba(0, 0, 0, 0.5);
+// }
+
+.ui-dialog-titlebar {
+  display: none;
+}
+
+.ui-widget button {
+  font-size: 1.5em;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.modal-close-button {
+  width: 400px;
+  height: 100px;
+  border:2px solid #1195ee;
+  border-radius: 15px;
+  background-color:#1195ee;
+  color: white;
+  margin: 40px;
+}
+
+.modal-close-button:hover {
+  -webkit-filter: drop-shadow(3px 3px 10px #222);
+  filter:         drop-shadow(3px 3px 10px #222);
+}
+
+.ui-widget-overlay.ui-front {
+  background: none;
+}
+
+
 .atlas-map {
   height: 100%;
   width: 100%;
   position:absolute;
 }
 
+.jvectormap-marker {
+  width: 5;
+  height: 5;
+}
 .color-filter {
   margin: 5px;
 }
 
 .destinations-div {
   overflow: hidden;
+  text-align: center;
 }
 
 .destinations-div ul {
-  margin: 20px;
+  margin: 40px;
+  margin-top: 0px;
   padding: 0;
 }
 
@@ -32,8 +108,21 @@ button:focus {
   margin: 0px;
 }
 
+.destination-list {
+  text-align: left;
+}
+
+.info-div h4 {
+  margin-bottom: 0px;
+}
+
+.info-div p {
+  margin: 0px;
+}
+
 .country-destinations {
-  font-family: 'Open Sans', sans-serif;
+  display: none;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   height:100%;
   width:30%;
@@ -48,7 +137,7 @@ button:focus {
 }
 
 .country-info {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   height:100%;
   width:30%;
@@ -63,24 +152,36 @@ button:focus {
 }
 
 .info-div {
-  margin: 40px;
+  // margin: 40px;
 }
 
+.travel-info {
+  padding: 40px;
+  padding-top: 5px;
+}
 
 .country-partial {
   padding: 1em;
 }
 
-.country-name {
-  display: inline-block;
-}
-
 .flag {
   display: inline-block;
-  width: 125px;
+  width: 200px;
   padding:1px;
   border:1px solid #021a40;
   background-color:#f8fff6;
+}
+
+.country-info h2 {
+  margin: 0;
+}
+
+.country-info h4 {
+  margin-bottom: 0;
+}
+
+.country-info p {
+  margin-top: 0;
 }
 
 .navbar {
@@ -138,7 +239,7 @@ button:focus {
   opacity: .9;
   padding: 10px;
   border:2px solid #e4e4e4;
-  border-radius: 5px 5px 0px 0px;
+  border-radius: 8px 8px 0px 0px;
   background-color:#e4e4e4;
   color:#1195ee;
   font-size: 1em;
@@ -149,21 +250,44 @@ button:focus {
   border-radius: 5px;
   background-color:#fafafa;
   color:#1195ee;
-  font-size: .9em;
+  font-size: 1em;
 }
 
 .language-filter {
   margin: 5px;
 }
 
+.travel-warnings {
+  margin: 0px;
+  border: solid 1px red;
+  border-radius: 5px;
+  width: 90%;
+  background: #fdfdfd;
+  margin: auto;
+  padding: 10px;
+}
+
+.travel-alerts-text {
+  margin-left: 50%;
+  height: 200px;
+  background: black;
+}
+
+.travel-alert-icon {
+  width: 15%;
+  float: left;
+  margin-top: 10px;
+}
+
 .alert-icon {
-  width: 100px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  height: 100px;
 }
 
 .visa-filter {
+  margin: 5px;
+}
+
+.bigMac-filter {
   margin: 5px;
 }
 
@@ -204,30 +328,63 @@ button:focus {
   overflow-x: hidden;
 }
 
-.country-image {
-  max-height: 300px;
-  width: auto;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+.small-logo {
+  position: relative;
+  width: 200px;
 }
 
-.image-carousel {
-  // background-image: url("http://www.arabianbusiness.com/skins/ab.main/gfx/loading_spinner.gif");
+.no-destinations {
+  margin: 40px;
+}
+
+.country-image {
+  // max-height: 500px;
+  width: 100%;
   min-height: 300px;
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
+.image-container {
+    width: 100%;
+    max-height: 400px;
+    overflow: hidden;
+}
+.container img {
+    width: 100%;
+}
+
+.image-carousel {
+  // background-image: url("http://www.arabianbusiness.com/skins/ab.main/gfx/loading_spinner.gif");
+  height: 300px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+}
+
 .img-desc {
   align: center;
 }
 
+.centered-flag-and-info {
+  margin: auto;
+  padding-top: 15px;
+}
+
 .flag-and-name {
-  border: 1px grey solid;
-  border-radius: 3px;
-  padding: 20px;
+  text-align: center;
+  min-height: 300px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #c9e3ff;
+}
+
+.flag-and-name h1{
+  margin: 0;
+  margin-bottom: 10px;
 }
 
 
@@ -239,13 +396,12 @@ h3 {
   text-align: center;
 }
 
-p.img-desc {
+h2.img-desc {
     position: absolute;
-    top: 15%;
+    top: 5%;
     color: #FFF;
     word-wrap: break-word;
-    font-size: 1.5em;
     width: 80%;
     padding-left: 40px;
-    text-shadow: 2px 2px #333;
+    text-shadow: 2px 2px 5px #333;
 }
