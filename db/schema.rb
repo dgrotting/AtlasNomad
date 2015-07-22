@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20150720224139) do
     t.string   "capital"
     t.string   "volts"
     t.string   "sockets"
+    t.string   "bmi"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
