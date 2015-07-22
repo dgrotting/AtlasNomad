@@ -79,7 +79,7 @@ mouseDown = false;
   var addLanguageButtonClickListener = function(){
     $('.language-filter').click(function(){
       AtlasMap.map.series.regions[0].setValues(AtlasMap.languages);
-      AtlasMap.map.series.regions[0].setScale(['#dddddd', '#a70202']);
+      AtlasMap.map.series.regions[0].setScale(['#dddddd', '#287f2c']);
     });
   }
 
@@ -101,7 +101,7 @@ mouseDown = false;
   var addVisaButtonClickListener = function(){
     $('.visa-filter').click(function(){
     AtlasMap.map.series.regions[0].setValues(AtlasMap.visas);
-    AtlasMap.map.series.regions[0].setScale(['#a70202', '#dddddd']);
+    AtlasMap.map.series.regions[0].setScale(['#287f2c', '#dddddd']);
     });
   }
 
