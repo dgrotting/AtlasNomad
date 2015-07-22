@@ -90,6 +90,7 @@ button:focus {
 
 .destinations-div {
   overflow: hidden;
+  text-align: center;
 }
 
 .destinations-div ul {
@@ -104,6 +105,10 @@ button:focus {
 
 .destinations-div p {
   margin: 0px;
+}
+
+.destination-list {
+  text-align: left;
 }
 
 .info-div h4 {
@@ -251,11 +256,30 @@ button:focus {
   margin: 5px;
 }
 
+.travel-warnings {
+  margin: 0px;
+  border: solid 1px red;
+  border-radius: 5px;
+  width: 90%;
+  background: #fdfdfd;
+  margin: auto;
+  padding: 10px;
+}
+
+.travel-alerts-text {
+  margin-left: 50%;
+  height: 200px;
+  background: black;
+}
+
+.travel-alert-icon {
+  width: 15%;
+  float: left;
+  margin-top: 10px;
+}
+
 .alert-icon {
-  width: 100px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  height: 100px;
 }
 
 .visa-filter {
@@ -301,6 +325,15 @@ button:focus {
   border-radius: 5px;
   overflow-y: auto;
   overflow-x: hidden;
+}
+
+.small-logo {
+  position: relative;
+  width: 200px;
+}
+
+.no-destinations {
+  margin: 40px;
 }
 
 .country-image {

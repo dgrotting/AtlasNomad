@@ -1,6 +1,6 @@
 <div class="destinations-div">
 
-  <% if images %>
+  <% if images.length >= 1 %>
     <div class="image-conatiner">
       <div class="image-carousel">
         <% images.each do |image| %>
@@ -15,45 +15,34 @@
 
   <% if destinations.length >= 1 %>
 
-    <h3>Top Destinations:</h3>
-    <ul>
-      <% destinations.each do |destination| %>
-          <li>
-            <h4>
-              <%= destination.name %>
-            </h4>
-          </li>
-          <p>
-            <%= destination.desc %>
-          </p>
-      <% end %>
-    </ul>
+    <div class="destination-list">
 
-  <% elsif warnings.length >= 1 %>
-
-    <img src="/assets/alert.png" class="alert-icon">
-
-    <h3>Travel Alerts:</h3>
-
-    <ol>
-        <% warnings.each do |warning| %>
+      <h3>Top Destinations:</h3>
+      <ul>
+        <% destinations.each do |destination| %>
             <li>
-              <h4><u>
-                <%= warning.warning_type %>
-              </u></h4>
+              <h4>
+                <%= destination.name %>
+              </h4>
             </li>
-            <p>Date:
-              <%= warning.date %>
-            </p>
             <p>
-              <a href="<%= warning.warning_link %>" target="_blank">More Information</a>
+              <%= destination.desc %>
             </p>
         <% end %>
-      </ol>
+      </ul>
+
+  </div>
+
 
     <% else %>
 
-      <h3>There seem to be no destinations here.</h3>
+      <div class="no-destinations">
+
+        <img class="small-logo" src="/assets/atlasnomad_small_logo.png">
+
+        <h3>Atlas Nomad is working hard to find destinations for this country...check again soon!</h3>
+
+      </div>
 
     <% end %>
 
