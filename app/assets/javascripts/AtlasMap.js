@@ -283,8 +283,6 @@ function capitalizeFirstLetter(string) {
 
     setTimeout(function(){
       $('.image-carousel').slick('setPosition', 0);
-    }, 100);
-
-  // $('.image-carousel').slick("setPosition", 0);
+    }, 200);
   }
 }())
