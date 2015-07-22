@@ -546,7 +546,7 @@ countries.each_key do |code|
 	name = "Greenland" if code == "GL"
 	name = "Falkland Islands" if code == "FK"
 	name = "South Sudan" if code == "SS"
-	name = "United Kingdom" if code == "UK"
+	name = "United Kingdom" if code == "GB"
 	# p Country.where(code: "GB").first.name
 	# count = Country.where(code: "GB").first if count.name == "United Kingdom"
 	Country.create(
