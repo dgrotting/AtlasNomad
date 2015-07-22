@@ -24,7 +24,8 @@ button:focus {
 }
 
 .destinations-div ul {
-  margin: 20px;
+  margin: 40px;
+  margin-top: 0px;
   padding: 0;
 }
 
@@ -33,6 +34,14 @@ button:focus {
 }
 
 .destinations-div p {
+  margin: 0px;
+}
+
+.info-div h4 {
+  margin-bottom: 0px;
+}
+
+.info-div p {
   margin: 0px;
 }
 
@@ -67,16 +76,16 @@ button:focus {
 }
 
 .info-div {
-  margin: 40px;
+  // margin: 40px;
 }
 
+.travel-info {
+  padding: 40px;
+  padding-top: 10px;
+}
 
 .country-partial {
   padding: 1em;
-}
-
-.country-name {
-  display: inline-block;
 }
 
 .flag {
@@ -85,6 +94,18 @@ button:focus {
   padding:1px;
   border:1px solid #021a40;
   background-color:#f8fff6;
+}
+
+.country-info h2 {
+  margin: 0;
+}
+
+.country-info h4 {
+  margin-bottom: 0;
+}
+
+.country-info p {
+  margin-top: 0;
 }
 
 .navbar {
@@ -228,10 +249,23 @@ button:focus {
   align: center;
 }
 
+.centered-flag-and-info {
+  margin: auto;
+  padding-top: 20px;
+}
+
 .flag-and-name {
-  border: 1px grey solid;
-  border-radius: 3px;
-  padding: 20px;
+  text-align: center;
+  min-height: 300px;
+  border-bottom: 1px solid black;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  // background: -webkit-linear-gradient(90deg, #757F9A 10%, #D7DDE8 90%); /* Chrome 10+, Saf5.1+ */
+  // background:    -moz-linear-gradient(90deg, #757F9A 10%, #D7DDE8 90%); /* FF3.6+ */
+  // background:     -ms-linear-gradient(90deg, #757F9A 10%, #D7DDE8 90%); /* IE10 */
+  // background:      -o-linear-gradient(90deg, #757F9A 10%, #D7DDE8 90%); /* Opera 11.10+ */
+  // background:         linear-gradient(90deg, #757F9A 10%, #D7DDE8 90%); /* W3C */
 }
 
 
@@ -251,5 +285,5 @@ p.img-desc {
     font-size: 1.5em;
     width: 80%;
     padding-left: 40px;
-    text-shadow: 2px 2px #333;
+    text-shadow: 2px 2px 5px #333;
 }
