@@ -254,6 +254,12 @@ mouseDown = false;
       slidesToShow: 1,
       autoplaySpeed: 2500,
       adaptiveHeight: true
-    });
+    })
+
+    setTimeout(function(){
+      $('.image-carousel').slick('setPosition', 0);
+    }, 100);
+
+  // $('.image-carousel').slick("setPosition", 0);
   }
 }())
