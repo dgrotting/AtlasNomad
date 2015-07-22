@@ -5,6 +5,7 @@ class CountriesController < ApplicationController
 
   def index
     @country = Country.where(code: params[:code]).first
-    render partial: "info", layout: false, locals: {country: @country}
+    @warnings = @country.warnings
+    render partial: "info", layout: false, locals: {country: @country, warnings: @warnings}
   end
 end

@@ -33,27 +33,6 @@
 
   </div>
 
-  <% elsif warnings.length >= 1 %>
-
-    <img src="/assets/alert.png" class="alert-icon">
-
-    <h3>Travel Alerts:</h3>
-
-    <ol>
-        <% warnings.each do |warning| %>
-            <li>
-              <h4><u>
-                <%= warning.warning_type %>
-              </u></h4>
-            </li>
-            <p>Date:
-              <%= warning.date %>
-            </p>
-            <p>
-              <a href="<%= warning.warning_link %>" target="_blank">More Information</a>
-            </p>
-        <% end %>
-      </ol>
 
     <% else %>
 

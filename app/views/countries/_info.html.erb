@@ -20,6 +20,41 @@
 
   <h3>Travel Information:</h3>
 
+
+  <% if warnings.length >= 1 %>
+
+    <div class="travel-warnings">
+
+      <div class="travel-alert-icon">
+
+        <img src="/assets/atlasnomad_warning_logo.png" class="alert-icon">
+
+      </div>
+
+      <div "travel-alerts-text">
+
+      <ol>
+          <% warnings.each do |warning| %>
+              <li>
+                <p><u>Travel Alert:
+                  <%= warning.warning_type %>
+                </u></p>
+              </li>
+              <p>Date:
+                <%= warning.date %>
+              </p>
+              <p>
+                <a href="<%= warning.warning_link %>" target="_blank">More Information</a>
+              </p>
+          <% end %>
+      </ol>
+
+      </div>
+
+    </div>
+
+  <% end %>
+
   <h4>Visa Required?</h4>
     <%= country.tourist_visa %>
 
