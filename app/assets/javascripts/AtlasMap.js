@@ -169,6 +169,12 @@ bigMacData: { "BD": 0.1, "BE": 1000000, "BF": 0.1, "BG": 0.1, "BA": 0.1, "BN": 0
       var caps = capitalizeFirstLetter(userInput);
       zoomInTo(test[caps]);
     });
+    $('.search-button').on('click', function(e){
+      e.preventDefault();
+      var userInput = $('#autocomplete').val();
+      var caps = capitalizeFirstLetter(userInput);
+      zoomInTo(test[caps]);
+    });
   }
 
   var zoomInTo = function(dataCode){
