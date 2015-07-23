@@ -12,6 +12,7 @@ button:focus {
 }
 
 .ui-dialog {
+    height: 80vh;
     left: 0;
     outline: 0 none;
     padding: 0 !important;
@@ -35,7 +36,7 @@ button:focus {
 .ui-dialog-content p {
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
-  font-size: 2.5em;
+  font-size: 4vh;
   position: relative;
   color: white;
   text-shadow: 3px 3px 10px #222;
@@ -50,13 +51,13 @@ button:focus {
 }
 
 .ui-widget button {
-  font-size: 1.5em;
+  font-size: 3vh;
   font-family: 'Montserrat', sans-serif;
 }
 
 .modal-close-button {
-  width: 400px;
-  height: 100px;
+  width: 30vh;
+  height: 10vh;
   border:2px solid #1195ee;
   border-radius: 15px;
   background-color:#1195ee;
@@ -356,6 +357,9 @@ button:focus {
 
 .image-carousel {
   // background-image: url("http://www.arabianbusiness.com/skins/ab.main/gfx/loading_spinner.gif");
+  position: absolute;
+  top: 0;
+  right: 0;
   height: 300px;
   display: block;
   margin-left: auto;
