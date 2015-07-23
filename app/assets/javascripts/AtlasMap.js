@@ -71,7 +71,7 @@ bigMacData: { "BD": 0.1, "BE": 1000000, "BF": 0.1, "BG": 0.1, "BA": 0.1, "BN": 0
           values: AtlasMap.gdpData,
           attribute: 'fill',
           scale: ['#6cc577', '#348d3e'],
-          normalizeFunction: 'polynomial'
+          normalizeFunction: 'polynomial',
         }]
       },
       onRegionTipShow: function(e, el, code){
@@ -93,6 +93,8 @@ bigMacData: { "BD": 0.1, "BE": 1000000, "BF": 0.1, "BG": 0.1, "BA": 0.1, "BN": 0
     $('.language-filter').click(function(){
       AtlasMap.map.series.regions[0].setValues(AtlasMap.languages);
       AtlasMap.map.series.regions[0].setScale(['#dddddd', '#287f2c']);
+      $('.jvectormap-legend-cnt').css("display","none");
+      $('.jvectormap-container').css("background-image", "none");
     });
   }
 
@@ -106,15 +108,17 @@ bigMacData: { "BD": 0.1, "BE": 1000000, "BF": 0.1, "BG": 0.1, "BA": 0.1, "BN": 0
         countries[x].setAttribute("fill",randomColor);
       }
       var randomColor = palette[Math.floor(Math.random()*5)];
+      $('.jvectormap-legend-cnt').css("display","none");
       $('map').setAttribute("backgroundColor",randomColor);
-
-    })
+    });
   }
 
   var addVisaButtonClickListener = function(){
     $('.visa-filter').click(function(){
     AtlasMap.map.series.regions[0].setValues(AtlasMap.visas);
     AtlasMap.map.series.regions[0].setScale(['#287f2c', '#dddddd']);
+    $('.jvectormap-container').css("background-image", "none");
+    $('.jvectormap-legend-cnt').css("display","none");
     });
   }
 
@@ -122,6 +126,8 @@ bigMacData: { "BD": 0.1, "BE": 1000000, "BF": 0.1, "BG": 0.1, "BA": 0.1, "BN": 0
     $('.bigMac-filter').click(function(){
       AtlasMap.map.series.regions[0].setValues(AtlasMap.bigMacData);
       AtlasMap.map.series.regions[0].setScale(['#287f2c', '#FF0000']);
+      $('.jvectormap-legend-cnt').css("display","block");
+      $('.jvectormap-container').css("background-image", "none");
     });
   }
 
@@ -130,6 +136,7 @@ bigMacData: { "BD": 0.1, "BE": 1000000, "BF": 0.1, "BG": 0.1, "BA": 0.1, "BN": 0
     AtlasMap.map.series.regions[0].setValues(AtlasMap.gdpData);
     AtlasMap.map.series.regions[0].setScale(['#6cc577', '#348d3e']);
     $('.jvectormap-container').css("background-image", "none");
+    $('.jvectormap-legend-cnt').css("display","none");
     });
   }
 
