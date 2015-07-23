@@ -410,13 +410,17 @@ h2.img-desc {
 }
 
 .jvectormap-legend-cnt {
-    display: none;
-    position: absolute;
-    right: 50%;
-    margin: 0px;
+  display: none;
+  position: absolute;
+  right: 30%;
+  margin: 0px;
+  padding: 0px;
 }
 
 .jvectormap-legend {
+    color: #1195ee;
+    background: #e4e4e4;
+    padding: 0px;
     margin: 0px;
     width: 150px;
 }
