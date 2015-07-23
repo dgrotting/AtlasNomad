@@ -604,7 +604,7 @@ end
 
 	Country.create(
 		name: "United States",
-		official_name: "The Goddamn United States of America",
+		official_name: "The United States of America",
 		code: "US",
 		flag: "http://khongthe.com/wallpapers/abstract/america-the-beautiful-230904.jpg",
 		passport_validity: "Whatever you want because freedom",
@@ -1116,7 +1116,7 @@ destinations = [
 "turkey",
 "sri-lanka",
 "tunisia",
-"east-timor",
+# "east-timor", Commented out because it 404s
 "turkmenistan",
 "tajikistan",
 "lesotho",

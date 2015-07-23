@@ -1,11 +1,18 @@
 <div class="navbar">
   <a href="#">
-    <img class="logo"src="http://i.imgur.com/Y2xcsca.png">
+    <img class="logo"src="/assets/atlas_nomad.png">
   </a>
 </div>
 <div class="atlas-map"></div>
 <div class="country-destinations"></div>
 <div class="country-info"></div>
+
+<div id="dialog">
+  <img class="modal-logo" src="/assets/atlas_nomad_white.png">
+  <p>The more you know, the further you go...</p>
+  <button id="modalClose" class="modal-close-button">Let's Explore</button>
+</div>
+
 
 <form class="search-bar" id="auto">
   <span><input type="text" name="countryname" id="autocomplete" class="search rounded" placeholder="Country..."></span>
@@ -21,7 +28,34 @@
     <button type="button" class="gdp-filter">GDP</button>
     <button type="button" class="language-filter">English Speaking</button>
     <button type="button" class="visa-filter">Visa Needed</button>
-    <button type="button" class="color-filter">Random Color</button>
+    <button type="button" class="bigMac-filter">Big Mac index</button>
+    <button type="button" class="random-filter">Colorize</button>
   </div>
 </div>
 
+
+
+<div class="jvectormap-legend-cnt jvectormap-legend-cnt-h">
+  <div class="jvectormap-legend">
+    <div class="jvectormap-legend-title">Cost of living compared to the US</div>
+    <div class="jvectormap-legend-inner">
+      <div class="jvectormap-legend-tick">
+        <div class="jvectormap-legend-tick-sample" id="left" style="background-color: #287f2c">
+          </div>
+        <div class="jvectormap-legend-tick-text">cheap</div>
+      </div>
+      <div class="jvectormap-legend-tick">
+        <div class="jvectormap-legend-tick-sample" id="middle" style="background-color: #000000">
+          </div>
+        <div class="jvectormap-legend-tick-text"></div>
+      </div>
+      <div class="jvectormap-legend-tick">
+        <div class="jvectormap-legend-tick-sample" id="right" style="background-color: #FF0000">
+          </div>
+        <div class="jvectormap-legend-tick-text">expensive</div>
+      </div>
+      <div style="clear: both;">
+        </div>
+    </div>
+  </div>
+</div>
