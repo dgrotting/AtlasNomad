@@ -88,6 +88,7 @@ bigMacData: { "BD": 0.1, "BE": 1000000, "BF": 0.1, "BG": 0.1, "BA": 0.1, "BN": 0
     });
   }
 
+
   // var overrideApplyTransform = function(){
   //           // Store a reference to the original remove method.
   //           var originalRemoveMethod = jQuery.fn.remove;
