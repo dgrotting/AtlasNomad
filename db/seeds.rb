@@ -858,70 +858,70 @@ power.each do |line|
 	count.save
 end
 
-# bmi = [
-# ["Argentina", "$3.25"],
-# ["Australia", "$4.32"],
-# ["Brazil", "$5.21"],
-# ["United Kingdom", "$4.37"],
-# ["Canada", "$4.64"],
-# ["Chile", "$3.35"],
-# ["China", "$2.77"],
-# ["Colombia", "$3.34"],
-# ["Costa Rica", "$4.01"],
-# ["Czech Republic", "$2.92"],
-# ["Denmark", "$5.38"],
-# ["Egypt", "$2.30"],
-# # ["Euro area", "4.26"],
-# # ["Hong Kong", "2.43"],
-# ["Hungary", "$3.17"],
-# ["India", "$1.89"],
-# ["Indonesia", "$2.24"],
-# ["Israel", "$4.45"],
-# ["Japan", "$3.14"],
-# ["Malaysia", "$2.11"],
-# ["Mexico", "$3.35"],
-# ["New Zealand", "$4.49"],
-# ["Norway", "$6.30"],
-# ["Pakistan", "$2.98"],
-# ["Peru", "$3.32"],
-# ["Philippines", "$3.67"],
-# ["Poland", "$2.48"],
-# ["Russia", "$1.36"],
-# ["Saudi Arabia", "$2.93"],
-# ["South Africa", "$2.22"],
-# ["South Korea", "$3.78"],
-# ["Sri Lanka", "$2.65"],
-# ["Sweden", "$4.97"],
-# ["Switzerland", "$7.54"],
-# ["Taiwan", "$2.51"],
-# ["Thailand", "$3.04"],
-# ["Turkey", "$3.96"],
-# ["United Arab Emirates", "$3.54"],
-# ["Ukraine", "$1.20"],
-# ["United States", "$4.79"],
-# ["Uruguay", "$4.63"],
-# ["Venezuela", "$2.53"],
-# ["Vietnam", "$2.81"],
-# ["Austria", "$3.93"],
-# ["Belgium", "$4.29"],
-# ["Estonia", "$3.36"],
-# ["Finland", "$4.75"],
-# ["France", "$4.52"],
-# ["Germany", "$4.25"],
-# ["Greece", "$3.53"],
-# ["Ireland", "$4.04"],
-# ["Italy", "$4.46"],
-# ["Netherlands", "$4.00"],
-# ["Portugal", "$3.48"],
-# ["Spain", "$4.23"]
-# ]
+bmi = [
+["Argentina", "$3.25"],
+["Australia", "$4.32"],
+["Brazil", "$5.21"],
+["United Kingdom", "$4.37"],
+["Canada", "$4.64"],
+["Chile", "$3.35"],
+["China", "$2.77"],
+["Colombia", "$3.34"],
+["Costa Rica", "$4.01"],
+["Czech Republic", "$2.92"],
+["Denmark", "$5.38"],
+["Egypt", "$2.30"],
+# ["Euro area", "4.26"],
+# ["Hong Kong", "2.43"],
+["Hungary", "$3.17"],
+["India", "$1.89"],
+["Indonesia", "$2.24"],
+["Israel", "$4.45"],
+["Japan", "$3.14"],
+["Malaysia", "$2.11"],
+["Mexico", "$3.35"],
+["New Zealand", "$4.49"],
+["Norway", "$6.30"],
+["Pakistan", "$2.98"],
+["Peru", "$3.32"],
+["Philippines", "$3.67"],
+["Poland", "$2.48"],
+["Russia", "$1.36"],
+["Saudi Arabia", "$2.93"],
+["South Africa", "$2.22"],
+["South Korea", "$3.78"],
+["Sri Lanka", "$2.65"],
+["Sweden", "$4.97"],
+["Switzerland", "$7.54"],
+["Taiwan", "$2.51"],
+["Thailand", "$3.04"],
+["Turkey", "$3.96"],
+["United Arab Emirates", "$3.54"],
+["Ukraine", "$1.20"],
+["United States", "$4.79"],
+["Uruguay", "$4.63"],
+["Venezuela", "$2.53"],
+["Vietnam", "$2.81"],
+["Austria", "$3.93"],
+["Belgium", "$4.29"],
+["Estonia", "$3.36"],
+["Finland", "$4.75"],
+["France", "$4.52"],
+["Germany", "$4.25"],
+["Greece", "$3.53"],
+["Ireland", "$4.04"],
+["Italy", "$4.46"],
+["Netherlands", "$4.00"],
+["Portugal", "$3.48"],
+["Spain", "$4.23"]
+]
 
-# bmi.each do |country|
-# 	p country
-# 	count = Country.where(name: country[0]).first
-# 	count.update_attribute(:bmi, country[1])
-# 	count.save
-# end
+bmi.each do |country|
+	p country
+	count = Country.where(name: country[0]).first
+	count.update_attribute(:bmi, country[1])
+	count.save
+end
 
 ppp_2014 = {
 "Afghanistan" => "$3.33",
@@ -954,9 +954,9 @@ ppp_2014 = {
 "Chile" => "$1.43",
 "China" => "$1.66",
 "Colombia" => "$1.66",
-"Congo, Democratic Republic of the" => "$1.66",
+"Democratic Republic of the Congo" => "$1.66",
 "Costa Rica" => "$1.43",
-"Cote d'Ivoire" => "$2.00",
+"Côte d'Ivoire" => "$2.00",
 "Croatia" => "$1.66",
 "Cuba" => "$3.33",
 "Cyprus" => "$1.11",
@@ -1000,7 +1000,7 @@ ppp_2014 = {
 "Jordan" => "$2.50",
 "Kazakhstan" => "$2.00",
 "Kenya" => "$2.00",
-"Korea, South" => "$1.25",
+"South Korea" => "$1.25",
 "Kosovo" => "$2.50",
 "Kuwait" => "$1.66",
 "Laos" => "$3.33",
@@ -1087,7 +1087,7 @@ ppp_2014 = {
 ppp_2014.each do |country, price|
 	p country
 	count = Country.where(name: country).first
-	count.update_attribute(ppp: price)
+	count.update_attribute(:ppp, price)
 	count.save
 end
 
