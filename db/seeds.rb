@@ -848,12 +848,12 @@ power.each do |line|
 	p line
 	count = Country.where(name: line[0]).first
 	line[2].include?('A') || line[2].include?('B') ?
-	converter = true :
-	converter = false
+	converter = false :
+	converter = true
 	count.update_attributes(
 		volts: line[1],
 		sockets: line[2].join(", "),
-		converter: converter
+		need_converter: converter
 		 )
 	count.save
 end
