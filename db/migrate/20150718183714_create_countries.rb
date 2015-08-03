@@ -19,7 +19,8 @@ class CreateCountries < ActiveRecord::Migration
       t.string   :capital
       t.string   :volts
       t.string   :sockets
-      t.string   :bmi
+      t.boolean  :converter
+      t.string   :ppp
 
       t.timestamps null: false
     end
