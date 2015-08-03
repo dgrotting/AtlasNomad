@@ -88,6 +88,17 @@ bigMacData: { "BD": 0.1, "BE": 1000000, "BF": 0.1, "BG": 0.1, "BA": 0.1, "BN": 0
     });
   }
 
+  var overrideApplyTransform = function(){
+            // Store a reference to the original remove method.
+            var originalApplyTransform = jvm.Map.applyTransform;
+            jvm.Map.applyTransform = function(){
+                // Log the fact that we are calling our override.
+                console.log( "Override method" );
+                // Execute the original method.
+                originalRemoveMethod.apply( this, arguments );
+            }
+        };
+
   var addLanguageButtonClickListener = function(){
     $('.language-filter').click(function(){
       AtlasMap.map.series.regions[0].setValues(AtlasMap.languages);

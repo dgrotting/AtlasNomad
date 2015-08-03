@@ -604,13 +604,13 @@ end
 		name: "United States",
 		official_name: "The United States of America",
 		code: "US",
-		flag: "http://khongthe.com/wallpapers/abstract/america-the-beautiful-230904.jpg",
-		passport_validity: "Whatever you want because freedom",
-		passport_pages: "Whatever you want because freedom",
-		tourist_visa: "Whatever you want because freedom",
-		vaccinations: "Whatever you want because freedom",
-		entry_currency: "Whatever you want because freedom",
-		exit_currency: "Whatever you want because freedom"
+		flag: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/US_flag_48_stars.svg/220px-US_flag_48_stars.svg.png",
+		passport_validity: "Atlas Nomad is designed to be used by US passport holders",
+		passport_pages: "N/A",
+		tourist_visa: "No visa required for passport holders",
+		vaccinations: "N/A",
+		entry_currency: "N/A",
+		exit_currency: "N/A"
 	)
 
 	Country.create(

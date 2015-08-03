@@ -1,6 +1,6 @@
 <div class="navbar">
   <a href="#">
-    <img class="logo"src="/assets/atlas_nomad.png">
+    <img class="logo"src= <%= asset_path("atlas_nomad.png")%>>
   </a>
 </div>
 <div class="atlas-map"></div>
@@ -8,7 +8,7 @@
 <div class="country-info"></div>
 
 <div id="dialog">
-  <img class="modal-logo" src="/assets/atlas_nomad_white.png">
+  <img class="modal-logo" src=<%= asset_path("atlas_nomad_white.png") %>>
   <p>The more you know, the further you go...</p>
   <button id="modalClose" class="modal-close-button">Let's Explore</button>
 </div>
@@ -19,7 +19,7 @@
   <input class="search-button" type="button" value="Search">
 </form>
 
-<a href="https://github.com/dgrotting/AtlasNomad"><img class="github-logo" src="/assets/github_logo.png"></a>
+<a href="https://github.com/dgrotting/AtlasNomad"><img class="github-logo" src=<%= asset_path("github_logo.png")%>></a>
 
 
 <div id="slidebottom" class="slide">
