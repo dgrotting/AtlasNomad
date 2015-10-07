@@ -9,7 +9,7 @@ Benoit Demonsant [@keops6fr](github.com/keops6fr)
 David Grotting [@dgrotting](github.com/dgrotting)  
 Josh Ullman [@joshullman](github.com/joshullman)
 
-The map component is [JVectorMap](https://github.com/bjornd/jvectormap) by @bjornd, which we have licensed under the GPLv3. Jvectormap is also available for commercial licensing at [jvectormap.com](http://jvectormap.com). 
+The map component is [JVectorMap](https://github.com/bjornd/jvectormap) by [@bjornd](github.com/bjornd), which we have licensed under the GPLv3. Jvectormap is also available for commercial licensing at [jvectormap.com](http://jvectormap.com). 
 
 ***
 
